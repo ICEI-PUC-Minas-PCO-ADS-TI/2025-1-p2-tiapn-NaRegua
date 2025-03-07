@@ -14,12 +14,9 @@ A aplicação será utilizada por profissionais da barbearia para gerenciar agen
 Os clientes da barbearia acessarão o site para consultar informações, agendar horários e avaliar os serviços.
 O sistema poderá ser acessado por meio de computadores, tablets e smartphones, garantindo uma experiência fluida e responsiva.
 
-O grupo pode optar por fazer uso de ferramentas como Design Thinking, que permite uma visão completa do problema.
 
-> **Links úteis**:
-> - [Objetivos, problema de pesquisa e justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz certezas, suposições e dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+
+
 
 ## Objetivos
 
@@ -31,17 +28,15 @@ Desenvolver uma interface intuitiva e responsiva, garantindo que o site seja ace
 
 Criar um portfólio digital dinâmico, onde o barbeiro possa exibir imagens dos cortes realizados, permitindo a fácil atualização do conteúdo para atrair novos clientes.
  
-> **Links úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+
 
 ## Justificativa
 
 O desenvolvimento de um site para barbearias e barbeiros autônomos é motivado pela necessidade crescente de digitalização no setor de serviços. Em um mundo cada vez mais conectado, a falta de presença digital pode limitar o crescimento de pequenos negócios, reduzindo sua visibilidade e dificultando a captação de novos clientes.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
 
-> **Links úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+
+
 
 ## Público-alvo
 
