@@ -39,10 +39,10 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 > Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
 
 #### Sprint 1
-- _Scrum master_: AlunaX
-- Protótipos: AlunoY
-- Testes: AlunoK
-- Documentação: AlunaZ
+- _Scrum master_: Guilherme Thiebaut
+- Protótipos: 
+- Testes: 
+- Documentação: Guilherme Thiebaut, Juan Cunha, Ivan Barreto, Erik Alcântara e Franklin Reis
 
 #### Sprint 2
 - _Scrum master_: AlunaY
