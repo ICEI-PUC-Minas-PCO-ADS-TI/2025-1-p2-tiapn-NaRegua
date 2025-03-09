@@ -42,7 +42,6 @@ O desenvolvimento de um site para barbearias e barbeiros autônomos é motivado 
 
 A aplicação será utilizada por dois principais perfis de usuários: os profissionais da barbearia (barbeiros e gestores) e os clientes que desejam agendar serviços. Cada grupo possui diferentes níveis de familiaridade com tecnologia, necessidades e comportamentos, o que influencia diretamente no design e na usabilidade do site.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
 
 > **Links úteis**:
 > - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
