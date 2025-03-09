@@ -1,46 +1,47 @@
 # Introdução
 
-Inicialmente elaboramos um projeto para facilitar o agendamento para cortes de cabelo, barba, etc. O parceiro cujo possui uma barbearia, realiza os agendamentos de seus clientes de forma manual, o mesmo possui uma demanda grande de clientes. A apresentação desse projeto para o parceiro visa facilitar e agilizar este processo. 
+No cenário atual, a presença digital se tornou essencial para qualquer negócio, incluindo barbearias. Clientes modernos buscam praticidade, rapidez e personalização no atendimento, preferindo agendar serviços online e conhecer melhor os profissionais antes mesmo de visitar o estabelecimento. No entanto, muitos barbeiros ainda dependem exclusivamente do boca a boca ou de redes sociais para atrair clientes, o que limita seu alcance e profissionalismo.
 
 ## Cliente 
-Nesta seção, devem ser apresentadas informações essenciais sobre o cliente (parceiro) para garantir um entendimento mais preciso do projeto como uma iniciativa extensionista.  
+ O parceiro deste projeto é um barbeiro que busca modernizar sua presença digital e melhorar a experiência de seus clientes por meio de um site profissional.  
 
-Recomenda-se incluir dados como missão, visão e valores da organização, além de seu ramo de atuação, porte, nicho de mercado e principais desafios enfrentados. Também é relevante fornecer informações sobre sua localização, histórico, impacto social e possíveis demandas específicas. Quanto mais detalhadas forem essas informações, mais embasada será a análise do contexto, permitindo uma abordagem estratégica e alinhada às necessidades do cliente.
+O cliente é um barbeiro autônomo de uma barbearia local, que atende um público variado e preza pela qualidade dos serviços prestados. Ele pode atuar sozinho ou contar com uma equipe de profissionais especializados em cortes de cabelo e barbas.
 
 ## Problema
-O mair problema atualmente seria a questão do agendamento para o nosso potencial parceiro, foi apresentado ao mesmo esse projeto para que ele possa acolher a ideia assim tendo um fluxo de controle mais fácil ao agendamento. 
+No cenário atual, onde a digitalização dos negócios é essencial para atrair e fidelizar clientes, muitos barbeiros ainda enfrentam dificuldades para gerenciar seus atendimentos e divulgar seus serviços de maneira eficaz. A ausência de uma presença digital estruturada pode limitar o crescimento do negócio e impactar diretamente sua competitividade no mercado.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
+A aplicação será utilizada por profissionais da barbearia para gerenciar agendamentos e exibir seu portfólio de serviços.
+Os clientes da barbearia acessarão o site para consultar informações, agendar horários e avaliar os serviços.
+O sistema poderá ser acessado por meio de computadores, tablets e smartphones, garantindo uma experiência fluida e responsiva.
 
 
-> **Links úteis**:
-> - [Objetivos, problema de pesquisa e justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz certezas, suposições e dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+
+
 
 ## Objetivos
 
-O objetivo a primeira vista é contribuir para que possa ficar mais dinâmico o dia a dia do parceiro, fazendo com que mantenha um controle mais preciso. 
+O objetivo geral deste projeto é desenvolver um site para barbearia e barbeiro autônomo, proporcionando uma solução digital eficiente para gerenciar agendamentos, divulgar serviços e melhorar a comunicação com os clientes.
 
-Além disso, apresente alguns (pelo menos 3) objetivos específicos, dependendo de onde você pretende concentrar sua prática investigativa ou como deseja aprofundar seu trabalho.
+Implementar um sistema de agendamento online para que os clientes possam escolher horários disponíveis sem a necessidade de contato direto, otimizando o fluxo de atendimento da barbearia.
+
+Desenvolver uma interface intuitiva e responsiva, garantindo que o site seja acessível em diferentes dispositivos, como computadores, tablets e smartphones, proporcionando uma melhor experiência ao usuário.
+
+Criar um portfólio digital dinâmico, onde o barbeiro possa exibir imagens dos cortes realizados, permitindo a fácil atualização do conteúdo para atrair novos clientes.
  
-> **Links úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+O desenvolvimento de um site para barbearias e barbeiros autônomos é motivado pela necessidade crescente de digitalização no setor de serviços. Em um mundo cada vez mais conectado, a falta de presença digital pode limitar o crescimento de pequenos negócios, reduzindo sua visibilidade e dificultando a captação de novos clientes.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
 
-> **Links úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+
+
 
 ## Público-alvo
 
-O nosso público-alvo é o barbeiro que posteriomente será seus clientes que irão usufruir da aplicação podendo agendar uma data e horário. 
+A aplicação será utilizada por dois principais perfis de usuários: os profissionais da barbearia (barbeiros e gestores) e os clientes que desejam agendar serviços. Cada grupo possui diferentes níveis de familiaridade com tecnologia, necessidades e comportamentos, o que influencia diretamente no design e na usabilidade do site.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
 
 > **Links úteis**:
 > - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
