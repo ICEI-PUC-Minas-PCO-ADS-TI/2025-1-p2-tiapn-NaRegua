@@ -1,4 +1,4 @@
-# Nome do projeto
+# NaRégua
 
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
