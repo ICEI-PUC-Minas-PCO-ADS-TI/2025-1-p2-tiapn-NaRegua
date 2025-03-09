@@ -42,21 +42,34 @@ Apresente aqui as histórias de usuários que são relevantes para o projeto da 
 
 ## Requisitos
 
-As tabelas a seguir apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade dos requisitos, aplique uma técnica de priorização e detalhe como essa técnica foi aplicada.
+As tabelas a seguir apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade dos requisitos.
 
 ### Requisitos funcionais
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| Permite o cadastro de usuários | ALTA | 
+|RF-002| Permite o cadastro do Administrador | ALTA |
+|RF-003| Recuperação de senha | ALTA |
+|RF-004| Agendamento de horário | ALTA |
+|RF-005| Cancelamento/Regandamento de horário | ALTA |
+|RF-006| Barra de pesquisa | ALTA |
+|RF-007| Notificação de aberto ou fechado | ALTA |
+|RF-008| Avaliação do serviço | ALTA |
+|RF-009| Perfil de usuário | ALTA |
 
 ### Requisitos não funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em dispositivos móveis | MÉDIA | 
-|RNF-002| Deve processar as requisições do usuário em no máximo 3 segundos |  BAIXA | 
+|RNF-001| Disponibilizar uma API para redirecionamento para o WhatsApp. | MÉDIA | 
+|RNF-002| Interface intuitiva e responsiva para facilitar o uso. |  ALTA |
+|RNF-003| O sistema deve ficar 24h por dia sem interrupções. | ALTA | 
+|RNF-004| O sistema deve ser compatível a todos os navegadores e dispositivos. |  ALTA | 
+|RNF-005| O sistema deve armazenar e recuparar dados conforme as necessidades. | MÉDIA | 
+|RNF-006| A legibilidade do código, modularidade e documentação. |  ALTA | 
+|RNF-007| Os padrões estabelecidos pela empresa (Cliente). | ALTA | 
+|RNF-008| Integração o sistema deve se comunicar com outras aplicações. |  MÉDIA | 
 
 Com base nas histórias de usuários, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
@@ -71,6 +84,7 @@ Com base nas histórias de usuários, enumere os requisitos da sua solução. Cl
   dispositivos iOS e Android).
 
 Lembre-se de que cada requisito deve corresponder a uma e somente uma característica-alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas histórias de usuários foram cobertos.
+
 
 > **Links úteis**:
 > - [O que são requisitos funcionais e requisitos não funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
