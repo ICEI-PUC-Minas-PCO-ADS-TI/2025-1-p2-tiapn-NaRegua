@@ -28,8 +28,20 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+| Pai  | Reservar o assento de carro para meu filho com segurança e confiança     |   Meu filho se dispõe com mais boa vontade a cortar o cabelo sentado nela.  |
+|  Criança     |  Ir á barbearia e encontrar a cadeira de carro vazia                 |Para que eu corte o cabelo nela.  |
+|  Jovem     | Cortar o cabelo no horário agendado               |Tenho outros compromissos na agenda após o corte e não gostaria de me atrasar para eles. |
+|  Jovem   |  Cortar o cabelo exatamente no dia que agendei                |Pois não quero ser realocado frequentemente ou ficar dependendo de um encaixe sempre. |
+|  Trabalhador     | Agendar os meus cortes de cabelo e barba com mais facilidade               | Trabalho muito e não tenho tempo para ficar conversando via Whatsapp com o barbeiro até confirmar um horário.  |
+|  Trabalhador     | Um sistema que me permita escolher os tipos de atendimento que desejo              |Às vezes, quero fazer somente a barba, outras vezes somente o cabelo, e em outras ocasiões ambas as coisas.   |
+|  Dono da Barbearia | Um painel para poder visualizar todos o agendamentos do dia. | Para conseguir gerenciar melhor o fluxo de clientes. |
+| Dono da Barbearia | Cadastrar e editar os horários de atendimento da minha equipe. | Para o sistema permitir agendamentos dentro da nossa disponibilidade. |
+| Barbeiro | Visualizar minha agenda de atendimentos. | Conseguir me organizar melhor e oferecer um serviço de qualidade. |
+| Barbeiro | Registrar a conclusão dos serviços prestados. | Para manter o controle sobre atendimentos realizados. |
+| Barbeiro | Marcar um horário com indisponível. | Fazendo com que clientes não consigam agendar nesse período quando eu precisar me ausentar. |
+| Secretária da Barbearia | Agendar horários. | Facilitando a organização dos atendimentos. | 
+| Secretária da Barbearia | Remarcar ou cancelar agendamentos de clientes. | Para oferecer flexibilidade no atendimento. |
+| Secretária da Barbearia | Cadastrar clientes no sistema. | Para que seja mais rápido fazer agendamentos futuros. |
 
 Apresente aqui as histórias de usuários que são relevantes para o projeto da sua solução. As histórias de usuários consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuários por contexto, para facilitar consultas recorrentes a esta parte do documento.
 
