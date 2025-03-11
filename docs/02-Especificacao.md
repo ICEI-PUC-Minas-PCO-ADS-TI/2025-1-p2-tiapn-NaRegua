@@ -8,7 +8,11 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Exemplo: _Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente por meio de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros._
+_Cuíca tem 32 anos, é dono da Barbearia do Cuíca e gerencia tanto o atendimento aos clientes quanto a equipe de barbeiros. Ele precisa de um sistema que o ajude a visualizar rapidamente todos os agendamentos do dia e a controlar os horários de atendimento da equipe, garantindo que os clientes só possam marcar dentro da disponibilidade real. Com uma rotina corrida, ele busca uma solução simples e prática para organizar melhor o fluxo de trabalho e evitar problemas na agenda._
+
+_Leleco tem 25 anos, é barbeiro funcionário na Barbearia do Cuíca e tem uma agenda cheia de atendimentos ao longo do dia. Para se organizar melhor, ele precisa de um sistema onde possa visualizar facilmente seus agendamentos, registrar os serviços concluídos e bloquear horários quando necessário, evitando conflitos ou sobrecarga de trabalho. Como preza pela qualidade do atendimento, ele busca mais autonomia para gerenciar sua rotina sem depender de anotações manuais ou da secretária._
+
+_Jéssica tem 22 anos, é secretária da Barbearia do Cuíca e responsável por organizar os agendamentos e atender os clientes. No dia a dia, ela precisa de um sistema que facilite o agendamento, remarcação e cancelamento de horários, além de permitir o cadastro de clientes para agilizar futuras marcações. Com um grande volume de atendimentos, ela busca uma solução prática que reduza erros e torne a gestão da agenda mais eficiente._
 
 Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
 
