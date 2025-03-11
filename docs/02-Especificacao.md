@@ -14,6 +14,12 @@ _Leleco tem 25 anos, é barbeiro funcionário na Barbearia do Cuíca e tem uma a
 
 _Jéssica tem 22 anos, é secretária da Barbearia do Cuíca e responsável por organizar os agendamentos e atender os clientes. No dia a dia, ela precisa de um sistema que facilite o agendamento, remarcação e cancelamento de horários, além de permitir o cadastro de clientes para agilizar futuras marcações. Com um grande volume de atendimentos, ela busca uma solução prática que reduza erros e torne a gestão da agenda mais eficiente._
 
+_Bento Dias tem 16 anos, é cliente fiel de sua barberia e corta o cabelo em um espaço de 2 a 3 semanas. Um sistema de agendamentos seria essencial para Bento, porque garantiria o seu corte de cabelo sempre que ele efetuasse a marcação no site, ao contrário do que tem acontecido com ele atualmente ao combinar tentar combinar horários via WhatsApp com o seu barbeiro. Bento já passou pela experiência de ser atendido mais de uma vez "tempos" depois do horário estabelecido, inclusive teve até que abrir mão de cortar o cabelo em algumas dessas ocasiões._
+
+_João Lucas tem 31 anos, é casado e possui um filho com sua esposa. João corta o cabelo regurlamente e as vezes leva consigo seu filho para acompanhá-lo e cortar o cabelo também. Infelizmente, em alguma dessas idas com seu filho à barberia, João havia reservado o assento de carro para seu garoto, mas no momento de seu atendimento ele não pôde ser atendido lá, por falta de organização do barbeiro em relação a reserva desse assento, o que sempre gera grandes estresses para a criança. Um sistema de agendamentos permitirá que o barbeiro faça uma gestão melhor desse espaço e assim satisfaça todos os seus clientes, desde adultos até as crianças._
+
+_Luis Reis tem 31 anos, e trabalha com manuntenção de elevadores. Luís vive bastante ocupado no seu dia a dia, seu celular não possui apenas uma rede de contatos pessoais, mas profissionais também. Além disso, seu trabalho demanda muito do seu tempo, atenção e disponibilidade, o que o impede de conversar com seu barbeiro via WhatsApp para agendar um corte de cabelo ou barba. Um sistema de agendamentos trará facilidade e agilidade para sua vida nos momentos em que ele desejar marcar um atendimento na barbearia._
+
 Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
 
 > **Links úteis**:
