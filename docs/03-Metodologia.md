@@ -70,8 +70,8 @@ Atualizado em: 11/03/2025
 | Ivan        | Requisitos funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025   |
 | Ivan        | Requisitos não funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025    |
 | Ivan        | Referências  |    01/01/2024        | 13/03/2025 | ✔️    | 13/03/2025      |
-| Juan        | Requisitos não funcionais 5/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
-| Juan        | Requisitos funcionais 5/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
+| Juan        | Requisitos não funcionais 10/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
+| Juan        | Requisitos funcionais 10/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
 #### Sprint 2
 
 Atualizado em: 21/04/2024
