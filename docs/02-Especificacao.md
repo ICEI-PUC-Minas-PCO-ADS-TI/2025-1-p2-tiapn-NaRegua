@@ -90,7 +90,7 @@ O projeto está restrito aos itens apresentados na tabela a seguir.
 |005| Os papeis e funções de cada integrante deverão ser seguidos, ordenadamente para facilitar a integração e producao dos artefatos     |
 |006| Todos as fontes e links utilizados nas pesquisas de desenvolvimento devem ser citadas nas referências do projeto       |
 |007| Os integrantes do grupo deverão desenvolver as personas e histórias de usuario apartir da aplicação mirro      |
-|008|      |
+
 
 
 ## Diagrama de casos de uso
