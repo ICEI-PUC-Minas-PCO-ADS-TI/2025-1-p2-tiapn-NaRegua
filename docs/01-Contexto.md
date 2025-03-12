@@ -3,25 +3,22 @@
 No cenário atual, a presença digital se tornou essencial para qualquer negócio, incluindo barbearias. Clientes modernos buscam praticidade, rapidez e personalização no atendimento, preferindo agendar serviços online e conhecer melhor os profissionais antes mesmo de visitar o estabelecimento. No entanto, muitos barbeiros ainda dependem exclusivamente do boca a boca ou de redes sociais para atrair clientes, o que limita seu alcance e profissionalismo.
 
 ## Cliente 
- O parceiro deste projeto é um barbeiro que busca modernizar sua presença digital e melhorar a experiência de seus clientes por meio de um site profissional.  
+ O parceiro deste projeto é um barbeiro que busca automatizar o seu negócio e melhorar a experiência de seus clientes por meio de um site profissional.  
 
 O cliente é um barbeiro autônomo de uma barbearia local, que atende um público variado e preza pela qualidade dos serviços prestados. Ele pode atuar sozinho ou contar com uma equipe de profissionais especializados em cortes de cabelo e barbas.
 
 ## Problema
-No cenário atual, onde a digitalização dos negócios é essencial para atrair e fidelizar clientes, muitos barbeiros ainda enfrentam dificuldades para gerenciar seus atendimentos e divulgar seus serviços de maneira eficaz. A ausência de uma presença digital estruturada pode limitar o crescimento do negócio e impactar diretamente sua competitividade no mercado.
+No cenário atual, onde a digitalização dos negócios é essencial para atrair e fidelizar clientes, muitos barbeiros ainda enfrentam dificuldades para gerenciar seus atendimentos e divulgar seus serviços de maneira eficaz. A ausência de um sistema de gestão de agendamentos estruturado pode limitar o crescimento do negócio e impactar diretamente sua competitividade no mercado.
 
-A aplicação será utilizada por profissionais da barbearia para gerenciar agendamentos e exibir seu portfólio de serviços.
+A aplicação será utilizada por profissionais de barbearia para gerenciar agendamentos e exibir seu portfólio de serviços.
 Os clientes da barbearia acessarão o site para consultar informações, agendar horários e avaliar os serviços.
 O sistema poderá ser acessado por meio de computadores, tablets e smartphones, garantindo uma experiência fluida e responsiva.
 
-O grupo pode optar por fazer uso de ferramentas como Design Thinking, que permite uma visão completa do problema.
 
-> **Links úteis**:
-> - [Objetivos, problema de pesquisa e justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz certezas, suposições e dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
-## Objetivos
+
+
+## Objetivos *
 
 O objetivo geral deste projeto é desenvolver um site para barbearia e barbeiro autônomo, proporcionando uma solução digital eficiente para gerenciar agendamentos, divulgar serviços e melhorar a comunicação com os clientes.
 
@@ -31,23 +28,20 @@ Desenvolver uma interface intuitiva e responsiva, garantindo que o site seja ace
 
 Criar um portfólio digital dinâmico, onde o barbeiro possa exibir imagens dos cortes realizados, permitindo a fácil atualização do conteúdo para atrair novos clientes.
  
-> **Links úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+
 
 ## Justificativa
 
-O desenvolvimento de um site para barbearias e barbeiros autônomos é motivado pela necessidade crescente de digitalização no setor de serviços. Em um mundo cada vez mais conectado, a falta de presença digital pode limitar o crescimento de pequenos negócios, reduzindo sua visibilidade e dificultando a captação de novos clientes.
+O desenvolvimento de um site para barbearias e barbeiros autônomos é motivado pela necessidade crescente de digitalização nesse tipo de negócio. Atualmente a falta de presença digital nesse ramo profissional pode limitar o crescimento do negócio, reduzindo sua visibilidade e dificultando a captação de novos clientes.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
 
-> **Links úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+
+
 
 ## Público-alvo
 
-A aplicação será utilizada por dois principais perfis de usuários: os profissionais da barbearia (barbeiros e gestores) e os clientes que desejam agendar serviços. Cada grupo possui diferentes níveis de familiaridade com tecnologia, necessidades e comportamentos, o que influencia diretamente no design e na usabilidade do site.
+A aplicação será utilizada por dois principais perfis de usuários: os profissionais da barbearia (barbeiros, gestores e secretarios) e os clientes que desejam agendar serviços. Cada grupo possui diferentes níveis de familiaridade com tecnologia, necessidades e comportamentos, o que influencia diretamente no design e na usabilidade do site.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
 
 > **Links úteis**:
 > - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
