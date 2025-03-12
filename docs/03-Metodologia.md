@@ -61,15 +61,17 @@ Atualizado em: 11/03/2025
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
 | Franklin       | Template - Projeto Processo de Negócios |      | 13/03/2025 | ✔️    |       |
-| Franklin       | Personas de Clientes    |     | 13/03/2024 | ✔️      |   11/03/2025           |
+| Franklin       | Personas de Clientes    |     | 13/03/2025 | ✔️      |   11/03/2025           |
 | Franklin       | Histórias de usuário 6/14 |     | 13/03/2025 | ✔️      |      09/03/2025          |
 | Erik       | Personas dos Funcionários  |    10/03/2025        | 13/03/2025 | ✔️    | 11/03/2025      |
 | Erik       | Histórias de usuário 8/14  |    09/03/2025        | 13/03/2025 | ✔️    | 11/03/2025      |
-| Ivan        | Contato com cliente  |    01/01/2024        | 12/02/2005 | ✔️    | 28/02/2025      |
-| Ivan        | Restrição do projeto  |    01/01/2024        | 12/02/2005 | ✔️    | 09/03/2025      |
-| Ivan        | Requisitos funcionais 5/10  |    01/01/2024        | 12/02/2005 | ✔️    | 07/03/2025   |
-| Ivan        | Requisitos não funcionais 5/10  |    01/01/2024        | 12/02/2005 | ✔️    | 07/03/2025    |
-| Ivan        | Referências  |    01/01/2024        | 12/02/2005 | ✔️    | 09/03/2025      |
+| Ivan        | Contato com cliente  |    01/01/2024        | 13/03/2025 | ✔️    | 28/02/2025      |
+| Ivan        | Restrição do projeto  |    01/01/2024        | 13/03/2025 | ✔️    | 09/03/2025      |
+| Ivan        | Requisitos funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025   |
+| Ivan        | Requisitos não funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025    |
+| Ivan        | Referências  |    01/01/2024        | 13/03/2025 | ✔️    | 13/03/2025      |
+| Juan        | Requisitos não funcionais 5/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
+| Juan        | Requisitos funcionais 5/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
 #### Sprint 2
 
 Atualizado em: 21/04/2024
