@@ -6,7 +6,7 @@
 
 `1º semestre/2025`
 
-O objetivo de projeto é implementar um sistema de gestão de agendamentos para uma barberia que realiza o agendamento de seus clientes de maneira manual, a caneta e caderno. A aplicação proporcionará um crescimento tecnológico considerável para **o négocio** em questão. Dessa forma, nosso colaborador terá mais controle e organização de seu fluxo de clientes, e isso acarretará em eficiência, agilidade, modernização e principalmente automatização. 
+O objetivo de projeto é implementar um sistema de gestão de agendamentos para uma barberia que realiza o agendamento de seus clientes de maneira manual, a caneta e caderno. A aplicação proporcionará um crescimento tecnológico considerável para o négocio em questão. Dessa forma, nosso colaborador terá mais controle e organização de seu fluxo de clientes, e isso acarretará em eficiência, agilidade, modernização e principalmente automatização. 
 
 ## Integrantes
 
