@@ -67,6 +67,7 @@ Atualizado em: 11/03/2025
 | Franklin       | Personas de Clientes    |   08/03/2025  | 13/03/2025 | ✔️      |   11/03/2025           |
 | Franklin       | Histórias de usuário 6/14 |  08/03/2025   | 13/03/2025 | ✔️      |      09/03/2025          |
 | Guilherme       | Slides Apresentação |  08/03/2025   | 13/03/2025 | ✔️      |      11/03/2025          |
+| Guilherme       | Envio dos arquivos da tarefa |  13/03/2025   | 13/03/2025 | ✔️      |      13/03/2025          |
 | Gustavo       | Arquivo Contexto |  02/03/2025   | 13/03/2025 | ✔️      |      02/03/2025          |
 | Ivan        | Contato com cliente  |    01/01/2024        | 13/03/2025 | ✔️    | 28/02/2025      |
 | Ivan        | Restrição do projeto  |    01/01/2024        | 13/03/2025 | ✔️    | 09/03/2025      |
