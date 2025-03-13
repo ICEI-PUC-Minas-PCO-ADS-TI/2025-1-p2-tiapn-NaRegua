@@ -8,7 +8,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-_Cuíca tem 32 anos, é dono da Barbearia do Cuíca e gerencia tanto o atendimento aos clientes quanto a equipe de barbeiros. Ele precisa de um sistema que o ajude a visualizar rapidamente todos os agendamentos do dia e a controlar os horários de atendimento da equipe, garantindo que os clientes só possam marcar dentro da disponibilidade real. Com uma rotina corrida, ele busca uma solução simples e prática para organizar melhor o fluxo de trabalho e evitar problemas na agenda._
+_Taíca tem 32 anos, é dona da Barbearia da Taíca e gerencia tanto o atendimento aos clientes quanto a equipe de barbeiros. Ela precisa de um sistema que o ajude a visualizar rapidamente todos os agendamentos do dia e a controlar os horários de atendimento da equipe, garantindo que os clientes só possam marcar dentro da disponibilidade real. Com uma rotina corrida, ela busca uma solução simples e prática para organizar melhor o fluxo de trabalho e evitar problemas na agenda._
 
 _Leleco tem 25 anos, é barbeiro funcionário na Barbearia do Cuíca e tem uma agenda cheia de atendimentos ao longo do dia. Para se organizar melhor, ele precisa de um sistema onde possa visualizar facilmente seus agendamentos, registrar os serviços concluídos e bloquear horários quando necessário, evitando conflitos ou sobrecarga de trabalho. Como preza pela qualidade do atendimento, ele busca mais autonomia para gerenciar sua rotina sem depender de anotações manuais ou da secretária._
 
@@ -33,8 +33,8 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |  Jovem   |  Cortar o cabelo exatamente no dia que agendei                |Pois não quero ser realocado frequentemente ou ficar dependendo de um encaixe sempre. |
 |  Trabalhador     | Agendar os meus cortes de cabelo e barba com mais facilidade               | Trabalho muito e não tenho tempo para ficar conversando via Whatsapp com o barbeiro até confirmar um horário.  |
 |  Trabalhador     | Um sistema que me permita escolher os tipos de atendimento que desejo              |Às vezes, quero fazer somente a barba, outras vezes somente o cabelo, e em outras ocasiões ambas as coisas.   |
-|  Dono da Barbearia | Um painel para poder visualizar todos o agendamentos do dia. | Para conseguir gerenciar melhor o fluxo de clientes. |
-| Dono da Barbearia | Cadastrar e editar os horários de atendimento da minha equipe. | Para o sistema permitir agendamentos dentro da nossa disponibilidade. |
+|  Dona da Barbearia | Um painel para poder visualizar todos o agendamentos do dia. | Para conseguir gerenciar melhor o fluxo de clientes. |
+| Dona da Barbearia | Cadastrar e editar os horários de atendimento da minha equipe. | Para o sistema permitir agendamentos dentro da nossa disponibilidade. |
 | Barbeiro | Visualizar minha agenda de atendimentos. | Conseguir me organizar melhor e oferecer um serviço de qualidade. |
 | Barbeiro | Registrar a conclusão dos serviços prestados. | Para manter o controle sobre atendimentos realizados. |
 | Barbeiro | Marcar um horário com indisponível. | Fazendo com que clientes não consigam agendar nesse período quando eu precisar me ausentar. |
