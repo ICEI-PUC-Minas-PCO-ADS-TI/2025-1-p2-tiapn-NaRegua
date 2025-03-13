@@ -18,7 +18,7 @@ O sistema poderá ser acessado por meio de computadores, tablets e smartphones, 
 
 
 
-## Objetivos *
+## Objetivos 
 
 O objetivo geral deste projeto é desenvolver um site para barbearia e barbeiro autônomo, proporcionando uma solução digital eficiente para gerenciar agendamentos, divulgar serviços e melhorar a comunicação com os clientes.
 
