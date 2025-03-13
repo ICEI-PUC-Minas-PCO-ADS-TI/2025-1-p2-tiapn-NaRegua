@@ -63,6 +63,7 @@ Atualizado em: 11/03/2025
 | Erik       | Personas dos Funcionários  |    10/03/2025        | 13/03/2025 | ✔️    | 11/03/2025      |
 | Erik       | Histórias de usuário 8/14  |    08/03/2025        | 13/03/2025 | ✔️    | 11/03/2025      |
 | Erik       | Arquivo Citation  |    21/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
+| Erik       | Quadro Kanban  |    /02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
 | Franklin       | Template - Projeto Processo de Negócios |  08/03/2025    | 13/03/2025 | ✔️    | 13/03/2025       |
 | Franklin       | Personas de Clientes    |   08/03/2025  | 13/03/2025 | ✔️      |   11/03/2025           |
 | Franklin       | Histórias de usuário 6/14 |  08/03/2025   | 13/03/2025 | ✔️      |      09/03/2025          |
