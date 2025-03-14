@@ -90,4 +90,4 @@ As tabelas a seguir apresentam os requisitos funcionais e não funcionais que de
 
 ## Diagrama de casos de uso
 
-![diagrama fluxograma](https://github.com/ICEI-PUC-Minas-PCO-ADS-TI/2025-1-p2-tiapn-NaRegua/blob/doc/main/images/diagrama_fluxo.jpg)
+![diagrama fluxograma](https://github.com/ICEI-PUC-Minas-PCO-ADS-TI/2025-1-p2-tiapn-NaRegua/blob/main/docs/images/diagrama_fluxo.jpg)
