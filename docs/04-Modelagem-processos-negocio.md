@@ -2,10 +2,6 @@
 
 <span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>
 
-> **Links úteis**:
-> - [Modelagem de processos AS-IS x TO-BE](https://dheka.com.br/modelagem-as-is-to-be/)
-> - [20 dicas práticas de modelagem de processos](https://dheka.com.br/20-dicas-praticas-de-modelagem-de-processos/)
-
 ## Modelagem da situação atual (Modelagem AS IS)
 
 Atualmente o agendamente para o serviço prestado pela empresa no qual será implementado o projeto, seja de corte de cabelo, barba, sobrancelha, etc. O cliente agenda indo a barbearia ou entrando em contato por mensagem. O projeto proposto ao cliente(barbeiro) é a implementação de um sistema que ira gerencia todo esse processo de agendamento seja ele qual for, visando simplificar/agilizar os serviços que vira a ser prestado ao cliente e principalmente ganhar uma pequena parcela de tempo que a longo prazo poderar a vir beneficar o barbeiro podendo adquirir mais clientes conforme a gestão do tempo.
@@ -16,7 +12,7 @@ Atualmente o agendamente para o serviço prestado pela empresa no qual será imp
 
 **Verificação**: O Barbeiro verificar a disponibilidade.
 
-**Confirmação**: O barbeiro confirmar a disponibilidade se sim/não. Sim ele agendar um horário - Não era agendar para uma outra data.
+**Confirmação**: O barbeiro confirmar a disponibilidade se sim/não. Sim, ele agenda um horário - Não, ira agenda para uma outra data.
 
 **Serviços**: O cliente vai até a barbearia. O barbeiro executar o serviço desejado pelo cliente.
 
