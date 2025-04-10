@@ -54,7 +54,7 @@ Indentificado que a empresa possui uma segunda demanda de serviço que poderia e
 
 ## Modelagem dos processos
 
-[PROCESSO 1 - Nome do processo](./processes/processo-1-nome-do-processo.md "Detalhamento do processo 1.")
+[PROCESSO 1 - CORTE DE CABELO](./processes/processo-1-nome-do-processo.md "Detalhamento do processo 1.")
 
 [PROCESSO 2 - Nome do processo](./processes/processo-2-nome-do-processo.md "Detalhamento do processo 2.")
 
