@@ -48,16 +48,13 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 > Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
 
 #### Sprint 1
-- _Scrum master_: AlunaX
+- _Scrum master_: Guilherme Thiebaut
 - Protótipos: AlunoY
 - Testes: AlunoK
-- Documentação: AlunaZ
+- Documentação: Ivan Barreto, Franklin Reis, Erik Alcantara, Juan Luciano, Gustavo Bernardo, Guilherme Thiebaut
 
 #### Sprint 2
 - _Scrum master_: Ivan Barreto
-- Desenvolvedor _front-end_: AlunoX
-- Desenvolvedor _back-end_: AlunoK
-- Testes: AlunaZ
 -  Documentação: Erik Alcantara, Juan Luciano, Franklin Reis, Gustavo Bernardo, Guilherme Thiebaut
 
 ###  Quadro de tarefas
@@ -147,3 +144,4 @@ Exemplo: os artefatos do projeto são desenvolvidos a partir de diversas platafo
 | Projeto de interface                | Figma                              | http://....                            |
 | Gerenciamento do projeto            | GitHub Projects                    | http://....                            |
 | Hospedagem                          | Vercel                             | http://....                            |
+| Modelagem                      | Bizagi                            | https://www.bizagi.com/pt                            |
