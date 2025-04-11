@@ -92,15 +92,15 @@ Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Franklin      | Preenchimento do Template - Projeto Processo de Negócios ( seção 3 )   | 07/04/2024     | 10/04/2024 | ✔️    | 10/04/2024      |
-| Guilherme      | Modelagem dos Modelos AS - IS    | 30/03/2024     | 10/04/2024 | ✔️    |  10/04/2025               |
-| Juan        | Preenchimento da modelagem dos processos de negócio  | 30/03/2024     | 10/04/2024 | ✔️     |  10/04/2025               |
-| Ivan B.       | Metodologia  |  01/04/2024    | 10/04/2024 | ✔️    |  10/04/2025     |
-| Erik      | Modelagem dos processos TO-BE  |  01/01/2024    | 10/04/2024 | ✔️    |  09/04/2025     |
-| Gustavo      | Slides  |  08/04/2024    | 12/04/2024 | ✔️    |  10/04/2025     |
-| Juan      | Visita a empresa |  01/04/2024    | 10/04/2024 | ✔️    |  01/04/2025     |
-| Franklin     | Visita a empresa |  01/04/2024    | 10/04/2024 | ✔️    |  01/04/2025     |
-| Ivan B.    | Visita a empresa |  01/04/2024    | 10/04/2024 | ✔️    |  01/04/2025     |
+| Franklin      | Preenchimento do Template - Projeto Processo de Negócios ( seção 3 )   | 07/04/2025     | 10/04/2025 | ✔️    | 10/04/2025      |
+| Guilherme      | Modelagem dos Modelos AS - IS    | 30/03/2025     | 10/04/2025 | ✔️    |  10/04/2025               |
+| Juan        | Preenchimento da modelagem dos processos de negócio  | 30/03/2025     | 10/04/2025 | ✔️     |  10/04/2025               |
+| Ivan B.       | Metodologia  |  01/04/2025    | 10/04/2025 | ✔️    |  10/04/2025     |
+| Erik      | Modelagem dos processos TO-BE  |  01/01/2025    | 10/04/2025 | ✔️    |  09/04/2025     |
+| Gustavo      | Slides  |  08/04/2025    | 12/04/2025 | ✔️    |  10/04/2025     |
+| Juan      | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
+| Franklin     | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
+| Ivan B.    | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
 
 
 Legenda:
