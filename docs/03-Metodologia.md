@@ -3,8 +3,16 @@
 
 <span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>
 
-Para o desenvolvimento do projeto, a equipe adotou uma abordagem colaborativa baseada em metodologias ágeis, com destaque para o uso do Scrum como framework principal de organização. O trabalho foi dividido de forma que todos os integrantes fizessem as tarefas de forma unanime, a empresa engajada no processo e uma Barbearia onde uma unica pessoa faz todos os processos desde serviço até administração dentre esses processos realizados por apenas um individuo existem problemas onde soluções tecnologicas são as melhores formas de resolvelos, diante disso o grupo organizou uma visita onde foi apresentado os problemas e as ineficiencias da bbarbearia e os principais processos e serviços realizados, diante disso o grupo apresentou ao responsavel pela  a proposta do trabalho de extensão e o quanto seria benefico para empresa, apos o recolhhimento das informações e da documentação dos dados necessarios o grupo modelou os processos  AS-IS e TO-BE tais processos que foram documentados anteriormente, alem disso o grupo priorizou muito a participação da empresa na criação dos artefatos, voltando para a divisão dos papeis 
-Descreva aqui a metodologia de trabalho do grupo para abordar o problema. Inclua definições sobre os ambientes de trabalho utilizados pela equipe para desenvolver o projeto. Isso abrange a relação dos ambientes utilizados, a estrutura para a gestão do código-fonte, além da definição do processo e das ferramentas por meio dos quais a equipe se organiza (gestão de equipes).
+Para o desenvolvimento do projeto, a equipe adotou uma abordagem colaborativa baseada em metodologias ágeis, com destaque para o uso do Scrum como framework principal de organização. O trabalho foi dividido de forma que todos os integrantes realizassem as tarefas de maneira unânime, com o engajamento da empresa no processo. A empresa em questão é uma barbearia onde uma única pessoa executa todos os processos, desde os serviços até a administração.
+
+Dentre esses processos, realizados por apenas um indivíduo, foram identificados problemas cuja melhor solução seria o uso de tecnologias. Diante disso, o grupo organizou uma visita ao local, onde foram apresentados os principais problemas, ineficiências, processos e serviços realizados.
+
+Após essa visita, o grupo apresentou ao responsável pela barbearia a proposta do trabalho de extensão, explicando os benefícios que ele traria para a empresa. Com o recolhimento das informações e a documentação dos dados necessários, a equipe modelou os processos AS-IS e TO-BE, os quais foram devidamente documentados.
+
+Além disso, o grupo priorizou a participação da empresa na criação dos artefatos. Em relação à divisão de papéis, a equipe se organizou de forma que todos compartilhassem as atividades ao longo da sprint, com foco especial na modelagem dos processos AS-IS e TO-BE, utilizando como principal ferramenta o Bizagi.
+
+Seguindo a metodologia Scrum, o grupo optou por realizar as reuniões por meio do Discord, a fim de auxiliar no acompanhamento das tarefas.
+
 
 ## Controle de versão
 
@@ -50,7 +58,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - Desenvolvedor _front-end_: AlunoX
 - Desenvolvedor _back-end_: AlunoK
 - Testes: AlunaZ
--  Documentação: Erik Alcantara, Juan Luciano, Franklin Reis, Gustavo Bernardo
+-  Documentação: Erik Alcantara, Juan Luciano, Franklin Reis, Gustavo Bernardo, Guilherme Thiebaut
 
 ###  Quadro de tarefas
 
@@ -73,10 +81,15 @@ Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| AlunaX        | Página inicial   | 01/02/2024     | 07/03/2024 | ✔️    | 05/02/2024      |
-| AlunaZ        | CSS unificado    | 03/02/2024     | 10/03/2024 | 📝    |                 |
-| AlunoY        | Página de login  | 01/02/2024     | 07/03/2024 | ⌛     |                 |
-| AlunoK        | Script de login  |  01/01/2024    | 12/03/2024 | ❌    |       |
+| Franklin      | Preenchimento do Template - Projeto Processo de Negócios ( seção 3 )   | 07/04/2024     | 10/04/2024 | ✔️    | 10/04/2024      |
+| Guilherme      | Modelagem dos Modelos AS - IS    | 30/03/2024     | 10/04/2024 | ✔️    |  10/04/2025               |
+| Juan        | Preenchimento da modelagem dos processos de negócio  | 30/03/2024     | 10/04/2024 | ✔️     |  10/04/2025               |
+| Ivan B.       | Metodologia  |  01/04/2024    | 10/04/2024 | ✔️    |  10/04/2025     |
+| Erik      | Modelagem dos processos TO-BE  |  01/01/2024    | 10/04/2024 | ✔️    |  09/04/2025     |
+| Gustavo      | Slides  |  08/04/2024    | 12/04/2024 | ✔️    |  10/04/2025     |
+| Juan      | Visita a empresa |  01/04/2024    | 10/04/2024 | ✔️    |  01/04/2025     |
+| Franklin     | Visita a empresa |  01/04/2024    | 10/04/2024 | ✔️    |  01/04/2025     |
+| Ivan B.    | Visita a empresa |  01/04/2024    | 10/04/2024 | ✔️    |  01/04/2025     |
 
 
 Legenda:
@@ -109,6 +122,7 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas. Tod
 ### Ferramentas
 
 Liste todas as ferramentas que foram empregadas no projeto, justificando a escolha delas, sempre que possível.
+
 
 Exemplo: os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito é apresentada na tabela que se segue.
 
