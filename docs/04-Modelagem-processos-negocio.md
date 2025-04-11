@@ -2,42 +2,70 @@
 
 <span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>
 
-> **Links úteis**:
-> - [Modelagem de processos AS-IS x TO-BE](https://dheka.com.br/modelagem-as-is-to-be/)
-> - [20 dicas práticas de modelagem de processos](https://dheka.com.br/20-dicas-praticas-de-modelagem-de-processos/)
-
 ## Modelagem da situação atual (Modelagem AS IS)
 
-Apresente uma descrição textual de como os sistemas atuais resolvem o problema que seu projeto se propõe a resolver. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional.
+Atualmente o agendamente para o serviço prestado pela empresa no qual será implementado o projeto, seja de corte de cabelo, barba, sobrancelha, etc. O cliente agenda indo a barbearia ou entrando em contato por mensagem. O projeto proposto ao cliente(barbeiro) é a implementação de um sistema que ira gerencia todo esse processo de agendamento seja ele qual for, visando simplificar/agilizar os serviços que vira a ser prestado ao cliente e principalmente ganhar uma pequena parcela de tempo que a longo prazo poderar a vir beneficar o barbeiro podendo adquirir mais clientes conforme a gestão do tempo.
 
-Com o tema do projeto definido, escolham alguns processos no contexto de negócios. Para ilustrar os potenciais ganhos com a automatização, imaginem processos manuais, ineficientes e/ou com muitas idas e vindas, gerando, assim, retrabalho. Colem aqui os modelos dos processos atuais (modelo AS-IS), elaborados com o apoio da ferramenta baseada em BPMN utilizada na disciplina.
+ ![AS IS](https://github.com/user-attachments/assets/d3836199-07c1-4cc5-a50e-a7e98b13b470)
+
+**Início**: O cliente manda mensagem (telefone, e-mail, chat) para agendar o horário.
+
+**Verificação**: O Barbeiro verificar a disponibilidade.
+
+**Confirmação**: O barbeiro confirmar a disponibilidade se sim/não. Sim, ele agenda um horário - Não, ira agenda para uma outra data.
+
+**Serviços**: O cliente vai até a barbearia. O barbeiro executar o serviço desejado pelo cliente.
+
+**Encerramento**: O cliente realiza o pagamento.
+
+**Fim**: Serviço finalizado. 
+
+Com a aplicação do projeto definida visamos ganhos com a automatização do serviço prestado pela empresa.
 
 ## Descrição geral da proposta (Modelagem TO BE)
 
-Tendo identificado os gargalos dos modelos AS-IS, apresentem uma descrição da proposta de solução, buscando maior eficiência com a introdução da tecnologia. Abordem também os limites dessa solução e seu alinhamento com as estratégias e objetivos do contexto de negócio escolhido.
+Indentificado que a empresa possui uma segunda demanda de serviço que poderia está causando um pequeno gargalo no processo de todo atendimento. Podendo gerar uma pequena demanda de tempo a mais nos demais serviços prestados. Foi elaborado uma ideia para que seja condesado o processo para a solução do gargalo. 
 
-Cole aqui os modelos da solução proposta (modelo TO-BE), elaborados com o apoio da ferramenta baseada em BPMN utilizada na disciplina. Cada processo identificado deve ter seu modelo TO-BE específico. Descrevam as oportunidades de melhoria de cada processo da solução proposta.
+![TO BE](https://github.com/user-attachments/assets/f9e58658-4773-481b-84e8-003039748046)
 
-Apresente aqui uma descrição da sua proposta, abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente também as oportunidades de melhoria.
+**Mudanças**:
+- Cliente entra na loja.
+
+- Escolhe o produto desejado.
+
+- Compra o produto.
+
+**Novo fluxo**:
+
+- Cliente entra no site e escolhe os produtos.
+
+- Selecionar o produto.
+
+- Confirma o produto.
+
+- O barbeiro receber o pedido, e prepara o pedido.
+
+- Cliente vai a barbearia e realiza o pagamento.
+
+- Faz a retirada do produto.
+
+**Atendimento encerrado.**
+
 
 ## Modelagem dos processos
 
-[PROCESSO 1 - Nome do processo](./processes/processo-1-nome-do-processo.md "Detalhamento do processo 1.")
+[PROCESSO 1 - CORTE DE CABELO](./processes/processo-1-nome-do-processo.md "Detalhamento do processo 1.")
 
-[PROCESSO 2 - Nome do processo](./processes/processo-2-nome-do-processo.md "Detalhamento do processo 2.")
+[PROCESSO 2 - COMPRAR PRODUTOS](./processes/processo-2-nome-do-processo.md "Detalhamento do processo 2.")
 
 
 ## Indicadores de desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Coloque no mínimo 5 indicadores.
-
-Use o seguinte modelo:
 
 | **Indicador** | **Objetivos** | **Descrição** | **Fonte de dados** | **Fórmula de cálculo** |
 | ---           | ---           | ---           | ---             | ---             |
-| Percentual de reclamações | Avaliar quantitativamente as reclamações | Percentual de reclamações em relação ao total de atendimentos | Tabela Reclamações | número total de reclamações / número total de atendimentos |
-| Taxa de requisições atendidas | Melhorar a prestação de serviços medindo a porcentagem de requisições atendidas| Mede a % de requisições atendidas na semana | Tabela Solicitações | (número de requisições atendidas / número total de requisições) * 100 |
-| Taxa de entrega de material | Manter controle sobre os materiais que estão sendo entregues | Mede % de material entregue dentro do mês | Tabela Pedidos | (número de pedidos entregues / número total de pedidos) * 100 |
-
-
-Obs.: todas as informações necessárias para gerar os indicadores devem estar no diagrama de classe a ser apresentado posteriormente.
+| **Taxa de comparecimento** | Avaliar presença dos clientes nos agendamentos | Mede o % de clientes que comparecem aos horários marcados | Tabela Agenda | (Número de comparecimentos / Número total de agendamentos) |
+| **Tempo médio de agendamento** | Avaliar agilidade entre solicitação e confirmação de horário| Tempo médio entre o envio da mensagem e a confirmação de horário | Tabela Agenda | (Soma dos tempos entre solicitação e marcação / Total de agendamentos) |
+| **Taxa de conversão de visualização em compra** | Medir a eficiência do site em transformar interesse em compra | % de clientes que visualizaram e concluíram uma compra | Tabela Pedidos, clientes | (Número de compras / Número de visualizações de produtos) |
+| **Tempo médio de processamento do pedido** | Medir a eficiência no preparo do pedido | Tempo entre a confirmação da compra e o preparo completo do pedido | Tabela Pedidos | (Soma dos tempos de processamento / Total de pedidos) |
+| **Taxa de pedidos entregues corretamente** | Garantir a qualidade no processo de entrega | Mede o % de pedidos entregues sem erros ou devoluções | Tabela Pedidos | (Pedidos corretos / Total de pedidos entregues) |
