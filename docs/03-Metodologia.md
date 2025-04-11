@@ -49,9 +49,13 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 #### Sprint 1
 - _Scrum master_: Guilherme Thiebaut
-- Protótipos: AlunoY
-- Testes: AlunoK
+
 - Documentação: Ivan Barreto, Franklin Reis, Erik Alcantara, Juan Luciano, Gustavo Bernardo, Guilherme Thiebaut
+
+- Protótipos: 
+- Testes: 
+- Documentação: Guilherme Thiebaut, Juan Cunha, Ivan Barreto, Erik Alcântara e Franklin Reis
+
 
 #### Sprint 2
 - _Scrum master_: Ivan Barreto
@@ -63,7 +67,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 #### Sprint 1
 
-Atualizado em: 21/04/2024
+Atualizado em: 11/03/2025
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
@@ -77,11 +81,23 @@ Atualizado em: 21/04/2024
 | Guilherme       | Slides Apresentação |  08/03/2025   | 13/03/2025 | ✔️      |      11/03/2025          |
 | Guilherme       | Envio dos arquivos da tarefa |  13/03/2025   | 13/03/2025 | ✔️      |      13/03/2025          |
 | Gustavo       | Arquivo Contexto |  02/03/2025   | 13/03/2025 | ✔️      |      02/03/2025          |
+
+
 | Ivan        | Contato com cliente  |    01/01/2025        | 13/03/2025 | ✔️    | 28/02/2025      |
 | Ivan        | Restrição do projeto  |    01/01/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
 | Ivan        | Requisitos funcionais 5/10  |    01/01/2025        | 13/03/2025 | ✔️    | 07/03/2025   |
 | Ivan        | Requisitos não funcionais 5/10  |    01/01/2025        | 13/03/2025 | ✔️    | 07/03/2025    |
 | Ivan        | Referências  |    01/01/2025        | 13/03/2025 | ✔️    | 13/03/2025      |
+| Juan        | Requisitos não funcionais 5/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
+| Juan        | Requisitos funcionais 5/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
+| Juan       | Quadro Kanban  |    25/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
+
+=======
+| Ivan        | Contato com cliente  |    01/01/2024        | 13/03/2025 | ✔️    | 28/02/2025      |
+| Ivan        | Restrição do projeto  |    01/01/2024        | 13/03/2025 | ✔️    | 09/03/2025      |
+| Ivan        | Requisitos funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025   |
+| Ivan        | Requisitos não funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025    |
+| Ivan        | Referências  |    01/01/2024        | 13/03/2025 | ✔️    | 13/03/2025      |
 | Juan        | Requisitos não funcionais 5/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
 | Juan        | Requisitos funcionais 5/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
 | Juan       | Quadro Kanban  |    25/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
