@@ -70,10 +70,24 @@ Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| AlunaX        | Introdução | 01/02/2024     | 07/02/2024 | ✔️    | 05/02/2024      |
-| AlunaZ        | Objetivos    | 03/02/2024     | 10/02/2024 | 📝    |                 |
-| AlunoY        | Histórias de usuário  | 01/01/2024     | 07/01/2005 | ⌛     |                 |
-| AlunoK        | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |       |
+| Erik       | Personas dos Funcionários  |    10/03/2025        | 13/03/2025 | ✔️    | 11/03/2025      |
+| Erik       | Histórias de usuário 8/14  |    08/03/2025        | 13/03/2025 | ✔️    | 11/03/2025      |
+| Erik       | Arquivo Citation  |    21/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
+| Erik       | Quadro Kanban  |    25/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
+| Franklin       | Template - Projeto Processo de Negócios |  08/03/2025    | 13/03/2025 | ✔️    | 13/03/2025       |
+| Franklin       | Personas de Clientes    |   08/03/2025  | 13/03/2025 | ✔️      |   11/03/2025           |
+| Franklin       | Histórias de usuário 6/14 |  08/03/2025   | 13/03/2025 | ✔️      |      09/03/2025          |
+| Guilherme       | Slides Apresentação |  08/03/2025   | 13/03/2025 | ✔️      |      11/03/2025          |
+| Guilherme       | Envio dos arquivos da tarefa |  13/03/2025   | 13/03/2025 | ✔️      |      13/03/2025          |
+| Gustavo       | Arquivo Contexto |  02/03/2025   | 13/03/2025 | ✔️      |      02/03/2025          |
+| Ivan        | Contato com cliente  |    01/01/2024        | 13/03/2025 | ✔️    | 28/02/2025      |
+| Ivan        | Restrição do projeto  |    01/01/2024        | 13/03/2025 | ✔️    | 09/03/2025      |
+| Ivan        | Requisitos funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025   |
+| Ivan        | Requisitos não funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025    |
+| Ivan        | Referências  |    01/01/2024        | 13/03/2025 | ✔️    | 13/03/2025      |
+| Juan        | Requisitos não funcionais 5/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
+| Juan        | Requisitos funcionais 5/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
+| Juan       | Quadro Kanban  |    25/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
 
 #### Sprint 2
 
