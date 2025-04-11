@@ -81,8 +81,6 @@ Atualizado em: 11/03/2025
 | Guilherme       | Slides Apresentação |  08/03/2025   | 13/03/2025 | ✔️      |      11/03/2025          |
 | Guilherme       | Envio dos arquivos da tarefa |  13/03/2025   | 13/03/2025 | ✔️      |      13/03/2025          |
 | Gustavo       | Arquivo Contexto |  02/03/2025   | 13/03/2025 | ✔️      |      02/03/2025          |
-
-
 | Ivan        | Contato com cliente  |    01/01/2025        | 13/03/2025 | ✔️    | 28/02/2025      |
 | Ivan        | Restrição do projeto  |    01/01/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
 | Ivan        | Requisitos funcionais 5/10  |    01/01/2025        | 13/03/2025 | ✔️    | 07/03/2025   |
@@ -91,8 +89,6 @@ Atualizado em: 11/03/2025
 | Juan        | Requisitos não funcionais 5/10  |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025    |
 | Juan        | Requisitos funcionais 5/10 |    09/03/2025        | 13/03/2025 | ✔️    | 09/03/2025      |
 | Juan       | Quadro Kanban  |    25/02/2025        | 13/03/2025 | ✔️    | 21/02/2025      |
-
-=======
 | Ivan        | Contato com cliente  |    01/01/2024        | 13/03/2025 | ✔️    | 28/02/2025      |
 | Ivan        | Restrição do projeto  |    01/01/2024        | 13/03/2025 | ✔️    | 09/03/2025      |
 | Ivan        | Requisitos funcionais 5/10  |    01/01/2024        | 13/03/2025 | ✔️    | 07/03/2025   |
