@@ -1,25 +1,25 @@
-# Nome do projeto
+# NaRégua
 
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
 `DISCIPLINA: Trabalho Interdisciplinar Aplicações para Processos de Negócios`
 
-`Xº semestre/ANO`
+`1º semestre/2025`
 
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+O objetivo de projeto é implementar um sistema de gestão de agendamentos para uma barberia que realiza o agendamento de seus clientes de maneira manual, a caneta e caderno. A aplicação proporcionará um crescimento tecnológico considerável para o négocio em questão. Dessa forma, nosso colaborador terá mais controle e organização de seu fluxo de clientes, e isso acarretará em eficiência, agilidade, modernização e principalmente automatização. 
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Erik Cristian de Alcântara Costa
+* Franklin Fernando Dias Reis Filho
+* Guilherme de Assis Thiebaut
+* Gustavo Bernardo Nunes dos Santos
+* Ivan Barreto Murta
+* Juan Luciano Cunha Silva
 
 ## Professor
 
-* Nome completo do(a) professor(a)
+* Amália Soares Vieira de Vasconcelos
 
 ## Instruções de utilização
 
