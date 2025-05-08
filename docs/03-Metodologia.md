@@ -114,6 +114,21 @@ Atualizado em: 21/04/2024
 | Franklin     | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
 | Ivan B.    | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
 
+#### Sprint 3
+
+Atualizado em: 08/05/2024
+
+| Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
+| :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
+| Franklin      | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Guilherme      |     |      |  |     |                |
+| Juan        | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Ivan B.       | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Erik      |  |     |  |     |     |
+| Gustavo      |   |      |  |     |       |
+
+
+
 
 Legenda:
 - ✔️: terminado
