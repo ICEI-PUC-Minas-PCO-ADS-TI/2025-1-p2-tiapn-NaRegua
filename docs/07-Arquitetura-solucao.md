@@ -32,11 +32,10 @@ O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, obje
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
  
 ![](images/EsquemaRelacional.png)
-![Exemplo de um modelo relacional](images/modelo_relacional.png "Exemplo de modelo relacional.")
+
 ---
 
-> **Links úteis**:
-> - [Criando um modelo relacional - documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/12.0.0?topic=designer-creating-relational-model)
+
 
 ### Modelo físico
 
@@ -45,52 +44,130 @@ Insira aqui o script de criação das tabelas do banco de dados.
 Veja um exemplo:
 
 ```sql
--- Criação da tabela Medico
-CREATE TABLE Medico (
-    MedCodigo INTEGER PRIMARY KEY,
-    MedNome VARCHAR(100)
-);
+-- Criação do schema
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb4;
+USE `mydb`;
 
--- Criação da tabela Paciente
-CREATE TABLE Paciente (
-    PacCodigo INTEGER PRIMARY KEY,
-    PacNome VARCHAR(100)
-);
+-- Tabela Barbeiro
+CREATE TABLE `Barbeiro` (
+  `CPF` VARCHAR(11) NOT NULL,
+  `Nome` TEXT,
+  `Email` TEXT,
+  `Telefone` VARCHAR(11),
+  `Rua` TEXT,
+  `Numero` INT,
+  `Bairro` TEXT,
+  `CEP` VARCHAR(8),
+  PRIMARY KEY (`CPF`)
+) ENGINE = InnoDB;
 
--- Criação da tabela Consulta
-CREATE TABLE Consulta (
-    ConCodigo INTEGER PRIMARY KEY,
-    MedCodigo INTEGER,
-    PacCodigo INTEGER,
-    Data DATE,
-    FOREIGN KEY (MedCodigo) REFERENCES Medico(MedCodigo),
-    FOREIGN KEY (PacCodigo) REFERENCES Paciente(PacCodigo)
-);
+-- Tabela Cliente
+CREATE TABLE `Cliente` (
+  `CPF` CHAR(11) NOT NULL,
+  `Nome` TEXT,
+  `Email` TEXT,
+  `Contato_1` VARCHAR(11),
+  `Contato_2` VARCHAR(11),
+  PRIMARY KEY (`CPF`)
+) ENGINE = InnoDB;
 
--- Criação da tabela Medicamento
-CREATE TABLE Medicamento (
-    MdcCodigo INTEGER PRIMARY KEY,
-    MdcNome VARCHAR(100)
-);
+-- Tabela Serviços de Cabelo
+CREATE TABLE `Servicos_de_cabelo` (
+  `ID` INT NOT NULL,
+  `Tipo_de_servicos` TEXT,
+  `Preco` DECIMAL(10,2),
+  `Duracao_media` TIME,
+  PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
 
--- Criação da tabela Prescricao
-CREATE TABLE Prescricao (
-    ConCodigo INTEGER,
-    MdcCodigo INTEGER,
-    Posologia VARCHAR(200),
-    PRIMARY KEY (ConCodigo, MdcCodigo),
-    FOREIGN KEY (ConCodigo) REFERENCES Consulta(ConCodigo),
-    FOREIGN KEY (MdcCodigo) REFERENCES Medicamento(MdcCodigo)
-);
+-- Tabela Produtos
+CREATE TABLE `Produtos` (
+  `ID` INT NOT NULL,
+  `Nome` TEXT,
+  `Preco` DECIMAL(10,2),
+  `Descricao` TEXT,
+  `Quantidade` INT,
+  PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+-- Tabela Pomadas de cabelo
+CREATE TABLE `Pomadas_de_cabelo` (
+  `ID` INT NOT NULL,
+  `Tipo_de_cabelo` TEXT,
+  `Tamanho_Gramas` INT,
+  `Fabricacao` DATE,
+  `Validade` DATE,
+  PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+-- Tabela Roupas
+CREATE TABLE `Roupas` (
+  `ID` INT NOT NULL,
+  `Peca` TEXT,
+  `Tecido` TEXT,
+  `Tamanho` TEXT,
+  PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
+-- Tabela Atende (Relaciona Cliente e Barbeiro)
+CREATE TABLE `Atende` (
+  `CPF_Cliente` CHAR(11) NOT NULL,
+  `CPF_Barbeiro` VARCHAR(11) NOT NULL,
+  PRIMARY KEY (`CPF_Cliente`, `CPF_Barbeiro`),
+  FOREIGN KEY (`CPF_Cliente`) REFERENCES `Cliente`(`CPF`),
+  FOREIGN KEY (`CPF_Barbeiro`) REFERENCES `Barbeiro`(`CPF`)
+) ENGINE = InnoDB;
+
+-- Tabela Realiza (Relaciona Barbeiro e Serviços)
+CREATE TABLE `Realiza` (
+  `ID_Servicos` INT NOT NULL,
+  `CPF_Barbeiro` VARCHAR(11) NOT NULL,
+  PRIMARY KEY (`ID_Servicos`, `CPF_Barbeiro`),
+  FOREIGN KEY (`ID_Servicos`) REFERENCES `Servicos_de_cabelo`(`ID`),
+  FOREIGN KEY (`CPF_Barbeiro`) REFERENCES `Barbeiro`(`CPF`)
+) ENGINE = InnoDB;
+
+-- Tabela Compra
+CREATE TABLE `Compra` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `CPF_Cliente` CHAR(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`CPF_Cliente`) REFERENCES `Cliente`(`CPF`)
+) ENGINE = InnoDB;
+
+-- Compra_has_Produtos (Relaciona Compra e Produtos)
+CREATE TABLE `Compra_has_Produtos` (
+  `Compra_ID` INT NOT NULL,
+  `Produto_ID` INT NOT NULL,
+  PRIMARY KEY (`Compra_ID`, `Produto_ID`),
+  FOREIGN KEY (`Compra_ID`) REFERENCES `Compra`(`ID`),
+  FOREIGN KEY (`Produto_ID`) REFERENCES `Produtos`(`ID`)
+) ENGINE = InnoDB;
+
+-- Compra_has_Roupas (Relaciona Compra e Roupas)
+CREATE TABLE `Compra_has_Roupas` (
+  `Compra_ID` INT NOT NULL,
+  `Roupa_ID` INT NOT NULL,
+  PRIMARY KEY (`Compra_ID`, `Roupa_ID`),
+  FOREIGN KEY (`Compra_ID`) REFERENCES `Compra`(`ID`),
+  FOREIGN KEY (`Roupa_ID`) REFERENCES `Roupas`(`ID`)
+) ENGINE = InnoDB;
+
+-- Compra_has_Pomadas_de_cabelo
+CREATE TABLE `Compra_has_Pomadas_de_cabelo` (
+  `Compra_ID` INT NOT NULL,
+  `Pomada_ID` INT NOT NULL,
+  PRIMARY KEY (`Compra_ID`, `Pomada_ID`),
+  FOREIGN KEY (`Compra_ID`) REFERENCES `Compra`(`ID`),
+  FOREIGN KEY (`Pomada_ID`) REFERENCES `Pomadas_de_cabelo`(`ID`)
+) ENGINE = InnoDB;
 ```
 Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](../src/db).
 
 
 ## Tecnologias
 
-Descreva qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
 
 
 | **Dimensão**   | **Tecnologia**  |
@@ -100,6 +177,7 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 | SGBD           | MySQL           |
 | Deploy         | Vercel          |
 
+![](images/Tecnologias.png)
 
 ## Hospedagem
 
