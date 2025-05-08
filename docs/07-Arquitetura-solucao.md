@@ -41,7 +41,7 @@ O Esquema Relacional corresponde à representação dos dados em tabelas juntame
 
 Insira aqui o script de criação das tabelas do banco de dados.
 
-Veja um exemplo:
+
 
 ```sql
 -- Criação do schema
