@@ -25,20 +25,20 @@ Visão geral da interação do usuário por meio das telas do sistema. Apresente
 
 ### Tela principal do sistema
 
-Descrição da tela principal do sistema.
+Tela Home, utilizada para agendar os serviços da barbearia, e mostrar os produtos disponiveis para compra.
 
-> Insira aqui a tela principal do sistema
+![Home](images/TelaHome.png)
 
 
 ###  Telas do processo 1
 
-Descrição da tela relativa à atividade 1 do processo 1.
+Tela de cadastro, utilizada para o usuário se cadastrar para utilizar a aplicação.
 
-> Insira aqui a tela da atividade 1
+![Cadastro](images/TelaCadastro.png)
 
-Descrição da tela relativa à atividade 2 do processo 1.
+Tela de login, utlizada para o usário possa entrar em sua conta para utilizar a aplicação.
 
-> Insira aqui a tela da atividade 2
+![Login](images/TelaLogin.png)
 
 
 ### Telas do processo 2
