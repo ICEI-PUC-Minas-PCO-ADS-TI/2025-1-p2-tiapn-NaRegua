@@ -5,19 +5,19 @@
 
 Esse fluxo de usuário foi pensado para deixar a experiência mais fácil e intuitiva. Cada etapa ajuda a guiar o usuário sem complicação, garantindo que ele chegue onde precisa sem muito esforço. O objetivo é minimizar obstáculos, tornar a navegação natural e facilitar as ações que ele quer realizar.
 
-![User Flow](images/user_flow.jpg)
+![User Flow](images/UserFlow.png)
 
 ### Diagrama de fluxo
 
 O diagrama de fluxo foi criado para ajudar a organizar as ideias antes de montar o user flow e os wireframes. Ele funciona como um mapa, mostrando os caminhos que o usuário pode seguir, os pontos de decisão e possíveis desafios. Com isso, conseguimos prever ajustes, tornar a navegação mais fluida e facilitar a criação da interface sem retrabalho
 
-![Diagrama de Fluxo](images/diagrama_fluxo.jpg)
+![Diagrama de Fluxo](images/DiagramaFluxo.png)
 
 ## Wireframes
 
 O wireframe foi criado para dar uma visão clara de como a interface vai funcionar antes de investir tempo no design final. Ele ajuda a organizar os elementos da tela, definir a hierarquia das informações e garantir que a navegação faça sentido. É como um esboço que evita refação e facilita ajustes rápidos antes de partir para algo mais visual e detalhado
 
-![Wireframe](images/wireframe.png)
+![Wireframe](images/Wireframe.png)
 
 ## Interface do sistema
 
