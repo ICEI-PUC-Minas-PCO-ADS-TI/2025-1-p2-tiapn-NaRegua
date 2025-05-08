@@ -107,12 +107,28 @@ Atualizado em: 21/04/2024
 | Franklin      | Preenchimento do Template - Projeto Processo de Negócios ( seção 3 )   | 07/04/2025     | 10/04/2025 | ✔️    | 10/04/2025      |
 | Guilherme      | Modelagem dos Modelos AS - IS    | 30/03/2025     | 10/04/2025 | ✔️    |  10/04/2025               |
 | Juan        | Preenchimento da modelagem dos processos de negócio  | 30/03/2025     | 10/04/2025 | ✔️     |  10/04/2025               |
-| Ivan B.       | Metodologia  |  01/04/2025    | 10/04/2025 | ✔️    |  10/04/2025     |
+| Ivan        | Metodologia  |  01/04/2025    | 10/04/2025 | ✔️    |  10/04/2025     |
 | Erik      | Modelagem dos processos TO-BE  |  01/01/2025    | 10/04/2025 | ✔️    |  09/04/2025     |
-| Gustavo      | Slides  |  08/04/2025    | 12/04/2025 | ✔️    |  10/04/2025     |
+| Gustavo      | Slides  |  08/04/2025    | 10/04/2025 | ✔️    |  10/04/2025     |
 | Juan      | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
 | Franklin     | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
-| Ivan B.    | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
+| Ivan     | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
+
+#### Sprint 3
+
+Atualizado em: 08/05/2024
+
+| Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
+| :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
+| Franklin      | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Guilherme     | Realização do User Flow                        | 27/04/2025     | 08/05/2025 | ✔️    | 27/04/2025      |
+| Guilherme     | Realização do Diagrama de Fluxo do Usuário     | 01/05/2025     | 08/05/2025 | ✔️    | 01/05/2025      |
+| Juan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Ivan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Erik          |                                                |                |            |        |                 |
+| Gustavo       |                                                |                |            |        |                 |
+
+
 
 
 Legenda:

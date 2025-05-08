@@ -1,51 +1,23 @@
 
 # Projeto de interface
 
-<span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>
-
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
-
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados na <a href="02-Especificacao.md"> Especificação do projeto</a></span>.
-
  ## User flow
 
-Fluxo de usuário (user flow) é uma técnica que permite ao desenvolvedor mapear todo o fluxo de navegação do usuário na aplicação. Essa técnica serve para alinhar os caminhos e as possíveis ações que o usuário pode realizar junto com os membros da equipe.
+Esse fluxo de usuário foi pensado para deixar a experiência mais fácil e intuitiva. Cada etapa ajuda a guiar o usuário sem complicação, garantindo que ele chegue onde precisa sem muito esforço. O objetivo é minimizar obstáculos, tornar a navegação natural e facilitar as ações que ele quer realizar.
 
-![Exemplo de user flow](images/user_flow.jpg)
-
-> **Links úteis**:
-> - [User flow: o quê é e como fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User flow vs site maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 user flow tools & templates for smooth](https://www.mockplus.com/blog/post/user-flow-tools)
+![User Flow](images/UserFlow.png)
 
 ### Diagrama de fluxo
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo, muitas vezes sem a necessidade de desenhar o design das telas da interface. Isso permite que o design das interações seja bem planejado e tenha impacto na qualidade do design do wireframe interativo que será desenvolvido logo em seguida.
+O diagrama de fluxo foi criado para ajudar a organizar as ideias antes de montar o user flow e os wireframes. Ele funciona como um mapa, mostrando os caminhos que o usuário pode seguir, os pontos de decisão e possíveis desafios. Com isso, conseguimos prever ajustes, tornar a navegação mais fluida e facilitar a criação da interface sem retrabalho
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem, internamente, a indicação dos principais elementos de interface — tais como menus e acessos — e funcionalidades, como editar, pesquisar, filtrar e configurar, além da conexão entre esses boxes a partir do processo de interação.
-
-![Exemplo de diagrama de fluxo](images/diagrama_fluxo.jpg)
-
-> **Links úteis**:
-> - [Como criar um diagrama de fluxo de usuário](https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram)
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+![Diagrama de Fluxo](images/DiagramaFluxo.png)
 
 ## Wireframes
 
-São protótipos usados no design de interface para sugerir a estrutura de um site web e seu relacionamento entre suas páginas. Um wireframe web é uma ilustração que mostra o layout dos elementos fundamentais na interface.
+O wireframe foi criado para dar uma visão clara de como a interface vai funcionar antes de investir tempo no design final. Ele ajuda a organizar os elementos da tela, definir a hierarquia das informações e garantir que a navegação faça sentido. É como um esboço que evita refação e facilita ajustes rápidos antes de partir para algo mais visual e detalhado
 
-![Exemplo de wireframe](images/wireframe.png)
- 
-> **Links úteis**:
-> - [Protótipos: baixa, média ou alta fidelidade?](https://medium.com/ladies-that-ux-br/prot%C3%B3tipos-baixa-m%C3%A9dia-ou-alta-fidelidade-71d897559135)
-> - [Protótipos vs wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
-
+![Wireframe](images/Wireframe.png)
 
 ## Interface do sistema
 
@@ -53,28 +25,28 @@ Visão geral da interação do usuário por meio das telas do sistema. Apresente
 
 ### Tela principal do sistema
 
-Descrição da tela principal do sistema.
+Tela Home, utilizada para agendar os serviços da barbearia, e mostrar os produtos disponiveis para compra.
 
-> Insira aqui a tela principal do sistema
+![Home](images/TelaHome.png)
 
 
 ###  Telas do processo 1
 
-Descrição da tela relativa à atividade 1 do processo 1.
+Tela de cadastro, utilizada para o usuário se cadastrar para utilizar a aplicação.
 
-> Insira aqui a tela da atividade 1
+![Cadastro](images/TelaCadastro.png)
 
-Descrição da tela relativa à atividade 2 do processo 1.
+Tela de login, utlizada para o usário possa entrar em sua conta para utilizar a aplicação.
 
-> Insira aqui a tela da atividade 2
+![Login](images/TelaLogin.png)
+
+Tela de recuperação de senha, utlizada para o usário consiga redefinir a sua senha caso ele não se lembre dela.
+
+![Senha](images/TelaSenha.png)
 
 
 ### Telas do processo 2
 
-Descrição da tela relativa à atividade 1 do processo 2.
+Tela do perfil, utilizada para que o usuário consiga ver os seus dados, agendamentos próximos e o histórico de agendamentos que já foram realizados
 
-> Insira aqui a tela da atividade 1
-
-Descrição da tela relativa à atividade 2 do processo 2.
-
-> Insira aqui a tela da atividade 2
+![Perfil](images/TelaPerfil.png)
