@@ -121,11 +121,12 @@ Atualizado em: 08/05/2024
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
 | Franklin      | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
-| Guilherme      |     |      |  |     |                |
-| Juan        | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
-| Ivan        | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
-| Erik      |  |     |  |     |     |
-| Gustavo      |   |      |  |     |       |
+| Guilherme     | Realização do User Flow                        | 27/04/2025     | 08/05/2025 | ✔️    | 27/04/2025      |
+| Guilherme     | Realização do Diagrama de Fluxo do Usuário     | 01/05/2025     | 08/05/2025 | ✔️    | 01/05/2025      |
+| Juan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Ivan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Erik          |                                                |                |            |        |                 |
+| Gustavo       |                                                |                |            |        |                 |
 
 
 
