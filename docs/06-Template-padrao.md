@@ -27,7 +27,7 @@ A aplicação segue um layout padrão reutilizado em todas as páginas, garantin
 
 ### 🔘 Iconografia
 
-![Logo](images/Logo.jpg)
+<img src="images/Logo.jpg" alt="Logo" width="200">
 
 - Ícones simples e funcionais, combinando com o estilo visual do projeto.
 
