@@ -27,7 +27,7 @@ A aplicação segue um layout padrão reutilizado em todas as páginas, garantin
 
 ### 🔘 Iconografia
 
-<img src="./assets/logo.png" alt="Logo do projeto NaRégua" width="200"/>
+![Logo](images/Logo.jpg)
 
 - Ícones simples e funcionais, combinando com o estilo visual do projeto.
 
