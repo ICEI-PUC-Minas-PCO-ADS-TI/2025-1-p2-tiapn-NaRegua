@@ -232,13 +232,31 @@ Ao final dessas etapas, a plataforma estará hospedada com sucesso na internet, 
 
 ## Qualidade de software
 
-Conceituar qualidade é uma tarefa complexa, mas ela pode ser vista como um método gerencial que, por meio de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+Com base nos levamentamentos adquiridos pela equipe, para um site bem estruturado, as qualidades de Software podem ser descritas com base em modelos como a ISO/IEC 25010, que define atributos de qualidade como funcionalidade, usabilidade, desempenho, confiabilidade, segurança e portabilidade.
 
-No contexto do desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem atendidas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, esse nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+**FUNCIONALIDADE**
+- O sistema deve permitir que usuários agendem horários com barbeiros disponíveis, exibindo corretamente as datas e horários.
+- Deve permitir cadastro, login, escolha de serviços, agendamento, cancelamento e notificações.
+- Integração com sistemas de pagamento, calendários e redes sociais.
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software. Com base nessas características e nas respectivas subcaracterísticas, identifique as subcaracterísticas que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software, considerando alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão à equipe avaliar os objetos de interesse.
+**USABILIDADE**
+- Interface intuitiva e responsiva tanto em desktop quanto mobile.
+- Compatível com leitores de tela mobile e com boa navegação por desktop.
+- Layout moderno, com feedback visual
 
-> **Links úteis**:
-> - [ISO/IEC 25010:2011 - Systems and Software Engineering — Systems and Software Quality Requirements and Evaluation (SQuaRE) — System and Software Quality Models](https://www.iso.org/standard/35733.html/)
-> - [Análise sobre a ISO 9126 – NBR 13596](https://www.tiespecialistas.com.br/analise-sobre-iso-9126-nbr-13596/)
-> - [Qualidade de software - Engenharia de Software](https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209)
+**DESEMPENHO E EFICIÊNCIA**
+- Páginas devem ter uma ótima atualização.
+- Deve suportar picos de acesso simultâneos.
+- Backend otimizado para não sobrecarregar o servidor e dando uma melhora no desempenho.
+
+**CONFIABILIDADE**
+- Sistema com uptime muito bom.
+- Backups semanais e sistema de recuperação em caso de falhas.
+
+**SEGURANÇA**
+- Dados dos usuários (como telefone e histórico de agendamentos) protegidos com criptografia.
+- Login com senha forte.
+
+**PORTABILIDADE**
+- Pode ser usado em diferentes navegadores e dispositivos.
+- Funcionar em Android, iOS, Windows, Linux, etc. 
