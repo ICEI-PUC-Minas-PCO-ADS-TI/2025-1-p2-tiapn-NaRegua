@@ -40,13 +40,13 @@ Tela de login, utlizada para o usário possa entrar em sua conta para utilizar a
 
 ![Login](images/TelaLogin.png)
 
+Tela de recuperação de senha, utlizada para o usário consiga redefinir a sua senha caso ele não se lembre dela.
+
+![Senha](images/TelaSenha.png)
+
 
 ### Telas do processo 2
 
-Descrição da tela relativa à atividade 1 do processo 2.
+Tela do perfil, utilizada para que o usuário consiga ver os seus dados, agendamentos próximos e o histórico de agendamentos que já foram realizados
 
-> Insira aqui a tela da atividade 1
-
-Descrição da tela relativa à atividade 2 do processo 2.
-
-> Insira aqui a tela da atividade 2
+![Perfil](images/TelaPerfil.png)
