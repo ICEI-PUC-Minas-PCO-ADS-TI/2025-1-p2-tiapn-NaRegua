@@ -109,7 +109,7 @@ Atualizado em: 21/04/2024
 | Juan        | Preenchimento da modelagem dos processos de negócio  | 30/03/2025     | 10/04/2025 | ✔️     |  10/04/2025               |
 | Ivan        | Metodologia  |  01/04/2025    | 10/04/2025 | ✔️    |  10/04/2025     |
 | Erik      | Modelagem dos processos TO-BE  |  01/01/2025    | 10/04/2025 | ✔️    |  09/04/2025     |
-| Gustavo      | Slides  |  08/04/2025    | 12/04/2025 | ✔️    |  10/04/2025     |
+| Gustavo      | Slides  |  08/04/2025    | 10/04/2025 | ✔️    |  10/04/2025     |
 | Juan      | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
 | Franklin     | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
 | Ivan     | Visita a empresa |  01/04/2025    | 10/04/2025 | ✔️    |  01/04/2025     |
