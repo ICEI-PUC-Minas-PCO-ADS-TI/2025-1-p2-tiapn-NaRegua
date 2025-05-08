@@ -27,8 +27,9 @@ A aplicação segue um layout padrão reutilizado em todas as páginas, garantin
 
 ### 🔘 Iconografia
 
-<img src="images/Logo.jpg" alt="Logo" width="600">
+<img src="images/Logo.jpg" alt="Logo" width="500">
 
-- Ícones simples e funcionais, combinando com o estilo visual do projeto.
+- A logo do NaRégua combina elementos clássicos de barbearia, como tesoura, pente, navalha e o poste listrado, com o rosto estilizado de um homem com cabelo e barba marcantes. As cores vermelho, azul e branco reforçam a identidade visual inspirada nas barbearias tradicionais.
+
 
 
