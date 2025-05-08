@@ -183,11 +183,52 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 
 Explique como a hospedagem e o lançamento da plataforma foram realizados.
 
-> **Links úteis**:
-> - [Website com GitHub Pages](https://pages.github.com/)
-> - [Programação colaborativa com Repl.it](https://repl.it/)
-> - [Getting started with Heroku](https://devcenter.heroku.com/start)
-> - [Publicando seu site no Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
+Etapas que serão realizadas:
+
+Organização do Repositório:
+
+Será feita a verificação da estrutura do projeto, garantindo que todos os arquivos necessários estejam organizados em um repositório no GitHub.
+
+Caso ainda não tenha sido feito, o projeto será versionado e enviado para um repositório público ou privado na plataforma.
+
+Criação da Conta na Vercel:
+
+Será criada uma conta no site da Vercel, utilizando um e-mail ou conectando diretamente com a conta do GitHub.
+
+O GitHub será integrado à conta da Vercel, permitindo a seleção de repositórios para deploy automático.
+
+Importação do Projeto para a Vercel:
+
+O repositório do projeto será importado pela Vercel.
+
+A plataforma deverá identificar automaticamente o tipo de projeto (HTML/CSS/JS simples, React, Next.js, etc.).
+
+As configurações de build e de saída (caso necessárias) serão ajustadas manualmente.
+
+Configuração do Deploy:
+
+O primeiro deploy será iniciado após a configuração da importação.
+
+A Vercel será configurada para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
+
+Geração do Link de Acesso:
+
+Após o deploy, a Vercel irá fornecer um link público onde a plataforma poderá ser acessada.
+
+Existe também a possibilidade de configurar um domínio personalizado posteriormente, caso necessário.
+
+Testes Finais e Verificação:
+
+Será feita uma verificação do funcionamento da plataforma já hospedada, testando os principais fluxos e links.
+
+Qualquer erro identificado será corrigido e uma nova versão será implantada automaticamente pela Vercel.
+
+Resultado Esperado:
+
+Ao final dessas etapas, a plataforma estará hospedada com sucesso na internet, com deploy contínuo ativado e acessível por um link público fornecido pela Vercel.
+
+
+
 
 ## Qualidade de software
 
