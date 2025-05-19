@@ -1,0 +1,92 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.header-site {
+    background-color:darkblue;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-img-top.camisa {
+    object-fit: contain;
+    background-color: #f8f9fa;
+}
+
+.logo-navbar {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+
+.nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+.nav-item .nav-link.active {
+    color: #ffffff;
+}
+
+.nav-item .nav-link.active:hover {
+    color: #000000;
+    border-bottom: 2px solid #000000;
+}
+
+.nav-item .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item .nav-link:hover {
+    color: #ff0f07;
+    border-bottom: 2px solid #ff0f07;
+}
+
+.nav-iten {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+.nav-iten .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-iten .nav-link:hover {
+    color: #070bff;
+    border-bottom: 2px solid #070bff;
+}
+
+@media (max-width: 768px) {
+    .header-site {
+        padding: 0.5rem 0;
+    }
+}
