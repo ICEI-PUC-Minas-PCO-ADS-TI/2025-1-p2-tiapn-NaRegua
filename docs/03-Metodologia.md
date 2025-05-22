@@ -126,7 +126,7 @@ Atualizado em: 08/05/2024
 | Juan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 | Ivan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 | Erik          |                                                |                |            |        |                 |
-| Gustavo       |                                                |                |            |        |                 |
+| Gustavo       | Preenchimento do Template - Projeto Processo de Negócios ( seção 4 )   | 30/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 
 
 
