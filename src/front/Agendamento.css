@@ -1,0 +1,70 @@
+.Cabecalho{
+    background-color:darkgrey;
+    padding: 0%;
+    height: 100px;
+    width: auto;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    margin: 0;
+}
+
+/* .background-overlay{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("image/Logo.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+    opacity: 0.9; 
+    z-index: -1;
+} 
+*/
+
+.NavTitulo{
+    margin-top: 50px;
+    margin-left: 680px;
+}
+
+/* Botões - Início */
+.Botao{
+margin-left: 625px;
+
+}
+
+.BotaoRoupas{
+    margin-top: 50px;
+    display: block;
+    margin-bottom: 50px;
+    width: 300px;
+    height: 60px;
+    
+}
+
+.BotaoProdutos{
+    margin-top: 50px;
+    display: block;
+    margin-bottom: 50px;
+    width: 300px;
+    height: 60px;
+}
+/* Botões - Fim */
+
+/* Botão do Bootstrap - Início */
+.btn{
+    width: 300px;
+    height: 60px;
+    margin-left: 625px;
+}
+/* Botão do Bootstrap - Fim */
+
+.InfBarbearia{
+    margin-left: 625px;
+}
+
