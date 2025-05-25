@@ -1,0 +1,149 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    background-color: #f8f9fa; 
+}
+
+main.container {
+    flex-grow: 1; 
+}
+
+.header-site {
+    background-color: darkblue;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.logo-navbar {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold; 
+}
+
+
+.nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+}
+
+.nav-item .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem;
+}
+
+.nav-item .nav-link.active {
+    color: #ffffff;
+    /
+}
+
+.nav-item .nav-link:hover { 
+    color: #ff0f07; 
+    border-bottom-color: #ff0f07; 
+}
+
+.nav-item .nav-link.active:hover { 
+    color: #ffffff; 
+   
+}
+
+
+
+.nav-iten {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+}
+
+.nav-iten .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-top: 0.5rem; /* Ajuste para centralizar melhor */
+    padding-bottom: 0.5rem;
+}
+
+.nav-iten .nav-link:hover {
+    color: #070bff; 
+    border-bottom-color: #070bff; 
+}
+
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+@media (max-width: 768px) { 
+    .header-site {
+        padding: 0.5rem 0;
+    }
+    
+    .nav-item, .nav-iten {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+
+.product-detail-card {
+    background-color: #ffffff;
+    border-radius: 0.5rem; 
+    border: 1px solid #dee2e6; 
+}
+
+.product-image-detail {
+    max-height: 400px; 
+    object-fit: cover; 
+}
+
+.product-name-detail {
+    color: #343a40; 
+    font-weight: 600;
+}
+
+.product-description-detail {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.product-price-detail {
+    
+}
+
+.product-stock-detail {
+   
+}
+
+.product-info-section .fw-bold.fs-5 { /* Para os labels "Valor:" e "Estoque:" */
+    color: #495057;
+}
+
+hr.my-4 {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
