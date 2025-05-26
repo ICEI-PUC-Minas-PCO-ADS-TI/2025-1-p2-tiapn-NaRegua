@@ -46,13 +46,30 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--cor-fundo);
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
+/* Login - Inicio */
+.body-login {
+  background: linear-gradient(90deg, var(--cinza-100), var(--cinza-70), var(--cinza-30));
+}
+
+.icon {
+  position: absolute;
+  width: 1.5%;
+}
+
+/* Login - Fim */
+
+
 /* Recuperar Senha - Inicio */
+.body-recuperar-senha {
+  background: var(--cor-fundo);
+}
+
 .recuperar-senha-container {
   padding: 2rem;
   max-width: 500px;
@@ -76,8 +93,6 @@ body {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-
-/* Recuperar Senha - Fim */
 
 .input-group {
   position: relative;
@@ -147,6 +162,7 @@ button::before {
 button:hover {
   opacity: 0.95;
 }
+/* Recuperar Senha - Fim */
 
 @media (max-width: 768px) {
   .container {
