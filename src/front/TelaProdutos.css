@@ -1,92 +1,333 @@
+/* Reset Básico */
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-main {
+:root {
+    /* Cores adaptadas das imagens e da sua paleta CoolGray */
+    --cor-fundo-geral: #21272a;
+    /* CoolGray/90 - Fundo do body */
+    --cor-fundo-header-footer: #343a3f;
+    /* CoolGray/80 - Fundo do Header e Footer */
+    --cor-texto-claro: #f2f4f8;
+    /* CoolGray/10 - Texto principal claro */
+    --cor-texto-secundario: #878d96;
+    /* CoolGray/50 - Texto secundário, para contraste */
+    --cor-destaque: #B8860B;
+    /* Ouro original, se necessário para hover/active */
+    --cor-destaque-hover: #DAA520;
+    /* Ouro mais claro, se necessário para hover/active */
+
+    /* Variáveis originais mantidas que são usadas pelo main/cards ou outros elementos */
+    --cor-fundo-site-fallback: #ffffff;
+    /* Mantido, mas não será mais a cor principal do body */
+    --cor-card-fundo-transparente: rgba(45, 45, 45, 0.7);
+    /* Mantido para cards */
+    --cor-borda-card: #495057;
+    /* Mantido para cards */
+    --cor-botao-primario: var(--cor-destaque);
+    /* Ajustado para nova var de destaque */
+    --cor-botao-primario-hover: var(--cor-destaque-hover);
+    /* Ajustado para nova var de destaque */
+}
+
+/* Fontes (assumindo que você as tenha na pasta 'fonts') */
+@font-face {
+    font-family: "Poppins";
+    src: url("./fonts/Poppins.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pacifico";
+    src: url("./fonts/Pacifico.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--cor-fundo-geral);
+    /* Fundo homogêneo */
+    color: var(--cor-texto-claro);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     min-height: 100vh;
-    gap: 2rem;
-    flex-wrap: wrap;
+    /* Para garantir que o footer fique no final da página */
 }
 
-.header-site {
-    background-color:darkblue;
-    padding: 0.5rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Estilos do Main (mantidos, mas observe as cores do root) */
+main {
+    flex: 1;
+    padding: 20px 0;
+    background-color: var(--cor-main-fundo-transparente);
+    /* Usando variável antiga */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Estilos do Header */
+.main-header {
+    /* Classe atualizada */
+    background-color: var(--cor-fundo-header-footer);
+    /* Usando nova variável */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Uma pequena sombra para destacar */
+}
+
+.main-header .navbar-brand {
+    color: var(--cor-texto-claro) !important;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.main-header .header-logo {
+    /* Classe atualizada */
+    height: auto;
+    max-height: 60px;
+    width: auto;
+}
+
+.main-header .nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.main-header .nav-link {
+    color: var(--cor-texto-claro);
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.main-header .nav-link.active {
+    color: var(--cor-destaque);
+    border-bottom: 2px solid var(--cor-destaque);
+}
+
+.main-header .nav-link.active:hover {
+    color: var(--cor-destaque-hover);
+    border-bottom: 2px solid var(--cor-destaque-hover);
+}
+
+.main-header .nav-link:hover {
+    color: var(--cor-destaque-hover);
+    border-bottom: 2px solid var(--cor-destaque-hover);
+}
+
+.main-header .navbar-toggler {
+    filter: invert(1);
+}
+
+/* Estilos do Card */
+.card {
+    /* REMOVIDO: height: 480px !important; */
+    /* A altura será ajustada automaticamente */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-card-fundo-transparente);
+    border: 1px solid var(--cor-borda-card);
+    color: var(--cor-texto-claro);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    /* Adicionando min-height para cards vazios ou com pouco conteúdo terem uma base */
+    min-height: 300px;
+    /* Valor sugerido, ajuste conforme necessário para o visual desejado */
 }
 
 .card-img-top {
-    height: 200px;
+    height: 180px;
+    /* AJUSTADO: Altura da imagem reduzida para card mais compacto */
     object-fit: cover;
-    object-position: center;
+    object-position: center top;
 }
 
 .card-img-top.camisa {
     object-fit: contain;
-    background-color: #f8f9fa;
+    background-color: var(--cor-card-fundo-transparente);
+    height: 180px;
+    /* AJUSTADO: Altura da imagem reduzida */
 }
 
-.logo-navbar {
-    width: 30px;
-    height: 30px;
-    filter: brightness(0) invert(1);
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    /* Garante um padding padrão do Bootstrap no corpo do card */
 }
 
-.navbar-brand {
-    color: white !important;
+.card-title {
+    color: var(--cor-destaque);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
+/* REMOVIDO: .card-text { ... } (pois o texto foi removido do HTML) */
 
-.nav-item {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    color: white;
+
+.card-body .btn-primary {
+    background-color: var(--cor-botao-primario);
+    border-color: var(--cor-botao-primario);
+    color: var(--cor-texto-claro);
+    transition: all 0.3s ease;
 }
 
-.nav-item .nav-link.active {
-    color: #ffffff;
+.card-body .btn-primary:hover {
+    background-color: var(--cor-botao-primario-hover);
+    border-color: var(--cor-botao-primario-hover);
+    color: var(--cor-texto-claro);
+    transform: translateY(-2px);
 }
 
-.nav-item .nav-link.active:hover {
-    color: #000000;
-    border-bottom: 2px solid #000000;
+/* Estilos do Footer */
+.main-footer {
+    /* Classe atualizada */
+    background-color: var(--cor-fundo-header-footer);
+    /* Usando nova variável */
+    color: var(--cor-texto-claro);
+    padding-top: 1.2rem;
+    /* Medida ajustada */
+    padding-bottom: 1.2rem;
+    /* Medida ajustada */
 }
 
-.nav-item .nav-link {
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
+.main-footer .footer-brand {
+    /* Classe atualizada */
+    color: var(--cor-texto-claro) !important;
+    /* Ajustado para nova var de texto claro */
+    font-family: "Poppins", sans-serif;
+    /* Ajustado para Poppins sans-serif */
+    font-size: 1.4rem;
+    /* Medida ajustada */
+    font-weight: 600;
+    margin-bottom: 0.4rem !important;
 }
 
-.nav-item .nav-link:hover {
-    color: #ff0f07;
-    border-bottom: 2px solid #ff0f07;
+.main-footer .footer-logo {
+    /* Classe atualizada */
+    height: auto;
+    max-height: 60px;
+    /* Medida ajustada */
+    width: auto;
 }
 
-.nav-iten {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    color: white;
+.main-footer h5 {
+    color: var(--cor-texto-claro);
+    /* Ajustado para nova var de texto claro */
+    font-weight: 600;
+    font-size: 1.4rem;
+    /* Medida ajustada */
+    margin-bottom: 0.5rem;
 }
 
-.nav-iten .nav-link {
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
+.main-footer .list-unstyled li {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 0.1rem;
+    /* Medida ajustada */
 }
 
-.nav-iten .nav-link:hover {
-    color: #070bff;
-    border-bottom: 2px solid #070bff;
+.main-footer .list-unstyled li i {
+    color: var(--cor-texto-secundario);
+    /* Ajustado para nova var de texto secundário */
 }
 
-@media (max-width: 768px) {
-    .header-site {
-        padding: 0.5rem 0;
+.main-footer .footer-link {
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-link:hover {
+    color: var(--cor-destaque-hover) !important;
+}
+
+.main-footer .footer-social-icon {
+    color: var(--cor-texto-claro);
+    /* Ajustado para nova var de texto claro */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-footer .footer-social-icon:hover {
+    color: var(--cor-destaque-hover) !important;
+    transform: translateY(-3px);
+}
+
+.main-footer .text-white-50 {
+    color: var(--cor-texto-secundario) !important;
+    /* Ajustado para nova var de texto secundário */
+}
+
+.main-footer hr {
+    margin-top: 0.8rem;
+    /* Medida ajustada */
+    margin-bottom: 0.8rem;
+    /* Medida ajustada */
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    /* Cor ajustada */
+}
+
+.main-footer p.mb-0 {
+    font-size: 0.8rem;
+    /* Medida ajustada */
+    color: var(--cor-texto-secundario);
+    /* Ajustado para nova var de texto secundário */
+}
+
+/* Media Queries para responsividade do Footer */
+@media (max-width: 767.98px) {
+    .main-footer {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .main-footer .footer-brand {
+        font-size: 1.3rem;
+    }
+
+    .main-footer .footer-logo {
+        max-height: 56px;
+    }
+
+    .main-footer h5 {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .main-footer .text-white-50,
+    .main-footer p.mb-0 {
+        font-size: 0.75rem;
+    }
+
+    .main-footer hr {
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+
+    /* Esta regra de centralização já foi adicionada no HTML. Mantida aqui por segurança se houver mais contextos. */
+    .main-footer .text-md-start {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .main-footer {
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .main-footer h5 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .main-footer .list-unstyled li {
+        margin-bottom: 0.05rem;
     }
 }
