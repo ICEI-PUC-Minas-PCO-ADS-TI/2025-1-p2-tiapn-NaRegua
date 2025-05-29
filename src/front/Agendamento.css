@@ -57,6 +57,8 @@ body {
   padding: 1rem;
 }
 
+
+
 .container {
   padding: 2rem;
   max-width: 400px;
@@ -323,4 +325,5 @@ button:hover {
 .btn-primary[data-bs-toggle="modal"]:hover {
   opacity: 0.9;
 }
+
 
