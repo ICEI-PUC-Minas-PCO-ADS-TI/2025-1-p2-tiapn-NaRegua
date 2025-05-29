@@ -1,19 +1,19 @@
-
+/* Seu CSS existente (copie todo o seu CSS anterior aqui) */
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; 
-    background-color: #f8f9fa; 
+    min-height: 100vh;
+    background-color: #f8f9fa;
 }
 
 main.container {
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .header-site {
@@ -33,14 +33,12 @@ main.container {
 
 .navbar-brand {
     color: white !important;
-    font-weight: bold; 
+    font-weight: bold;
 }
-
 
 .nav-item {
     margin-left: 1rem;
     margin-right: 1rem;
-    
 }
 
 .nav-item .nav-link {
@@ -48,47 +46,42 @@ main.container {
     font-weight: 500;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     border-bottom: 2px solid transparent;
-    padding-top: 0.5rem; 
+    padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
 
 .nav-item .nav-link.active {
     color: #ffffff;
-    /
 }
 
-.nav-item .nav-link:hover { 
-    color: #ff0f07; 
-    border-bottom-color: #ff0f07; 
+.nav-item .nav-link:hover {
+    color: #ff0f07;
+    border-bottom-color: #ff0f07;
 }
 
-.nav-item .nav-link.active:hover { 
-    color: #ffffff; 
-   
+.nav-item .nav-link.active:hover {
+    color: #ffffff;
 }
 
+/* Corrigido de nav-iten para nav-item (se você ainda usa nav-iten em algum lugar, mantenha os dois) */
+/* .nav-iten { /* Se você tinha estilos específicos para .nav-iten, mantenha-os ou mescle com .nav-item */
+/* margin-left: 1rem; */
+/* margin-right: 1rem; */
+/* } */
 
+/* .nav-iten .nav-link { */
+/* color: white; */
+/* font-weight: 500; */
+/* transition: color 0.3s ease, border-bottom 0.3s ease; */
+/* border-bottom: 2px solid transparent; */
+/* padding-top: 0.5rem; */
+/* padding-bottom: 0.5rem; */
+/* } */
 
-.nav-iten {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    
-}
-
-.nav-iten .nav-link {
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
-    padding-top: 0.5rem; /* Ajuste para centralizar melhor */
-    padding-bottom: 0.5rem;
-}
-
-.nav-iten .nav-link:hover {
-    color: #070bff; 
-    border-bottom-color: #070bff; 
-}
-
+/* .nav-iten .nav-link:hover { */
+/* color: #070bff; */
+/* border-bottom-color: #070bff; */
+/* } */
 
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.1);
@@ -97,33 +90,34 @@ main.container {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     .header-site {
         padding: 0.5rem 0;
     }
-    
-    .nav-item, .nav-iten {
+    .nav-item { /* Unificado */
         margin-left: 0;
         margin-right: 0;
     }
 }
 
-
-
 .product-detail-card {
     background-color: #ffffff;
-    border-radius: 0.5rem; 
-    border: 1px solid #dee2e6; 
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+}
+
+/* Container da imagem para posicionar o botão de favorito */
+.product-image-container {
+    position: relative; /* Necessário para posicionar o botão de favorito absolutamente dentro dele */
 }
 
 .product-image-detail {
-    max-height: 400px; 
-    object-fit: cover; 
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .product-name-detail {
-    color: #343a40; 
+    color: #343a40;
     font-weight: 600;
 }
 
@@ -133,17 +127,61 @@ main.container {
 }
 
 .product-price-detail {
-    
+    /* Seus estilos Bootstrap já aplicam bem, pode adicionar mais se necessário */
 }
 
 .product-stock-detail {
-   
+    /* Seus estilos Bootstrap já aplicam bem */
 }
 
-.product-info-section .fw-bold.fs-5 { /* Para os labels "Valor:" e "Estoque:" */
+.product-info-section .fw-bold.fs-5 {
     color: #495057;
 }
 
 hr.my-4 {
     border-top: 1px solid rgba(0,0,0,.1);
+}
+
+/* === Novos Estilos para Favorito, Quantidade e Carrinho === */
+
+.favorite-icon-detail {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #dc3545; /* Cor do coração (vermelho) */
+    border: 1px solid #dc3545;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0; /* Remover padding padrão do botão */
+}
+
+.favorite-icon-detail:hover,
+.favorite-icon-detail.favorited {
+    background-color: #dc3545;
+    color: white;
+}
+
+.favorite-icon-detail.favorited .fa-heart {
+    font-weight: 900; /* Estilo de coração preenchido (fas) */
+}
+
+.quantity-input-detail {
+    width: 70px; /* Largura menor para o campo de quantidade */
+    text-align: center;
+}
+
+.add-to-cart-icon-detail {
+    font-size: 0.9rem; /* Tamanho do texto do botão */
+    padding: 0.5rem 1rem; /* Padding do botão */
+}
+
+.add-to-cart-icon-detail i {
+    font-size: 1rem; /* Tamanho do ícone de carrinho */
 }
