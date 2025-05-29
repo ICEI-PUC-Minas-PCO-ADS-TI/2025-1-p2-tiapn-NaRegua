@@ -1,6 +1,4 @@
-
 /* CSS Padrao */
-
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +7,7 @@
 
 @font-face {
   font-family: "Poppins";
+  /* Corrija o caminho se suas fontes estiverem em outro lugar relativo ao CSS */
   src: url("./fonts/Poppins.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -16,6 +15,7 @@
 
 @font-face {
   font-family: "Pacifico";
+  /* Corrija o caminho se suas fontes estiverem em outro lugar relativo ao CSS */
   src: url("./fonts/Pacifico.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -45,120 +45,133 @@
 
   /* Gradiente */
   --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
+  /* Exemplo, ajuste as cores do seu projeto */
 }
 
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--cor-fundo);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  /* Removido display:flex e height:100vh do body para permitir scroll e conteúdo normal */
+  padding-top: 1rem;
+  /* Adicionado padding no topo */
+}
+
+/* Removido .container e .card genéricos para não conflitarem com Bootstrap
+   e para focar nos estilos específicos do modal e calendário */
+
+.InfBarbearia {
+  color: white;
+  margin-top: 2rem;
+  /* Espaçamento */
+}
+
+/* ===== Estilo para o Modal de Agendamento (Bootstrap overrides) ===== */
+.modal-content {
+  background-color: var(--cinza-80);
+  /* Um pouco mais escuro que o card original */
+  color: var(--cor-clara);
+  border-radius: 0.5rem;
+  /* Ajuste o radius se preferir */
   padding: 1rem;
 }
 
-
-
-.container {
-  padding: 2rem;
-  max-width: 400px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  background-color: var(--cinza-70);
-  padding: 2rem;
-  border-radius: 1rem;
-  width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  color: var(--cor-branca);
-}
-
-.card h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.input-group {
-  position: relative;
-  margin-bottom: 1rem;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+.modal-header,
+.modal-footer {
   border: none;
-  border-radius: 0.5rem;
-  background-color: var(--cinza-30);
-  font-size: 1rem;
-  color: var(--cinza-50);
+  padding: 1rem 1.5rem;
+  /* Ajuste do padding */
 }
 
-.input-group .icon {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--cinza-30);
+.modal-title {
+  font-family: "Pacifico", cursive;
+  font-size: 1.75rem;
+  /* Aumentado um pouco */
 }
 
-button {
-  width: 100%;
-  padding: 0.75rem;
-  background: var(--gradiente-azul-vermelho);
-  border: 2px solid var(--gradiente-azul-vermelho);
-  border-radius: 0.5rem;
-  color: var(--cor-clara);
+.btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+  /* Para melhor visibilidade em fundos escuros */
+}
+
+/* ===== Estilo para as etapas do formulário ===== */
+.step {
+  margin-bottom: 1.5rem;
+  /* Aumentado o espaçamento */
+}
+
+.form-label {
   font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
+  margin-bottom: 0.5rem;
+  color: var(--cor-clara);
 }
 
-button:hover {
-  opacity: 0.9;
+.form-select {
+  background-color: var(--cinza-70);
+  color: var(--cor-clara);
+  /* Texto mais claro para melhor contraste */
+  border: 1px solid var(--cinza-50);
+  /* Borda sutil */
+  border-radius: 0.375rem;
+  /* Padrão Bootstrap */
+  padding: 0.5rem 1rem;
+  /* Ajuste do padding */
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .card {
-    width: 100%;
-    padding: 1.5rem;
-  }
-
-  .input-group input {
-    padding: 0.75rem;
-    font-size: 1rem;
-  }
-
-  button {
-    padding: 0.75rem;
-    font-size: 1rem;
-  }
+.form-select:focus {
+  outline: none;
+  border-color: var(--cor-branca);
+  /* Destaque no foco */
+  box-shadow: 0 0 0 0.25rem rgba(242, 244, 248, 0.25);
+  /* Sombra de foco clara */
 }
 
-.InfBarbearia{
-  color: white;
+/* ===== Botões de Navegação do Modal ===== */
+.modal-footer .btn-primary,
+.btn-primary[data-bs-toggle="modal"] {
+  /* Aplicando ao botão principal também */
+  background: var(--gradiente-azul-vermelho);
+  /* Use seu gradiente */
+  border: none;
+  font-weight: bold;
+  color: var(--cor-clara);
+  padding: 0.5rem 1.5rem;
+  /* Ajuste do padding */
+  transition: opacity 0.2s ease-in-out;
 }
 
+.modal-footer .btn-secondary {
+  background-color: var(--cinza-50);
+  border: none;
+  color: var(--cor-clara);
+  padding: 0.5rem 1.5rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal-footer .btn:hover,
+.btn-primary[data-bs-toggle="modal"]:hover {
+  opacity: 0.85;
+}
+
+
+/* ===== Estilo para o Calendário ===== */
 .calendar {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  background: var(--cinza-70);
+  /* Fundo do calendário */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  width: 300px; /* Ajuste a largura conforme necessário */
+  max-width: 320px;
+  /* Largura máxima */
+  margin: 1rem auto;
+  /* Centralizar */
+  color: var(--cor-clara);
 }
 
 .calendar header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .calendar header button {
@@ -166,13 +179,22 @@ button:hover {
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  color: #333; /* Adicionando uma cor para melhor visualização */
+  color: var(--cor-clara);
+  /* Cor dos botões de navegação do mês */
+  padding: 5px 10px;
 }
 
-.calendar h2 { /* Alterado de .calendar header h2 para .calendar h2 para corresponder ao seu HTML de mês/ano */
+.calendar header button:hover {
+  background-color: var(--cinza-50);
+  border-radius: 4px;
+}
+
+.calendar header #monthYear {
+  /* Estilizando o h2 diretamente */
   margin: 0;
-  font-size: 1.2em;
-  color: #333; /* Adicionando uma cor */
+  font-size: 1.25em;
+  font-weight: bold;
+  color: var(--cor-clara);
 }
 
 .day-names,
@@ -184,146 +206,98 @@ button:hover {
 
 .day-names div {
   font-weight: bold;
-  color: #555;
-  margin-bottom: 5px;
-  padding: 5px 0; /* Adicionado padding para melhor espaçamento */
+  color: var(--cinza-30);
+  /* Cor para nomes dos dias */
+  margin-bottom: 8px;
+  padding: 8px 0;
+  font-size: 0.9em;
 }
 
 .days div {
-  padding: 10px 5px; /* Ajustado padding para caber melhor em larguras menores */
+  padding: 10px 5px;
   margin: 2px;
   border-radius: 6px;
-  transition: background 0.3s, color 0.3s; /* Adicionada transição para cor */
-  box-sizing: border-box; /* Para que o padding não aumente o tamanho total */
-  line-height: normal; /* Para garantir que o texto do dia fique bem alinhado */
-  display: flex; /* Para centralizar o número do dia */
-  align-items: center; /* Para centralizar o número do dia */
-  justify-content: center; /* Para centralizar o número do dia */
+  transition: background 0.2s, color 0.2s;
+  box-sizing: border-box;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95em;
 }
 
-/* Estilo para os divs vazios (para dias de outros meses no início/fim) */
 .days div:empty {
-  background-color: transparent !important; /* Garante que não haja fundo */
-  border: none !important; /* Garante que não haja borda */
-  pointer-events: none; /* Não clicável */
+  background-color: transparent !important;
+  border: none !important;
+  pointer-events: none;
   cursor: default;
 }
 
-.days div:not(.past-day):not(:empty):hover { /* Hover para dias normais e futuros, não vazios */
-  background: #ddd;
-  cursor: pointer;
-  color: #333;
+.days div:not(.past-day):not(:empty):hover {
+  background: var(--cinza-50);
+  /* Hover para dias válidos */
+  color: var(--cor-branca);
 }
 
-.today {
-  background: #3b82f6 !important; /* !important para garantir prioridade sobre .days div:hover */
-  color: white !important; /* !important para garantir prioridade */
+.days div.today {
+  /* Dia atual */
+  background: var(--cor-branca) !important;
+  color: var(--cor-fundo) !important;
   font-weight: bold;
+  border: 1px solid var(--cor-fundo);
 }
 
-.past-day {
-  color: #999999;          /* Cor cinza para o texto do dia passado */
-  background-color: #f0f0f0; /* Um fundo levemente diferente para dias passados */
-  pointer-events: none;   /* Impede cliques e outros eventos do mouse (incluindo hover) */
-  cursor: default;        /* Mostra o cursor padrão, não o de "mãozinha" */
-}
-
-/* ===== Estilo para o Modal de Agendamento ===== */
-
-.modal-content {
-  background-color: var(--cinza-70);
-  color: var(--cor-clara);
-  border-radius: 1rem;
-  padding: 1rem;
-}
-
-.modal-header, .modal-footer {
-  border: none;
-}
-
-.modal-title {
-  font-family: "Pacifico", cursive;
-  font-size: 1.5rem;
-}
-
-.btn-close {
-  filter: invert(1);
-}
-
-/* ===== Estilo para as etapas do formulário ===== */
-
-.step {
-  margin-bottom: 1rem;
-}
-
-.form-label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.form-select {
-  background-color: var(--cinza-30);
+.days div.past-day {
+  /* Dias passados */
   color: var(--cinza-50);
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem;
+  background-color: transparent;
+  /* Ou um cinza bem escuro e sutil: var(--cinza-80) */
+  pointer-events: none;
+  cursor: default;
+  text-decoration: line-through;
+  /* Opcional: para indicar que passou */
 }
-
-.form-select:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--cinza-50);
-}
-
-/* ===== Botões de Navegação ===== */
-
-.modal-footer .btn-primary {
-  background: var(--gradiente-azul-vermelho);
-  border: none;
-  font-weight: bold;
-  color: var(--cor-clara);
-}
-
-.modal-footer .btn-secondary {
-  background-color: var(--cinza-50);
-  border: none;
-  color: var(--cor-clara);
-}
-
-.modal-footer .btn:hover {
-  opacity: 0.85;
-}
-
-/* ===== Estilo para seleção de dia no calendário ===== */
 
 .days div.selected-day {
+  /* Dia selecionado pelo usuário */
   background: var(--gradiente-azul-vermelho) !important;
-  color: white !important;
+  /* Usar o gradiente */
+  color: var(--cor-clara) !important;
   font-weight: bold;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  /* Um brilho sutil */
 }
 
-/* ===== Responsividade para modal ===== */
 
+/* Responsividade para modal */
 @media (max-width: 576px) {
   .modal-dialog {
-    max-width: 90%;
-    margin: 1rem auto;
+    max-width: 95%;
+    /* Aumentar um pouco a largura em telas pequenas */
+    margin: 0.5rem auto;
+    /* Reduzir margem */
+  }
+
+  .calendar {
+    width: 100%;
+    /* Calendário ocupa toda a largura disponível no modal */
+    padding: 15px;
+  }
+
+  .days div {
+    padding: 8px 2px;
+    /* Reduzir padding dos dias */
+    font-size: 0.85em;
+  }
+
+  .day-names div {
+    font-size: 0.75em;
+  }
+
+  .modal-footer .btn {
+    /* Botões menores em telas pequenas */
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
   }
 }
-
-/* ===== Ajuste para o botão "Agendar Horário" principal ===== */
-
-.btn-primary[data-bs-toggle="modal"] {
-  background: var(--gradiente-azul-vermelho);
-  border: none;
-  font-weight: bold;
-  color: var(--cor-clara);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  transition: 0.3s ease;
-}
-
-.btn-primary[data-bs-toggle="modal"]:hover {
-  opacity: 0.9;
-}
-
-
