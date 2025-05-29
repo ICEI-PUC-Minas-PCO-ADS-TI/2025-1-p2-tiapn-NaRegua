@@ -1,4 +1,4 @@
-/* CSS Padrao */
+/* src/front/Agendamento.css */
 * {
   margin: 0;
   padding: 0;
@@ -7,71 +7,81 @@
 
 @font-face {
   font-family: "Poppins";
-  /* Corrija o caminho se suas fontes estiverem em outro lugar relativo ao CSS */
   src: url("./fonts/Poppins.ttf") format("truetype");
+  /* Assumindo que a pasta fonts está em src/front/fonts/ */
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Pacifico";
-  /* Corrija o caminho se suas fontes estiverem em outro lugar relativo ao CSS */
   src: url("./fonts/Pacifico.ttf") format("truetype");
+  /* Assumindo que a pasta fonts está em src/front/fonts/ */
   font-weight: normal;
   font-style: normal;
 }
 
-/* Variáveis globais */
 :root {
-  /* Cores base */
   --cor-fundo: #21272a;
-  /* CoolGray/90 */
   --cor-clara: #f2f4f8;
-  /* CoolGray/10 */
   --cor-branca: #ffffff;
-  /* Default/White */
-
-  /* Tons de cinza (CoolGray) */
   --cinza-100: #121619;
-  /* CoolGray/100 */
   --cinza-80: #343a3f;
-  /* CoolGray/80 */
   --cinza-70: #4d5358;
-  /* CoolGray/70 */
   --cinza-50: #878d96;
-  /* CoolGray/50 */
   --cinza-30: #c1c7cd;
-  /* CoolGray/30 */
-
-  /* Gradiente */
   --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
-  /* Exemplo, ajuste as cores do seu projeto */
+  /* Exemplo, ajuste */
 }
 
 body {
+  /* Estilos gerais do body da página de agendamento */
   font-family: "Poppins", sans-serif;
   background-color: var(--cor-fundo);
-  /* Removido display:flex e height:100vh do body para permitir scroll e conteúdo normal */
+  color: var(--cor-clara);
   padding-top: 1rem;
-  /* Adicionado padding no topo */
 }
 
-/* Removido .container e .card genéricos para não conflitarem com Bootstrap
-   e para focar nos estilos específicos do modal e calendário */
+/* User Info and Logout Button */
+.user-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--cinza-80);
+  /* Um pouco de fundo */
+  margin-bottom: 20px;
+}
+
+#userInfo {
+  font-size: 1rem;
+  color: var(--cor-clara);
+}
+
+#logoutButton {
+  background-color: var(--cinza-50);
+  color: var(--cor-clara);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logoutButton:hover {
+  background-color: var(--cinza-70);
+}
+
 
 .InfBarbearia {
   color: white;
   margin-top: 2rem;
-  /* Espaçamento */
 }
 
-/* ===== Estilo para o Modal de Agendamento (Bootstrap overrides) ===== */
 .modal-content {
   background-color: var(--cinza-80);
-  /* Um pouco mais escuro que o card original */
   color: var(--cor-clara);
   border-radius: 0.5rem;
-  /* Ajuste o radius se preferir */
   padding: 1rem;
 }
 
@@ -79,24 +89,19 @@ body {
 .modal-footer {
   border: none;
   padding: 1rem 1.5rem;
-  /* Ajuste do padding */
 }
 
 .modal-title {
   font-family: "Pacifico", cursive;
   font-size: 1.75rem;
-  /* Aumentado um pouco */
 }
 
 .btn-close {
   filter: invert(1) grayscale(100%) brightness(200%);
-  /* Para melhor visibilidade em fundos escuros */
 }
 
-/* ===== Estilo para as etapas do formulário ===== */
 .step {
   margin-bottom: 1.5rem;
-  /* Aumentado o espaçamento */
 }
 
 .form-label {
@@ -108,34 +113,24 @@ body {
 .form-select {
   background-color: var(--cinza-70);
   color: var(--cor-clara);
-  /* Texto mais claro para melhor contraste */
   border: 1px solid var(--cinza-50);
-  /* Borda sutil */
   border-radius: 0.375rem;
-  /* Padrão Bootstrap */
   padding: 0.5rem 1rem;
-  /* Ajuste do padding */
 }
 
 .form-select:focus {
   outline: none;
   border-color: var(--cor-branca);
-  /* Destaque no foco */
   box-shadow: 0 0 0 0.25rem rgba(242, 244, 248, 0.25);
-  /* Sombra de foco clara */
 }
 
-/* ===== Botões de Navegação do Modal ===== */
 .modal-footer .btn-primary,
 .btn-primary[data-bs-toggle="modal"] {
-  /* Aplicando ao botão principal também */
   background: var(--gradiente-azul-vermelho);
-  /* Use seu gradiente */
   border: none;
   font-weight: bold;
   color: var(--cor-clara);
   padding: 0.5rem 1.5rem;
-  /* Ajuste do padding */
   transition: opacity 0.2s ease-in-out;
 }
 
@@ -152,18 +147,13 @@ body {
   opacity: 0.85;
 }
 
-
-/* ===== Estilo para o Calendário ===== */
 .calendar {
   background: var(--cinza-70);
-  /* Fundo do calendário */
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   padding: 20px;
   max-width: 320px;
-  /* Largura máxima */
   margin: 1rem auto;
-  /* Centralizar */
   color: var(--cor-clara);
 }
 
@@ -180,7 +170,6 @@ body {
   font-size: 1.5em;
   cursor: pointer;
   color: var(--cor-clara);
-  /* Cor dos botões de navegação do mês */
   padding: 5px 10px;
 }
 
@@ -190,7 +179,6 @@ body {
 }
 
 .calendar header #monthYear {
-  /* Estilizando o h2 diretamente */
   margin: 0;
   font-size: 1.25em;
   font-weight: bold;
@@ -207,7 +195,6 @@ body {
 .day-names div {
   font-weight: bold;
   color: var(--cinza-30);
-  /* Cor para nomes dos dias */
   margin-bottom: 8px;
   padding: 8px 0;
   font-size: 0.9em;
@@ -236,12 +223,10 @@ body {
 
 .days div:not(.past-day):not(:empty):hover {
   background: var(--cinza-50);
-  /* Hover para dias válidos */
   color: var(--cor-branca);
 }
 
 .days div.today {
-  /* Dia atual */
   background: var(--cor-branca) !important;
   color: var(--cor-fundo) !important;
   font-weight: bold;
@@ -249,45 +234,33 @@ body {
 }
 
 .days div.past-day {
-  /* Dias passados */
   color: var(--cinza-50);
   background-color: transparent;
-  /* Ou um cinza bem escuro e sutil: var(--cinza-80) */
   pointer-events: none;
   cursor: default;
   text-decoration: line-through;
-  /* Opcional: para indicar que passou */
 }
 
 .days div.selected-day {
-  /* Dia selecionado pelo usuário */
   background: var(--gradiente-azul-vermelho) !important;
-  /* Usar o gradiente */
   color: var(--cor-clara) !important;
   font-weight: bold;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-  /* Um brilho sutil */
 }
 
-
-/* Responsividade para modal */
 @media (max-width: 576px) {
   .modal-dialog {
     max-width: 95%;
-    /* Aumentar um pouco a largura em telas pequenas */
     margin: 0.5rem auto;
-    /* Reduzir margem */
   }
 
   .calendar {
     width: 100%;
-    /* Calendário ocupa toda a largura disponível no modal */
     padding: 15px;
   }
 
   .days div {
     padding: 8px 2px;
-    /* Reduzir padding dos dias */
     font-size: 0.85em;
   }
 
@@ -296,8 +269,12 @@ body {
   }
 
   .modal-footer .btn {
-    /* Botões menores em telas pequenas */
     padding: 0.375rem 0.75rem;
     font-size: 0.875rem;
+  }
+
+  .user-info-header {
+    flex-direction: column;
+    gap: 10px;
   }
 }

@@ -1,95 +1,189 @@
-// Agendamento.js
+// src/front/Agendamento.js
 
-// --- CONFIGURAÇÕES E CONSTANTES ---
-const API_URL = 'http://localhost:3000/api'; // URL base do seu backend
+const API_URL = 'http://localhost:3000/api'; // URL base COMPLETA da API
 let currentStep = 1;
-let agendamentoData = { // Objeto para armazenar os dados do agendamento
-  barbeiroId: null,
-  servicoId: null,
-  data: null,
-  horario: null,
-  barbeiroNome: null, // Para feedback ao usuário
-  servicoNome: null   // Para feedback ao usuário
+let agendamentoData = {
+  barbeiroId: null, servicoId: null, data: null, horario: null,
+  barbeiroNome: null, servicoNome: null
 };
 
-// --- ELEMENTOS DO DOM ---
+// --- ELEMENTOS DO DOM (Agendamento) ---
 let barbeiroSelect, corteSelect, horarioSelect, dataSelecionadaInput;
 let daysContainer, monthYearHeader, prevMonthButton, nextMonthButton;
 let modalElement, modalInstanceBootstrap;
 let btnVoltar, btnProximo;
+let userInfoDiv, logoutBtn;
 
-// --- INICIALIZAÇÃO ---
 document.addEventListener('DOMContentLoaded', () => {
-  // Seleciona os elementos após o DOM estar carregado
+  console.log("DOM completamente carregado e parseado."); // DEBUG INICIAL
+
+  const authToken = localStorage.getItem('authToken');
+  const userName = localStorage.getItem('userName');
+
+  userInfoDiv = document.getElementById('userInfo');
+  logoutBtn = document.getElementById('logoutButton');
+
+  if (!authToken) {
+    console.log("Nenhum token de autenticação encontrado. Redirecionando para login..."); // DEBUG
+    alert("Você precisa estar logado para agendar. Redirecionando para login...");
+    window.location.href = 'auth/login.html'; // Ajuste o caminho conforme sua estrutura
+    return; // Impede o resto do script de rodar
+  }
+  console.log("Token de autenticação encontrado:", authToken); // DEBUG
+
+  if (userInfoDiv && userName) {
+    userInfoDiv.textContent = `Bem-vindo(a), ${userName}!`;
+  }
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('userName');
+      alert('Você foi desconectado.');
+      window.location.href = 'auth/login.html'; // Ajuste o caminho
+    });
+  }
+
+  // Seletores do Modal de Agendamento
   barbeiroSelect = document.getElementById('barbeiroSelect');
   corteSelect = document.getElementById('corteSelect');
   horarioSelect = document.getElementById('horarioSelect');
   dataSelecionadaInput = document.getElementById('dataSelecionada');
-
   daysContainer = document.getElementById("days");
   monthYearHeader = document.getElementById("monthYear");
   prevMonthButton = document.getElementById("prev");
   nextMonthButton = document.getElementById("next");
-
   btnVoltar = document.getElementById('btnVoltar');
   btnProximo = document.getElementById('btnProximo');
-
   modalElement = document.getElementById('staticBackdrop');
-  if (modalElement) { // Garante que o modal existe antes de tentar obter a instância
-    modalInstanceBootstrap = bootstrap.Modal.getOrCreateInstance(modalElement); // Use getOrCreateInstance
+
+  console.log("Elemento barbeiroSelect:", barbeiroSelect); // DEBUG
+  console.log("Elemento corteSelect:", corteSelect);     // DEBUG
+  console.log("Elemento modalElement:", modalElement);   // DEBUG
+
+
+  if (modalElement) {
+    modalInstanceBootstrap = bootstrap.Modal.getOrCreateInstance(modalElement);
+    console.log("Instância do modal Bootstrap criada/obtida."); // DEBUG
   }
 
 
-  // Carregar dados iniciais
-  carregarBarbeiros();
-  carregarServicos();
+  if (barbeiroSelect) carregarBarbeiros();
+  if (corteSelect) carregarServicos();
+  if (daysContainer) initializeCalendar();
 
-  // Configurar calendário
-  initializeCalendar(); // Função para encapsular a lógica do calendário
+  if (modalElement) {
+    showStep(currentStep);
+    updateButtonVisibility(); // Chamada inicial
+    modalElement.addEventListener('hidden.bs.modal', resetModal);
+  } else {
+    console.warn("Elemento do modal principal (staticBackdrop) não encontrado. Algumas funcionalidades podem não operar."); // DEBUG
+  }
 
-  // Exibir a primeira etapa
-  showStep(currentStep);
-  updateButtonVisibility();
-
-  // Listeners para os selects principais (para recarregar horários se necessário)
-  barbeiroSelect.addEventListener('change', handleSelecaoPrincipal);
-  corteSelect.addEventListener('change', handleSelecaoPrincipal);
+  if (barbeiroSelect) barbeiroSelect.addEventListener('change', handleSelecaoPrincipal);
+  if (corteSelect) corteSelect.addEventListener('change', handleSelecaoPrincipal);
 });
 
-// --- FUNÇÕES DE CARREGAMENTO DE DADOS (API) ---
-async function fetchAPI(endpoint, options = {}) {
+async function fetchAPISecured(endpoint, options = {}) {
+  const token = localStorage.getItem('authToken');
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers,
+  };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  } else {
+    console.warn("Tentando fazer requisição segura sem token."); // DEBUG
+    // Tratar ausência de token aqui também, se necessário, antes da requisição
+  }
+
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, options);
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ message: response.statusText }));
-      throw new Error(errorData.message || `Erro ${response.status}`);
+    console.log(`fetchAPISecured: Tentando ${options.method || 'GET'} para ${API_URL}${endpoint}`); // DEBUG
+    const response = await fetch(`${API_URL}${endpoint}`, { ...options, headers });
+    if (response.status === 401 || response.status === 403) {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('userName');
+      alert("Sua sessão expirou ou é inválida. Por favor, faça login novamente.");
+      window.location.href = 'auth/login.html';
+      throw new Error("Não autorizado");
     }
-    return response.json();
+    // Tenta pegar o corpo da resposta ANTES de checar response.ok para poder logar ou usar em mensagens
+    let responseData = null;
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      responseData = await response.json().catch(e => {
+        console.error("Erro ao parsear JSON da resposta:", e); // DEBUG
+        throw new Error("Resposta do servidor não é JSON válido, mesmo com content-type JSON.");
+      });
+    } else {
+      // Se não for JSON, podemos tentar ler como texto para depuração
+      const textResponse = await response.text();
+      console.log("Resposta não-JSON do servidor:", textResponse); // DEBUG
+      // Se a resposta não for JSON, mas a requisição foi OK, pode não haver 'message'.
+      if (!response.ok) throw new Error(textResponse || `Erro HTTP ${response.status}`);
+    }
+
+    if (!response.ok) {
+      throw new Error(responseData ? responseData.message : `Erro HTTP ${response.status}`);
+    }
+    return responseData; // Retorna os dados parseados se JSON, ou null/undefined se não for JSON e ok
   } catch (error) {
-    console.error(`Erro ao buscar ${endpoint}:`, error);
-    alert(`Erro na comunicação com o servidor: ${error.message}`);
-    throw error; // Re-throw para que a função chamadora possa tratar
+    console.error(`Erro em fetchAPISecured para ${endpoint}:`, error.message);
+    if (error.message !== "Não autorizado") {
+      alert(`Erro na comunicação (segura): ${error.message}`);
+    }
+    throw error;
+  }
+}
+
+async function fetchAPIPublic(endpoint, options = {}) {
+  try {
+    console.log(`fetchAPIPublic: Tentando ${options.method || 'GET'} para ${API_URL}${endpoint}`); // DEBUG
+    const response = await fetch(`${API_URL}${endpoint}`, options);
+
+    let responseData = null;
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      responseData = await response.json().catch(e => {
+        console.error("Erro ao parsear JSON da resposta pública:", e);
+        throw new Error("Resposta do servidor (pública) não é JSON válido.");
+      });
+    } else {
+      const textResponse = await response.text();
+      console.log("Resposta não-JSON (pública) do servidor:", textResponse);
+      if (!response.ok) throw new Error(textResponse || `Erro HTTP ${response.status}`);
+    }
+
+    if (!response.ok) {
+      throw new Error(responseData ? responseData.message : `Erro HTTP ${response.status}`);
+    }
+    return responseData;
+  } catch (error) {
+    console.error(`Erro em fetchAPIPublic para ${endpoint}:`, error.message);
+    alert(`Erro na comunicação (pública): ${error.message}`);
+    throw error;
   }
 }
 
 async function carregarBarbeiros() {
+  console.log("carregarBarbeiros() chamado"); //DEBUG
   try {
-    const barbeiros = await fetchAPI('/barbeiros');
+    const barbeiros = await fetchAPIPublic('/barbeiros');
+    if (!barbeiroSelect) { console.error("barbeiroSelect não definido em carregarBarbeiros"); return; } // DEBUG
     barbeiroSelect.innerHTML = '<option value="">Selecione um barbeiro</option>';
     barbeiros.forEach(barbeiro => {
       const option = document.createElement('option');
-      option.value = barbeiro.id;
-      option.textContent = barbeiro.nome;
+      option.value = barbeiro.id; option.textContent = barbeiro.nome;
       barbeiroSelect.appendChild(option);
     });
-  } catch (error) {
-    // O erro já é logado e alertado por fetchAPI
-  }
+    console.log("Barbeiros carregados:", barbeiros); //DEBUG
+  } catch (error) { console.error("Falha ao carregar barbeiros no catch da função:", error); /* erro já tratado em fetchAPIPublic */ }
 }
 
 async function carregarServicos() {
+  console.log("carregarServicos() chamado"); //DEBUG
   try {
-    const servicos = await fetchAPI('/servicos');
+    const servicos = await fetchAPIPublic('/servicos');
+    if (!corteSelect) { console.error("corteSelect não definido em carregarServicos"); return; } // DEBUG
     corteSelect.innerHTML = '<option value="">Selecione um serviço</option>';
     servicos.forEach(servico => {
       const option = document.createElement('option');
@@ -97,99 +191,107 @@ async function carregarServicos() {
       option.textContent = `${servico.nome} (${servico.duracao_minutos} min)`;
       corteSelect.appendChild(option);
     });
-  } catch (error) {
-    // O erro já é logado e alertado por fetchAPI
-  }
+    console.log("Serviços carregados:", servicos); //DEBUG
+  } catch (error) { console.error("Falha ao carregar serviços no catch da função:", error);/* erro já tratado em fetchAPIPublic */ }
 }
 
 async function carregarHorariosDisponiveis(barbeiroId, data, servicoId) {
+  console.log(`carregarHorariosDisponiveis chamado com: barbeiroId=${barbeiroId}, data=${data}, servicoId=${servicoId}`); //DEBUG
+  if (!horarioSelect) { console.error("horarioSelect não definido"); return; } // DEBUG
   if (!barbeiroId || !data || !servicoId) {
-    horarioSelect.innerHTML = '<option value="">Complete as seleções anteriores</option>';
-    return;
+    horarioSelect.innerHTML = '<option value="">Complete as seleções</option>'; return;
   }
-  horarioSelect.innerHTML = '<option value="">Carregando horários...</option>';
+  horarioSelect.innerHTML = '<option value="">Carregando...</option>';
   try {
-    const horarios = await fetchAPI(`/horarios-disponiveis?barbeiroId=${barbeiroId}&data=${data}&servicoId=${servicoId}`);
-    horarioSelect.innerHTML = ''; // Limpa
-    if (horarios.length === 0) {
+    const horarios = await fetchAPIPublic(`/horarios-disponiveis?barbeiroId=${barbeiroId}&data=${data}&servicoId=${servicoId}`);
+    horarioSelect.innerHTML = ''; // Limpa antes de adicionar novas opções
+    if (!horarios || horarios.length === 0) { // Checa se horarios é null/undefined ou array vazio
       horarioSelect.innerHTML = '<option value="">Nenhum horário disponível</option>';
     } else {
-      horarioSelect.innerHTML = '<option value="">Selecione um horário</option>'; // Adiciona opção padrão
+      horarioSelect.innerHTML = '<option value="">Selecione um horário</option>';
       horarios.forEach(horario => {
         const option = document.createElement('option');
-        option.value = horario;
-        option.textContent = horario;
+        option.value = horario; option.textContent = horario;
         horarioSelect.appendChild(option);
       });
     }
+    console.log("Horários disponíveis carregados:", horarios); //DEBUG
   } catch (error) {
     horarioSelect.innerHTML = '<option value="">Erro ao carregar horários</option>';
+    console.error("Falha ao carregar horários no catch da função:", error); //DEBUG
   }
 }
 
-// --- LÓGICA DO MODAL MULTI-STEP ---
 function showStep(stepNumber) {
+  console.log("showStep() foi chamada para a etapa:", stepNumber); // DEBUG
   document.querySelectorAll('.step').forEach((stepDiv) => {
     stepDiv.classList.add('d-none');
   });
   const currentStepDiv = document.getElementById(`step${stepNumber}`);
   if (currentStepDiv) {
+    console.log("Mostrando div:", currentStepDiv.id); // DEBUG
     currentStepDiv.classList.remove('d-none');
+  } else {
+    console.error("Div da etapa", stepNumber, "não encontrada! Verifique os IDs no HTML (step1, step2, etc)."); // DEBUG
   }
   updateButtonVisibility();
 }
 
 function updateButtonVisibility() {
-  if (currentStep === 1) {
-    btnVoltar.classList.add('d-none'); // Ou style.display = 'none';
-    btnProximo.classList.remove('d-none');
-    btnProximo.textContent = 'Próximo';
-  } else if (currentStep === 4) {
-    btnVoltar.classList.remove('d-none');
-    btnProximo.classList.remove('d-none');
-    btnProximo.textContent = 'Confirmar Agendamento';
-  } else {
-    btnVoltar.classList.remove('d-none');
-    btnProximo.classList.remove('d-none');
-    btnProximo.textContent = 'Próximo';
+  if (!btnVoltar || !btnProximo) {
+    console.warn("Botões Voltar/Próximo não encontrados em updateButtonVisibility"); // DEBUG
+    return;
   }
+  console.log("updateButtonVisibility() chamada. Etapa atual:", currentStep); // DEBUG
+  btnVoltar.classList.toggle('d-none', currentStep === 1);
+  btnProximo.textContent = (currentStep === 4) ? 'Confirmar Agendamento' : 'Próximo';
 }
 
 async function nextStep() {
+  console.log("nextStep() foi chamada. Etapa ATUAL (currentStep):", currentStep); // DEBUG
+  if (barbeiroSelect) {
+    console.log("Valor selecionado no barbeiroSelect:", barbeiroSelect.value); // DEBUG
+  } else {
+    console.error("Elemento barbeiroSelect não encontrado em nextStep!"); // DEBUG
+    alert("Erro interno: campo de barbeiro não encontrado.");
+    return;
+  }
+
   // Validações
-  if (currentStep === 1 && !barbeiroSelect.value) {
-    alert("Por favor, selecione um barbeiro.");
+  if (currentStep === 1 && !barbeiroSelect.value) { // Se value for "" (string vazia da option "Selecione")
+    alert("Selecione um barbeiro.");
+    console.log("Validação falhou em nextStep: Nenhum barbeiro selecionado. Valor do select:", barbeiroSelect.value); // DEBUG
     return;
   }
-  if (currentStep === 2 && !corteSelect.value) {
-    alert("Por favor, selecione um serviço.");
+  if (currentStep === 2 && (!corteSelect || !corteSelect.value)) { // Checa se corteSelect existe também
+    alert("Selecione um serviço.");
+    console.log("Validação falhou em nextStep: Nenhum serviço selecionado."); // DEBUG
     return;
   }
-  if (currentStep === 3 && !dataSelecionadaInput.value) {
-    alert("Por favor, selecione uma data no calendário.");
+  if (currentStep === 3 && (!dataSelecionadaInput || !dataSelecionadaInput.value)) { // Checa se dataSelecionadaInput existe
+    alert("Selecione uma data.");
+    console.log("Validação falhou em nextStep: Nenhuma data selecionada."); // DEBUG
     return;
   }
-  if (currentStep === 3) { // Ao sair da etapa de data, carrega horários
+
+  if (currentStep === 3) {
+    console.log("Etapa 3 (Dia) concluída, carregando horários antes de ir para etapa 4..."); // DEBUG
     agendamentoData.barbeiroId = barbeiroSelect.value;
     agendamentoData.servicoId = corteSelect.value;
     agendamentoData.data = dataSelecionadaInput.value;
-    if (agendamentoData.barbeiroId && agendamentoData.servicoId && agendamentoData.data) {
-      await carregarHorariosDisponiveis(agendamentoData.barbeiroId, agendamentoData.data, agendamentoData.servicoId);
-    } else {
-      alert("Verifique as seleções de barbeiro, serviço e data.");
-      return; // Impede de avançar se algo estiver faltando para carregar horários
-    }
+    await carregarHorariosDisponiveis(agendamentoData.barbeiroId, agendamentoData.data, agendamentoData.servicoId);
   }
-
 
   if (currentStep < 4) {
     currentStep++;
+    console.log("Avançando para a próxima etapa. Nova etapa (currentStep):", currentStep); // DEBUG
     showStep(currentStep);
-  } else {
-    // Última etapa: Confirmar Agendamento
-    agendamentoData.horario = horarioSelect.value;
+  } else { // currentStep === 4, Finalização do agendamento
+    console.log("Tentando finalizar o agendamento na etapa 4."); // DEBUG
+    agendamentoData.horario = horarioSelect ? horarioSelect.value : null;
     if (!agendamentoData.horario) {
-      alert("Por favor, selecione um horário.");
+      alert("Selecione um horário.");
+      console.log("Validação falhou em nextStep (etapa 4): Nenhum horário selecionado."); //DEBUG
       return;
     }
 
@@ -197,163 +299,127 @@ async function nextStep() {
     agendamentoData.servicoNome = corteSelect.options[corteSelect.selectedIndex].text;
 
     try {
-      btnProximo.disabled = true;
-      btnProximo.textContent = 'Enviando...';
+      if (btnProximo) { btnProximo.disabled = true; btnProximo.textContent = 'Enviando...'; }
 
       const payload = {
         barbeiroId: parseInt(agendamentoData.barbeiroId),
         servicoId: parseInt(agendamentoData.servicoId),
         data: agendamentoData.data,
         horario: agendamentoData.horario,
-        // nomeCliente: "Cliente Teste" // Adicionar se tiver campo no formulário
       };
-
-      const resultado = await fetchAPI('/agendamentos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      alert(`Agendamento confirmado com sucesso!\nID: ${resultado.agendamentoId}\nBarbeiro: ${agendamentoData.barbeiroNome}\nServiço: ${agendamentoData.servicoNome}\nData: ${agendamentoData.data}\nHorário: ${agendamentoData.horario}`);
+      console.log("Enviando payload para /agendamentos:", payload); // DEBUG
+      const resultado = await fetchAPISecured('/agendamentos', { method: 'POST', body: JSON.stringify(payload) });
+      console.log("Resposta do agendamento:", resultado); // DEBUG
+      alert(`Agendamento confirmado!\nBarbeiro: ${agendamentoData.barbeiroNome}\nServiço: ${agendamentoData.servicoNome}\nData: ${agendamentoData.data}\nHorário: ${agendamentoData.horario}`);
       resetModal();
       if (modalInstanceBootstrap) modalInstanceBootstrap.hide();
-
     } catch (error) {
-      // Erro já tratado em fetchAPI, mas pode adicionar tratamento específico aqui se necessário
-      // alert(`Falha ao agendar: ${error.message}`); // Redundante se fetchAPI já alerta
-    } finally {
-      btnProximo.disabled = false;
-      btnProximo.textContent = 'Confirmar Agendamento';
+      console.error("Erro ao finalizar agendamento no catch de nextStep:", error); // DEBUG
+      /* erro já alertado em fetchAPISecured */
+    }
+    finally {
+      if (btnProximo) { btnProximo.disabled = false; updateButtonVisibility(); }
     }
   }
 }
 
 function previousStep() {
+  console.log("previousStep() chamada. Etapa ATUAL (currentStep):", currentStep); // DEBUG
   if (currentStep > 1) {
     currentStep--;
+    console.log("Retornando para etapa anterior. Nova etapa (currentStep):", currentStep); // DEBUG
     showStep(currentStep);
   }
 }
 
 function resetModal() {
-  barbeiroSelect.value = "";
-  corteSelect.value = "";
-  dataSelecionadaInput.value = "";
-  horarioSelect.innerHTML = '<option value="">Selecione um horário</option>'; // Reseta para estado inicial
+  console.log("resetModal() chamado."); // DEBUG
+  if (barbeiroSelect) barbeiroSelect.value = "";
+  if (corteSelect) corteSelect.value = "";
+  if (dataSelecionadaInput) dataSelecionadaInput.value = "";
+  if (horarioSelect) horarioSelect.innerHTML = '<option value="">Selecione um horário</option>';
 
-  // Limpar seleção visual do calendário
-  document.querySelectorAll('#days div.selected-day').forEach(el => el.classList.remove('selected-day'));
+  const selectedDay = document.querySelector('#days div.selected-day');
+  if (selectedDay) selectedDay.classList.remove('selected-day');
 
-  // Resetar objeto de dados do agendamento
   agendamentoData = { barbeiroId: null, servicoId: null, data: null, horario: null, barbeiroNome: null, servicoNome: null };
-
   currentStep = 1;
-  showStep(currentStep); // Mostra a primeira etapa
-  initializeCalendar(); // Re-renderiza o calendário para o mês atual se necessário
-  updateButtonVisibility(); // Garante que os botões estão no estado correto
+  if (modalElement) showStep(currentStep);
+  if (modalElement) updateButtonVisibility();
 }
 
-// Adicionar listener para o evento 'hidden.bs.modal' para resetar o formulário quando o modal é fechado
-if (modalElement) {
-  modalElement.addEventListener('hidden.bs.modal', event => {
-    resetModal();
-  });
-}
-
-
-// --- LÓGICA DO CALENDÁRIO ---
 let calendarioDate = new Date(); // Data para navegação do calendário
 
 function initializeCalendar() {
-  renderCalendar(); // Renderiza o calendário inicial
-  if (prevMonthButton && nextMonthButton) { // Adiciona listeners apenas uma vez
-    prevMonthButton.removeEventListener('click', navigatePrevMonth); // Remove listener antigo para evitar duplicação
-    prevMonthButton.addEventListener("click", navigatePrevMonth);
-
-    nextMonthButton.removeEventListener('click', navigateNextMonth); // Remove listener antigo
-    nextMonthButton.addEventListener("click", navigateNextMonth);
+  console.log("initializeCalendar() chamado"); //DEBUG
+  renderCalendar();
+  if (prevMonthButton && nextMonthButton) { // Evita adicionar múltiplos listeners se chamado mais de uma vez
+    prevMonthButton.onclick = () => { calendarioDate.setMonth(calendarioDate.getMonth() - 1); renderCalendar(); };
+    nextMonthButton.onclick = () => { calendarioDate.setMonth(calendarioDate.getMonth() + 1); renderCalendar(); };
+  } else {
+    console.warn("Botões de navegação do calendário (prev/next) não encontrados."); //DEBUG
   }
-}
-
-function navigatePrevMonth() {
-  calendarioDate.setMonth(calendarioDate.getMonth() - 1);
-  renderCalendar();
-}
-
-function navigateNextMonth() {
-  calendarioDate.setMonth(calendarioDate.getMonth() + 1);
-  renderCalendar();
 }
 
 function renderCalendar() {
-  const year = calendarioDate.getFullYear();
-  const month = calendarioDate.getMonth();
-
-  if (monthYearHeader) monthYearHeader.textContent = `${calendarioDate.toLocaleString('default', { month: 'long' })} ${year}`;
-  if (!daysContainer) return; // Sai se o container dos dias não existe
-
-  daysContainer.innerHTML = ""; // Limpa dias anteriores
-
+  if (!daysContainer || !monthYearHeader) {
+    console.warn("Elementos do calendário (daysContainer ou monthYearHeader) não encontrados em renderCalendar."); //DEBUG
+    return;
+  }
+  // console.log("renderCalendar() chamado para:", calendarioDate.toLocaleDateString('pt-BR')); //DEBUG (pode ser muito verboso)
+  const year = calendarioDate.getFullYear(); const month = calendarioDate.getMonth();
+  monthYearHeader.textContent = `${calendarioDate.toLocaleString('pt-BR', { month: 'long' })} ${year}`;
+  daysContainer.innerHTML = "";
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date(); today.setHours(0, 0, 0, 0);
 
-  const today = new Date();
-  const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  for (let i = 0; i < firstDayOfMonth; i++) daysContainer.innerHTML += "<div></div>";
 
-  // Preenche os espaços vazios no início do mês
-  for (let i = 0; i < firstDayOfMonth; i++) {
-    daysContainer.innerHTML += "<div></div>";
-  }
-
-  // Renderiza os dias do mês
   for (let d = 1; d <= lastDateOfMonth; d++) {
     const currentDateBeingRendered = new Date(year, month, d);
-    const div = document.createElement("div");
-    div.textContent = d;
+    const div = document.createElement("div"); div.textContent = d;
 
-    if (currentDateBeingRendered < todayDateOnly) {
+    const dataFormatadaParaComparacao = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+
+    if (currentDateBeingRendered < today) {
       div.classList.add('past-day');
     } else {
-      if (currentDateBeingRendered.getTime() === todayDateOnly.getTime()) {
+      if (currentDateBeingRendered.getTime() === today.getTime()) {
         div.classList.add('today');
       }
       div.addEventListener('click', () => {
-        const diaSelecionado = d < 10 ? `0${d}` : d;
-        const mesSelecionado = (month + 1) < 10 ? `0${month + 1}` : (month + 1);
-        const dataFormatada = `${year}-${mesSelecionado}-${diaSelecionado}`;
-
-        dataSelecionadaInput.value = dataFormatada;
-
-        // Atualiza visualmente o dia selecionado
+        if (dataSelecionadaInput) {
+          dataSelecionadaInput.value = dataFormatadaParaComparacao;
+          console.log("Data selecionada no calendário:", dataFormatadaParaComparacao); //DEBUG
+        }
         document.querySelectorAll('#days div.selected-day').forEach(el => el.classList.remove('selected-day'));
         div.classList.add('selected-day');
-
-        // Após selecionar a data, se barbeiro e serviço já estiverem selecionados, carrega horários
         handleSelecaoPrincipal();
       });
     }
-    // Se a data renderizada é a mesma que está em dataSelecionadaInput, marca como 'selected-day'
-    if (dataSelecionadaInput.value === `${year}-${(month + 1) < 10 ? `0${month + 1}` : (month + 1)}-${d < 10 ? `0${d}` : d}`) {
+    if (dataSelecionadaInput && dataSelecionadaInput.value === dataFormatadaParaComparacao) {
       div.classList.add('selected-day');
     }
-
     daysContainer.appendChild(div);
   }
 }
 
-// Função para lidar com mudanças nas seleções principais (barbeiro, serviço, data)
 function handleSelecaoPrincipal() {
+  console.log("handleSelecaoPrincipal() chamado."); //DEBUG
+  if (!barbeiroSelect || !corteSelect || !dataSelecionadaInput) {
+    console.warn("Um ou mais elementos de seleção principal não encontrados em handleSelecaoPrincipal."); //DEBUG
+    return;
+  }
   const barbeiroId = barbeiroSelect.value;
   const servicoId = corteSelect.value;
   const data = dataSelecionadaInput.value;
 
-  // Só carrega horários se todos os três estiverem preenchidos
-  // E se estivermos na etapa de seleção de data (step 3) ou já na de horário (step 4)
-  // Isso evita carregar horários desnecessariamente nas primeiras etapas.
   if (barbeiroId && servicoId && data && (currentStep === 3 || currentStep === 4)) {
+    console.log("Todas as seleções principais feitas, carregando horários..."); //DEBUG
     carregarHorariosDisponiveis(barbeiroId, data, servicoId);
   } else if (currentStep === 3 || currentStep === 4) {
-    // Se um dos campos estiver faltando e já estamos na etapa de data/horário, limpa os horários
-    horarioSelect.innerHTML = '<option value="">Complete as seleções anteriores</option>';
+    if (horarioSelect) horarioSelect.innerHTML = '<option value="">Complete as seleções</option>';
+    console.log("Seleções principais incompletas para carregar horários."); //DEBUG
   }
 }
