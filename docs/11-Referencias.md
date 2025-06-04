@@ -10,7 +10,7 @@ Exemplo:
 - [Metodologias ageis](https://rockcontent.com/br/blog/metodologias-ageis/)
  - [Documentação NodeJs](https://nodejs.org/api/all.html)
  - [Nmp Express](https://www.npmjs.com/package/express)
- - [MySql](https://www.mysql.com/)
+ - [mysql2](https://www.npmjs.com/package/mysql2a)
 
   
 
