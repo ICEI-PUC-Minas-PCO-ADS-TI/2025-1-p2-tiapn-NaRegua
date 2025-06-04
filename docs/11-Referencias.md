@@ -8,6 +8,9 @@ Exemplo:
  - [Site relacionado a barbearia](https://booksy.com/pt-br/s/barbearias/478780_contagem#ba_s=seo)
  - [Software de modelagem](https://www.bizagi.com/pt)
 - [Metodologias ageis](https://rockcontent.com/br/blog/metodologias-ageis/)
+ - [Documentação NodeJs](https://nodejs.org/api/all.html)
+ - [Nmp Express](https://www.npmjs.com/package/express)
+ - [MySql](https://www.mysql.com/)
 
   
 
