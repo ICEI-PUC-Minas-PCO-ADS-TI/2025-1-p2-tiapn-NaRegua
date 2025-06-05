@@ -16,22 +16,51 @@ app.use(express.urlencoded({ extended: true }));
 // Configuração da conexão com o MySQL
 const dbConfig = {
     host: 'localhost',
-    user: 'root',
-    password: '713368',   // SUA SENHA MYSQL
-    database: 'nareguabanco'
+    user: 'root',         // SEU USUÁRIO MYSQL (ex: root)
+    password: '713368',   // SUA SENHA MYSQL (substitua pela sua senha)
+    database: 'nareguabanco' // SEU BANCO DE DADOS (ex: nareguabanco)
 };
 
+// Chave secreta para JWT - MUDE E GUARDE EM LOCAL SEGURO (variável de ambiente em produção)
 const JWT_SECRET = 'SEU_SEGREDO_SUPER_SECRETO_PARA_JWT_AQUI_TROQUE_ISSO_IMEDIATAMENTE';
 
 // --- FUNÇÕES AUXILIARES DE DATA/HORA ---
+/**
+ * Converte uma string de data (YYYY-MM-DD) e uma string de hora (HH:MM) em um objeto Date.
+ * @param {string} dateStr Data no formato "YYYY-MM-DD"
+ * @param {string} timeStr Hora no formato "HH:MM"
+ * @returns {Date} Objeto Date correspondente
+ */
 function parseDateTime(dateStr, timeStr) {
-    return new Date(`${dateStr}T${timeStr}:00`);
+    return new Date(`${dateStr}T${timeStr}:00`); // Assume fuso horário local do servidor
 }
+
+/**
+ * Formata um objeto Date para uma string de hora "HH:MM".
+ * @param {Date} dateObj Objeto Date
+ * @returns {string} Hora formatada como "HH:MM"
+ */
 function formatTime(dateObj) {
     const hours = dateObj.getHours().toString().padStart(2, '0');
     const minutes = dateObj.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
 }
+
+/**
+ * Retorna a data e hora atuais nos formatos YYYY-MM-DD e HH:MM:SS.
+ * @returns {{date: string, time: string}}
+ */
+function getCurrentMySqlDateTime() {
+    const now = new Date();
+    const date = now.getFullYear() + '-' +
+                 String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                 String(now.getDate()).padStart(2, '0');
+    const time = String(now.getHours()).padStart(2, '0') + ':' +
+                 String(now.getMinutes()).padStart(2, '0') + ':' +
+                 String(now.getSeconds()).padStart(2, '0');
+    return { date, time };
+}
+
 
 // --- MIDDLEWARE DE AUTENTICAÇÃO JWT ---
 const autenticarToken = (req, res, next) => {
@@ -110,9 +139,7 @@ app.post('/api/usuarios/login', async (req, res) => {
         if (!senhaValida) {
             return res.status(401).json({ message: 'Usuário ou senha inválidos.' });
         }
-        const tokenPayload = {
-            userId: user.id, nome: user.nome, email: user.email, cpf: user.cpf
-        };
+        const tokenPayload = { userId: user.id, nome: user.nome, email: user.email, cpf: user.cpf };
         const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '3h' });
         res.json({ message: 'Login bem-sucedido!', token: token, userName: user.nome });
     } catch (error) {
@@ -321,6 +348,63 @@ app.post('/api/agendamentos', autenticarToken, async (req, res) => {
     }
 });
 
+// Rota para buscar agendamentos ATIVOS (futuros ou de hoje que não passaram)
+app.get('/api/meus-agendamentos/ativos', autenticarToken, async (req, res) => {
+    const usuarioId = req.user.userId;
+    let connection;
+    try {
+        connection = await mysql.createConnection(dbConfig);
+        const query = `
+            SELECT 
+                ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento,
+                s.nome as nome_servico, s.duracao_minutos, s.preco as preco_servico,
+                b.nome as nome_barbeiro, ag.observacoes
+            FROM agendamentos ag
+            JOIN servicos s ON ag.servico_id = s.id
+            JOIN barbeiros b ON ag.barbeiro_id = b.id
+            WHERE ag.usuario_id = ? 
+              AND STR_TO_DATE(CONCAT(ag.data_agendamento, ' ', ag.hora_agendamento), '%Y-%m-%d %H:%i:%s') >= NOW()
+            ORDER BY ag.data_agendamento ASC, ag.hora_agendamento ASC;
+        `;
+        const [agendamentos] = await connection.execute(query, [usuarioId]);
+        res.json(agendamentos);
+    } catch (error) {
+        console.error('Erro ao buscar agendamentos ativos:', error);
+        res.status(500).json({ message: 'Erro interno ao buscar seus agendamentos ativos.', error: error.message });
+    } finally {
+        if (connection) await connection.end();
+    }
+});
+
+// Rota para buscar HISTÓRICO de agendamentos (passados)
+app.get('/api/meus-agendamentos/historico', autenticarToken, async (req, res) => {
+    const usuarioId = req.user.userId;
+    let connection;
+    try {
+        connection = await mysql.createConnection(dbConfig);
+        const query = `
+            SELECT 
+                ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento,
+                s.nome as nome_servico, s.duracao_minutos, s.preco as preco_servico,
+                b.nome as nome_barbeiro, ag.observacoes
+            FROM agendamentos ag
+            JOIN servicos s ON ag.servico_id = s.id
+            JOIN barbeiros b ON ag.barbeiro_id = b.id
+            WHERE ag.usuario_id = ?
+              AND STR_TO_DATE(CONCAT(ag.data_agendamento, ' ', ag.hora_agendamento), '%Y-%m-%d %H:%i:%s') < NOW()
+            ORDER BY ag.data_agendamento DESC, ag.hora_agendamento DESC;
+        `;
+        const [agendamentos] = await connection.execute(query, [usuarioId]);
+        res.json(agendamentos);
+    } catch (error) {
+        console.error('Erro ao buscar histórico de agendamentos:', error);
+        res.status(500).json({ message: 'Erro interno ao buscar seu histórico de agendamentos.', error: error.message });
+    } finally {
+        if (connection) await connection.end();
+    }
+});
+
+/* Rota original comentada, pois foi substituída pelas /ativos e /historico
 app.get('/api/meus-agendamentos', autenticarToken, async (req, res) => {
     const usuarioId = req.user.userId;
     let connection;
@@ -346,6 +430,7 @@ app.get('/api/meus-agendamentos', autenticarToken, async (req, res) => {
         if (connection) await connection.end();
     }
 });
+*/
 
 app.delete('/api/agendamentos/:agendamentoId', autenticarToken, async (req, res) => {
     const { agendamentoId } = req.params;
@@ -373,16 +458,20 @@ app.delete('/api/agendamentos/:agendamentoId', autenticarToken, async (req, res)
         const dataAgendamentoString = new Date(agendamento.data_agendamento).toISOString().split('T')[0];
         const agendamentoDateTime = parseDateTime(
             dataAgendamentoString,
-            agendamento.hora_agendamento.substring(0, 5)
+            agendamento.hora_agendamento.substring(0,5)
         );
-        const agora = new Date();
+        const agora = new Date(); // Usa a hora do servidor Node.js
+        // Para ser mais preciso, o ideal seria comparar com NOW() do MySQL diretamente na query se possível,
+        // mas a lógica aqui com parseDateTime e new Date() para 'agora' é uma aproximação.
+        // A query de busca de ativos/histórico já usa NOW() do MySQL, o que é melhor.
+        // Esta verificação é um double-check.
         if (agendamentoDateTime < agora) {
             await connection.rollback();
             return res.status(400).json({ message: 'Não é possível cancelar agendamentos que já ocorreram.' });
         }
         if (['Cancelado', 'Finalizado', 'Não Compareceu'].includes(agendamento.status_agendamento)) {
-            await connection.rollback();
-            return res.status(400).json({ message: `Este agendamento já está com status "${agendamento.status_agendamento}" e não pode ser cancelado novamente.` });
+             await connection.rollback();
+             return res.status(400).json({ message: `Este agendamento já está com status "${agendamento.status_agendamento}" e não pode ser cancelado novamente.` });
         }
         const [result] = await connection.execute(
             'DELETE FROM agendamentos WHERE id = ? AND usuario_id = ?',

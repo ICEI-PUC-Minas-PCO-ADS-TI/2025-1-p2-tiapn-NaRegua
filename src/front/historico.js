@@ -1,6 +1,6 @@
-// meus_agendamentos.js (Atualizado)
+// historico.js
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL_HISTORICO = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const authToken = localStorage.getItem('authToken');
@@ -8,11 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const userInfoDiv = document.getElementById('userInfo');
     const logoutButton = document.getElementById('logoutButton');
     const deleteAccountButton = document.getElementById('deleteAccountButton');
-    const voltarAgendarButton = document.getElementById('voltarAgendarBtn');
-    const verHistoricoButton = document.getElementById('verHistoricoBtn'); // Novo botão
+    const voltarMeusAgendamentosButton = document.getElementById('voltarMeusAgendamentosBtn');
 
     if (!authToken) {
-        alert("Você precisa estar logado. Redirecionando para login...");
+        alert("Você precisa estar logado para ver seu histórico. Redirecionando para login...");
         window.location.href = 'auth/login.html'; 
         return;
     }
@@ -23,34 +22,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
-            localStorage.removeItem('authToken'); localStorage.removeItem('userName');
-            alert('Você foi desconectado.'); window.location.href = 'auth/login.html'; 
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('userName');
+            alert('Você foi desconectado.');
+            window.location.href = 'auth/login.html'; 
         });
     }
     
     if (deleteAccountButton) {
-        deleteAccountButton.addEventListener('click', handleDeleteAccountGlobal); 
+        deleteAccountButton.addEventListener('click', handleDeleteAccountGlobalHistorico); 
     }
 
-    if (voltarAgendarButton) {
-        voltarAgendarButton.addEventListener('click', () => {
-            window.location.href = 'Agendamento.html'; // Página principal de agendamento
+    if (voltarMeusAgendamentosButton) {
+        voltarMeusAgendamentosButton.addEventListener('click', () => {
+            window.location.href = 'meus_agendamentos.html'; // Link para a página de agendamentos ativos
         });
     }
 
-    if (verHistoricoButton) { // Evento para o novo botão
-        verHistoricoButton.addEventListener('click', () => {
-            window.location.href = 'historico.html';
-        });
-    }
-
-    carregarMeusAgendamentosAtivos(); // Nome da função atualizado para clareza
+    carregarHistoricoAgendamentos();
 });
 
-// fetchAPISecuredGlobal e handleDeleteAccountGlobal são as mesmas do historico.js
-// Idealmente, coloque-as em um arquivo utils.js e importe em ambos.
-// Por simplicidade, vamos assumir que elas estão disponíveis (ou copie-as aqui também se não for usar utils.js)
-async function fetchAPISecuredGlobal(endpoint, options = {}) {
+// Reutilize fetchAPISecuredGlobal e handleDeleteAccountGlobal (idealmente de um utils.js)
+// Por agora, vou duplicá-las aqui para manter o exemplo contido.
+async function fetchAPISecuredGlobalHistorico(endpoint, options = {}) {
     const token = localStorage.getItem('authToken');
     const headers = { 'Content-Type': 'application/json', ...options.headers, };
     if (token) { headers['Authorization'] = `Bearer ${token}`; }
@@ -60,7 +54,7 @@ async function fetchAPISecuredGlobal(endpoint, options = {}) {
         throw new Error("Token não encontrado");
     }
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, { ...options, headers });
+        const response = await fetch(`${API_BASE_URL_HISTORICO}${endpoint}`, { ...options, headers });
         if (response.status === 401 || response.status === 403) {
             localStorage.removeItem('authToken'); localStorage.removeItem('userName');
             alert("Sessão expirada ou inválida. Faça login novamente.");
@@ -83,14 +77,14 @@ async function fetchAPISecuredGlobal(endpoint, options = {}) {
     } catch (error) { console.error(`Erro em fetch para ${endpoint}:`, error.message); throw error; }
 }
 
-async function handleDeleteAccountGlobal() {
+async function handleDeleteAccountGlobalHistorico() {
     const userNameForPrompt = localStorage.getItem('userName') || 'usuário';
     if (window.confirm(`ATENÇÃO, ${userNameForPrompt}!\n\nTem CERTEZA que deseja excluir sua conta permanentemente?\n\nTODOS os seus dados serão perdidos e esta ação NÃO PODE SER DESFEITA.`)) {
         const delBtn = document.getElementById('deleteAccountButton');
         const logBtn = document.getElementById('logoutButton');
         if(delBtn) delBtn.disabled = true; if(logBtn) logBtn.disabled = true;
         try {
-            const result = await fetchAPISecuredGlobal('/usuarios/minha-conta', { method: 'DELETE' });
+            const result = await fetchAPISecuredGlobalHistorico('/usuarios/minha-conta', { method: 'DELETE' });
             alert(result?.message || 'Sua conta foi excluída com sucesso.');
             localStorage.removeItem('authToken'); localStorage.removeItem('userName');
             window.location.href = 'auth/login.html';
@@ -100,38 +94,25 @@ async function handleDeleteAccountGlobal() {
         }
     }
 }
-// Fim das funções duplicadas
 
-
-async function carregarMeusAgendamentosAtivos() { // Nome atualizado
-    const listaAgendamentosDiv = document.getElementById('listaAgendamentos');
-    const loadingMessage = document.getElementById('loadingMessage');
+async function carregarHistoricoAgendamentos() {
+    const listaHistoricoDiv = document.getElementById('listaHistoricoAgendamentos');
+    const loadingMessage = document.getElementById('loadingMessageHistorico');
 
     try {
-        // Chama a nova rota para agendamentos ativos/futuros
-        const agendamentos = await fetchAPISecuredGlobal('/meus-agendamentos/ativos'); 
+        const agendamentos = await fetchAPISecuredGlobalHistorico('/meus-agendamentos/historico');
         if (loadingMessage) loadingMessage.style.display = 'none';
-        listaAgendamentosDiv.innerHTML = ''; 
+        listaHistoricoDiv.innerHTML = ''; 
 
         if (agendamentos && agendamentos.length > 0) {
             agendamentos.forEach(ag => {
-                const dataAgendamentoObj = new Date(ag.data_agendamento + 'T' + ag.hora_agendamento);
-                const agora = new Date();
-                
-                // Para agendamentos ativos, o status é o que vem do banco.
-                // A lógica de "Concluído" foi movida para a página de histórico.
                 let displayedStatus = ag.status_agendamento;
                 let statusClasseCss = ag.status_agendamento?.toLowerCase().replace(/\s+/g, '').replace('ã', 'a') || 'desconhecido';
 
-                let podeCancelar = true;
-                let textoBotaoCancelar = 'Cancelar Agendamento';
-
-                // Regras para desabilitar cancelamento em agendamentos ativos:
-                // (Você pode adicionar regras como "não pode cancelar X horas antes")
-                if (dataAgendamentoObj < agora || // Se, por algum motivo, um agendamento passado veio (não deveria com a API /ativos)
-                    ['Cancelado', 'Finalizado', 'Não Compareceu'].includes(ag.status_agendamento)) {
-                    podeCancelar = false;
-                    textoBotaoCancelar = ag.status_agendamento; // Mostra o status atual se não cancelável
+                // Se o agendamento era 'Confirmado' ou 'Pendente', e está no histórico, consideramos 'Concluído'
+                if (ag.status_agendamento === 'Confirmado' || ag.status_agendamento === 'Pendente') {
+                    displayedStatus = 'Concluído';
+                    statusClasseCss = 'concluido'; 
                 }
                 
                 const dataFormatada = new Date(ag.data_agendamento).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
@@ -154,48 +135,21 @@ async function carregarMeusAgendamentosAtivos() { // Nome atualizado
                                 ${ag.observacoes ? `<p class="card-text"><strong>Observações:</strong> ${ag.observacoes}</p>` : ''}
                             </div>
                             <div class="card-footer bg-transparent border-top-0 text-center py-3">
-                                <button class="btn btn-sm btn-cancelar-agendamento" 
-                                        data-id="${ag.id}" 
-                                        ${!podeCancelar ? `disabled title="${textoBotaoCancelar}"` : ''}>
-                                    ${textoBotaoCancelar}
+                                <button class="btn btn-sm btn-secondary" disabled title="Agendamento histórico">
+                                    ${displayedStatus}
                                 </button>
                             </div>
                         </div>
                     </div>
                 `;
-                listaAgendamentosDiv.innerHTML += cardHtml;
+                listaHistoricoDiv.innerHTML += cardHtml;
             });
-
-            document.querySelectorAll('.btn-cancelar-agendamento').forEach(button => {
-                if (!button.disabled) {
-                    button.addEventListener('click', handleCancelarAgendamentoAtivo); // Nome da função para clareza
-                }
-            });
-
         } else {
-            listaAgendamentosDiv.innerHTML = '<p class="text-center col-12">Você não possui próximos agendamentos.</p>';
+            listaHistoricoDiv.innerHTML = '<p class="text-center col-12">Você não possui agendamentos no histórico.</p>';
         }
     } catch (error) {
         if (loadingMessage) loadingMessage.style.display = 'none';
-        listaAgendamentosDiv.innerHTML = `<p class="text-center col-12 text-danger">Erro ao carregar seus próximos agendamentos: ${error.message}.</p>`;
-        console.error("Erro ao carregar agendamentos ativos:", error);
-    }
-}
-
-async function handleCancelarAgendamentoAtivo(event) { // Nome atualizado
-    const agendamentoId = event.target.dataset.id;
-    const confirmCancel = window.confirm("Tem certeza que deseja cancelar este agendamento?");
-
-    if (confirmCancel) {
-        event.target.disabled = true;
-        event.target.textContent = 'Cancelando...';
-        try {
-            await fetchAPISecuredGlobal(`/agendamentos/${agendamentoId}`, { method: 'DELETE' });
-            alert("Agendamento cancelado com sucesso!");
-            carregarMeusAgendamentosAtivos(); 
-        } catch (error) {
-            alert(`Erro ao cancelar agendamento: ${error.message}`);
-            carregarMeusAgendamentosAtivos(); 
-        }
+        listaHistoricoDiv.innerHTML = `<p class="text-center col-12 text-danger">Erro ao carregar seu histórico: ${error.message}.</p>`;
+        console.error("Erro ao carregar histórico de agendamentos:", error);
     }
 }
