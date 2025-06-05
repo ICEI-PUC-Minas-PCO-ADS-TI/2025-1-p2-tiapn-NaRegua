@@ -167,6 +167,11 @@ form  {
   text-decoration: none;
 }
 
+.forgot-link a:hover {
+  text-decoration: underline;
+  color: var(--cor-clara);
+}
+
 .toggle-box {
   position: absolute;
   width: 100%;
@@ -300,6 +305,22 @@ form  {
   transform: translateY(-50%);
   width: 7%;
   height: auto;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 0.7rem;
+}
+
+.login-link a {
+  font-size: 14.5px;
+  color: var(--cor-clara);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+  color: var(--cor-clara);
 }
 /* Recuperar Senha - Fim */
 
