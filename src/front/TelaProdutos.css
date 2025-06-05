@@ -133,13 +133,14 @@ main {
 
 .card-img-top {
     height: 180px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center top;
+    background-color: white;
 }
 
 .card-img-top.camisa {
     object-fit: contain;
-    background-color: var(--cor-card-fundo-transparente);
+    background-color: white;
     height: 180px;
 }
 
@@ -152,7 +153,7 @@ main {
 }
 
 .card-title {
-    color: var(--cor-destaque);
+    color: var(cor-fundo-site-fallback);
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
@@ -298,6 +299,8 @@ main {
     justify-content: flex-start;
     margin-bottom: 10px;
     padding-left: 5px;
+    position: relative;
+    align-items: center;
 }
 
 .product-rating .star {
