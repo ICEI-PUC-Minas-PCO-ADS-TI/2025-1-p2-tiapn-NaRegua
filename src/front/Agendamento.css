@@ -32,25 +32,33 @@
   --cinza-30: #c1c7cd;
   --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
   /* Exemplo, ajuste */
+  --cor-vermelha-perigo: #dc3545;
+  /* Vermelho Bootstrap */
+  --cor-vermelha-perigo-hover: #c82333;
+  /* Vermelho Bootstrap mais escuro */
 }
 
 body {
-  /* Estilos gerais do body da página de agendamento */
   font-family: "Poppins", sans-serif;
   background-color: var(--cor-fundo);
   color: var(--cor-clara);
   padding-top: 1rem;
 }
 
-/* User Info and Logout Button */
+/* User Info and Header Buttons */
 .user-info-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   background-color: var(--cinza-80);
-  /* Um pouco de fundo */
   margin-bottom: 20px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  /* Espaço entre os botões */
 }
 
 #userInfo {
@@ -58,20 +66,35 @@ body {
   color: var(--cor-clara);
 }
 
-#logoutButton {
-  background-color: var(--cinza-50);
+#logoutButton,
+#deleteAccountButton {
+  /* Estilo base para ambos os botões */
   color: var(--cor-clara);
   border: none;
   padding: 8px 15px;
   border-radius: 0.375rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  font-size: 0.875rem;
+  /* Tamanho de fonte similar para os botões sm */
+}
+
+#logoutButton {
+  background-color: var(--cinza-50);
 }
 
 #logoutButton:hover {
   background-color: var(--cinza-70);
 }
 
+#deleteAccountButton {
+  background-color: var(--cor-vermelha-perigo);
+}
+
+#deleteAccountButton:hover {
+  background-color: var(--cor-vermelha-perigo-hover);
+  opacity: 0.9;
+}
 
 .InfBarbearia {
   color: white;
@@ -276,5 +299,12 @@ body {
   .user-info-header {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .header-buttons {
+    width: 100%;
+    /* Opcional: para ocupar a largura */
+    justify-content: space-around;
+    /* Distribui os botões */
   }
 }

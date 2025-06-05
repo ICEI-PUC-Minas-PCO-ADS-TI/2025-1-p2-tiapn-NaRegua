@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middlewares
+// Middlewares Globais
 app.use(cors());
 app.use(express.json()); // Para parsing de application/json
 app.use(express.urlencoded({ extended: true })); // Para parsing de application/x-www-form-urlencoded
@@ -46,6 +46,24 @@ function formatTime(dateObj) {
     return `${hours}:${minutes}`;
 }
 
+// --- MIDDLEWARE DE AUTENTICAÇÃO JWT ---
+// Definido ANTES das rotas que o utilizam
+const autenticarToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Formato "Bearer TOKEN"
+
+    if (token == null) return res.sendStatus(401); // Não autorizado se não houver token
+
+    jwt.verify(token, JWT_SECRET, (err, userPayload) => {
+        if (err) {
+            console.error("Erro na verificação do JWT:", err.message); // Log do erro
+            return res.sendStatus(403); // Token inválido ou expirado
+        }
+        req.user = userPayload; // Adiciona o payload do usuário ao objeto req
+        next();
+    });
+};
+
 // --- ROTAS DE AUTENTICAÇÃO E USUÁRIO ---
 
 // REGISTRO DE USUÁRIO (com telefone)
@@ -55,8 +73,6 @@ app.post('/api/usuarios/registrar', async (req, res) => {
     if (!nome || (!cpf && !email) || !senha) {
         return res.status(400).json({ message: 'Nome, (CPF ou Email), e Senha são obrigatórios.' });
     }
-    // Adicionar validações mais robustas para CPF, Email e Telefone aqui se desejar
-
     let connection;
     try {
         connection = await mysql.createConnection(dbConfig);
@@ -107,7 +123,7 @@ app.post('/api/usuarios/login', async (req, res) => {
     let connection;
     try {
         connection = await mysql.createConnection(dbConfig);
-        const cpfLimpoLogin = String(usuario).replace(/\D/g, ''); // Limpa para CPF, não afeta email
+        const cpfLimpoLogin = String(usuario).replace(/\D/g, '');
 
         const [rows] = await connection.execute(
             'SELECT id, nome, email, cpf, senha_hash FROM usuarios WHERE email = ? OR cpf = ?',
@@ -131,7 +147,7 @@ app.post('/api/usuarios/login', async (req, res) => {
             email: user.email,
             cpf: user.cpf
         };
-        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '3h' }); // Token expira em 3 horas
+        const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '3h' });
 
         res.json({ message: 'Login bem-sucedido!', token: token, userName: user.nome });
     } catch (error) {
@@ -176,19 +192,44 @@ app.post('/api/usuarios/recuperar-senha', async (req, res) => {
     }
 });
 
-// --- MIDDLEWARE DE AUTENTICAÇÃO JWT ---
-const autenticarToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // Formato "Bearer TOKEN"
+// ROTA PARA EXCLUIR A PRÓPRIA CONTA (PROTEGIDA)
+// Utiliza o middleware 'autenticarToken' que agora está definido acima
+app.delete('/api/usuarios/minha-conta', autenticarToken, async (req, res) => {
+    const usuarioId = req.user.userId;
 
-    if (token == null) return res.sendStatus(401); // Não autorizado se não houver token
+    if (!usuarioId) {
+        // Isso não deveria acontecer se autenticarToken funcionou corretamente
+        return res.status(400).json({ message: 'ID do usuário não encontrado no token.' });
+    }
 
-    jwt.verify(token, JWT_SECRET, (err, userPayload) => {
-        if (err) return res.sendStatus(403); // Token inválido ou expirado
-        req.user = userPayload; // Adiciona o payload do usuário ao objeto req
-        next();
-    });
-};
+    let connection;
+    try {
+        connection = await mysql.createConnection(dbConfig);
+        await connection.beginTransaction();
+
+        // A tabela 'agendamentos' tem ON DELETE CASCADE, então agendamentos são excluídos.
+        const [result] = await connection.execute(
+            'DELETE FROM usuarios WHERE id = ?',
+            [usuarioId]
+        );
+
+        if (result.affectedRows === 0) {
+            await connection.rollback();
+            return res.status(404).json({ message: 'Usuário não encontrado para exclusão.' });
+        }
+
+        await connection.commit();
+        res.status(200).json({ message: 'Sua conta e todos os dados associados foram excluídos com sucesso.' });
+
+    } catch (error) {
+        if (connection) await connection.rollback();
+        console.error('Erro ao excluir conta do usuário:', error);
+        res.status(500).json({ message: 'Erro interno ao excluir sua conta.', error: error.message });
+    } finally {
+        if (connection) await connection.end();
+    }
+});
+
 
 // --- ROTAS DE AGENDAMENTO (Públicas e Protegidas) ---
 
@@ -234,47 +275,39 @@ app.get('/api/horarios-disponiveis', async (req, res) => {
     try {
         connection = await mysql.createConnection(dbConfig);
 
-        // 1. Buscar a duração do serviço que o usuário deseja agendar
         const [servicoEscolhidoRows] = await connection.execute(
             'SELECT duracao_minutos FROM servicos WHERE id = ?',
             [servicoId]
         );
 
         if (servicoEscolhidoRows.length === 0) {
-            // await connection.end(); // Não fechar a conexão aqui, o finally fará isso
             return res.status(404).json({ message: 'Serviço não encontrado.' });
         }
         const duracaoNovoServico = servicoEscolhidoRows[0].duracao_minutos;
 
-        // 2. Buscar os agendamentos existentes para o barbeiro e data, incluindo a duração de cada serviço agendado
-        //    Filtrar por status que indicam que o horário está ocupado
         const [agendamentosExistentes] = await connection.execute(
             `SELECT ag.hora_agendamento, s.duracao_minutos
              FROM agendamentos ag
              JOIN servicos s ON ag.servico_id = s.id
              WHERE ag.barbeiro_id = ?
                AND ag.data_agendamento = ?
-               AND ag.status_agendamento NOT IN (?, ?, ?, ?)`, // Ajuste os status conforme sua lógica de negócio
-            [barbeiroId, data, 'Cancelado', 'Rejeitado', 'Não Compareceu', 'Finalizado'] // Status que liberam o horário
+               AND ag.status_agendamento NOT IN (?, ?, ?, ?)`,
+            [barbeiroId, data, 'Cancelado', 'Rejeitado', 'Não Compareceu', 'Finalizado']
         );
 
-        // 3. Definir os horários de início padrão para os slots e o horário de término do expediente
         const horariosPadraoIniciais = [
             "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
             "13:00", "13:30", "14:00", "14:30", "15:00", "15:30",
             "16:00", "16:30", "17:00", "17:30", "18:00"
-            // Adicione ou ajuste conforme o horário de funcionamento
         ];
-        const horarioFimExpediente = "19:00"; // Ex: Último serviço deve terminar até as 19:00
+        const horarioFimExpediente = "19:00";
 
-        // 4. Criar uma lista de intervalos de tempo já ocupados
         const intervalosOcupados = agendamentosExistentes.map(ag => {
             const inicio = parseDateTime(data, ag.hora_agendamento.substring(0, 5));
             const fim = new Date(inicio.getTime() + ag.duracao_minutos * 60000);
             return { inicio, fim };
         });
 
-        // 5. Filtrar os horários padrões para encontrar os que estão realmente disponíveis
         const horariosDisponiveis = [];
         const fimExpedienteDateTime = parseDateTime(data, horarioFimExpediente);
 
@@ -307,42 +340,33 @@ app.get('/api/horarios-disponiveis', async (req, res) => {
     }
 });
 
-// Rota para CRIAR um novo agendamento (PROTEGIDA e ATUALIZADA com nome/telefone do cliente)
+// Rota para CRIAR um novo agendamento (PROTEGIDA)
 app.post('/api/agendamentos', autenticarToken, async (req, res) => {
-    const { barbeiroId, servicoId, data, horario } = req.body; // data: "YYYY-MM-DD", horario: "HH:MM"
-    const usuarioId = req.user.userId; // Obtido do token JWT
+    const { barbeiroId, servicoId, data, horario } = req.body;
+    const usuarioId = req.user.userId;
 
     if (!barbeiroId || !servicoId || !data || !horario) {
-        return res.status(400).json({ message: 'Campos obrigatórios faltando (barbeiroId, servicoId, data, horario).' });
+        return res.status(400).json({ message: 'Campos obrigatórios faltando.' });
     }
 
     let connection;
     try {
         connection = await mysql.createConnection(dbConfig);
-        await connection.beginTransaction(); // Iniciar transação
+        await connection.beginTransaction();
 
-        // Adicional: Verificar se o horário ainda está disponível antes de inserir (double-check)
-        // Esta verificação é crucial para evitar race conditions.
-        // 1. Buscar duração do serviço a ser agendado
         const [servicoEscolhidoRows] = await connection.execute('SELECT duracao_minutos FROM servicos WHERE id = ?', [servicoId]);
         if (servicoEscolhidoRows.length === 0) {
             await connection.rollback();
             return res.status(404).json({ message: 'Serviço selecionado não encontrado.' });
         }
         const duracaoNovoServico = servicoEscolhidoRows[0].duracao_minutos;
-
-        // 2. Calcular inicio e fim do novo agendamento
         const inicioNovoAgendamento = parseDateTime(data, horario);
         const fimNovoAgendamento = new Date(inicioNovoAgendamento.getTime() + duracaoNovoServico * 60000);
 
-        // 3. Buscar agendamentos conflitantes (considerando status ativos)
         const [agendamentosConflitantes] = await connection.execute(
             `SELECT ag.hora_agendamento, s.duracao_minutos
-             FROM agendamentos ag
-             JOIN servicos s ON ag.servico_id = s.id
-             WHERE ag.barbeiro_id = ?
-               AND ag.data_agendamento = ?
-               AND ag.status_agendamento NOT IN (?, ?, ?, ?)`,
+             FROM agendamentos ag JOIN servicos s ON ag.servico_id = s.id
+             WHERE ag.barbeiro_id = ? AND ag.data_agendamento = ? AND ag.status_agendamento NOT IN (?, ?, ?, ?)`,
             [barbeiroId, data, 'Cancelado', 'Rejeitado', 'Não Compareceu', 'Finalizado']
         );
 
@@ -354,10 +378,7 @@ app.post('/api/agendamentos', autenticarToken, async (req, res) => {
                 return res.status(409).json({ message: 'Conflito: O horário selecionado não está mais disponível.' });
             }
         }
-        // Fim da verificação de disponibilidade
 
-
-        // Buscar nome e telefone do usuário logado
         const [usuarios] = await connection.execute(
             'SELECT nome, telefone FROM usuarios WHERE id = ?',
             [usuarioId]
@@ -370,21 +391,19 @@ app.post('/api/agendamentos', autenticarToken, async (req, res) => {
         const nomeClienteLogado = usuarios[0].nome;
         const telefoneClienteLogado = usuarios[0].telefone;
 
-        // Inserir o agendamento com os dados do cliente
-        // O status padrão 'Confirmado' é definido no schema do banco de dados.
         const [result] = await connection.execute(
             'INSERT INTO agendamentos (barbeiro_id, servico_id, data_agendamento, hora_agendamento, usuario_id, nome_cliente, telefone_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)',
             [barbeiroId, servicoId, data, horario, usuarioId, nomeClienteLogado, telefoneClienteLogado]
         );
 
-        await connection.commit(); // Confirmar transação
+        await connection.commit();
         res.status(201).json({ message: 'Agendamento criado com sucesso!', agendamentoId: result.insertId });
 
     } catch (error) {
-        if (connection) await connection.rollback(); // Reverter transação em caso de erro
+        if (connection) await connection.rollback();
         console.error('Erro ao criar agendamento:', error);
-        if (error.code === 'ER_DUP_ENTRY') { // Se houver constraint de unicidade no DB (barbeiro_id, data, hora)
-            return res.status(409).json({ message: 'Conflito: Este horário pode já estar agendado (verificação de duplicidade no banco).' });
+        if (error.code === 'ER_DUP_ENTRY') {
+            return res.status(409).json({ message: 'Conflito: Horário já agendado (duplicidade no banco).' });
         }
         res.status(500).json({ message: 'Erro interno ao criar agendamento.', error: error.message });
     } finally {
@@ -429,7 +448,6 @@ app.get('/api/meus-agendamentos', autenticarToken, async (req, res) => {
 // --- INICIAR SERVIDOR ---
 app.listen(port, () => {
     console.log(`Servidor backend rodando em http://localhost:${port}`);
-    // Testar conexão com o banco ao iniciar (opcional, mas bom para diagnóstico)
     mysql.createConnection(dbConfig)
         .then(conn => {
             console.log('Conexão com o MySQL bem-sucedida ao iniciar o servidor!');
