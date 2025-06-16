@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.add('far');
                 console.log(`Produto ${productId} removido dos favoritos.`);
                 alert('Produto removido dos favoritos!');
-            }
+            }  
         });
     }
 
