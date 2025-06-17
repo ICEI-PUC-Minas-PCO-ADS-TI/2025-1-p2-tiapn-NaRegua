@@ -56,6 +56,13 @@
 
   /* Gradiente */
   --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
+
+
+  /* Transição */
+  --tran-05: all 0.5s ease;
+  --tran-03: all 0.3s ease;
+  --tran-02: all 0.2s ease;
+
 }
 
 body {
@@ -65,18 +72,85 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-}
-
-
-/* Auntenticação - Inicio */
-.body-authpage {
   background: linear-gradient(90deg, var(--cinza-100), var(--cinza-70), var(--cinza-30));
 }
 
+/* Logo - Inicio */
+.logo-container {
+  display: flex;          
+  flex-direction: column;
+  align-items: center;    
+  margin-bottom: 4rem;
+}
+
+.logo-image {
+  width: 183px; 
+  height: auto;
+}
+
+.logo-text {
+  font-family: "Pacifico", sans-serif;
+  font-size: 1.9rem;               
+  color: var(--cor-clara);          
+  font-weight: normal;  
+  position: relative;
+  z-index: 1;       
+}
+
+.logo-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: var(--gradiente-azul-vermelho);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 4px transparent;
+}
+/* Logo - Fim */
+
+/* Botão - Inicio */
+button {
+  padding: 0.75rem;
+  width: 90%;
+  font-weight: 800;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  background: var(--gradiente-azul-vermelho);
+  color: var(--cinza-100);
+  border: none;
+  border-radius: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  right: 0.2rem;
+  bottom: 0.2rem;
+  background: var(--cor-clara); 
+  border-radius: 0.8rem;
+  z-index: -1;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+/* Botão - Fim */
+
+/* Auntenticação - Inicio */
 .container {
   position: relative;
-  width: 850px;
-  height: 550px;
+  width: 1000px;
+  height: 700px;
   background: var(--cor-fundo);
   border-radius: 30px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
@@ -123,11 +197,11 @@ form  {
 
 .input-box {
   position: relative;
-  margin: 30px 0;
+  margin: 15px 0;
 }
 
 .input-box input {
-  width: 100%;
+  width: 90%;
   padding: 0.75rem 2.5rem 0.75rem 0.75rem;
   border: none;
   border-radius: 0.5rem;
@@ -150,24 +224,24 @@ form  {
 
 .input-box .icon {
   position: absolute;
-  right: 0.75rem;
+  right: 2rem;
   top: 50%;
   transform: translateY(-50%);
   width: 7%;
   height: auto;
 }
 
-.forgot-link {
-  margin: -15px 0 15px;
+.redirect-link {
+  margin: -0px 0 15px;
 }
 
-.forgot-link a {
+.redirect-link a {
   font-size: 14.5px;
   color: var(--cor-clara);
   text-decoration: none;
 }
 
-.forgot-link a:hover {
+.redirect-link a:hover {
   text-decoration: underline;
   color: var(--cor-clara);
 }
@@ -243,123 +317,28 @@ form  {
 
 
 /* Recuperar Senha - Inicio */
-.body-recuperar-senha {
-  background: linear-gradient(90deg, var(--cinza-100), var(--cinza-70), var(--cinza-30));
-}
-
 .recuperar-senha-container {
-  padding: 2rem;
-  max-width: 500px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  position: relative;
+  width: 500px;
+  height: auto;
+  background: var(--cor-fundo);
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  overflow: hidden;
 }
 
 .recuperar-senha-card {
-  background-color: var(--cinza-70);
-  padding: 2rem;
-  border-radius: 1rem;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  background: var(--cor-fundo);
+  display: flex;
+  align-items: center;
   color: var(--cor-branca);
-}
-
-.recuperar-senha-card h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.input-group {
-  position: relative;
-  margin-bottom: 1rem;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
-  border: none;
-  border-radius: 0.5rem;
-  background-color: var(--cinza-30);
-  font-size: 0.8rem;
-  font-family: inherit;
-  font-weight: 600;
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.input-group input:focus {
-  outline: none;
-  border-color: transparent;
-  box-shadow: 0 0 0 2px var(--cor-clara); 
-}
-
-.input-group input::placeholder {
-  color: var(--cinza-50);
-}
-
-.input-group .icon {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 7%;
-  height: auto;
-}
-
-.login-link {
-  text-align: center;
-  margin-top: 0.7rem;
-}
-
-.login-link a {
-  font-size: 14.5px;
-  color: var(--cor-clara);
-  text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
-  color: var(--cor-clara);
+  padding: 40px;
 }
 /* Recuperar Senha - Fim */
-
-
-/* Botão - Inicio */
-button {
-  padding: 0.75rem;
-  width: 100%;
-  font-weight: 800;
-  font-family: inherit;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s ease;
-
-  background: var(--gradiente-azul-vermelho);
-  color: var(--cinza-100);
-  border: none;
-  border-radius: 0.8rem;
-  position: relative;
-  z-index: 1;
-}
-
-button::before {
-  content: '';
-  position: absolute;
-  top: 0.2rem;
-  left: 0.2rem;
-  right: 0.2rem;
-  bottom: 0.2rem;
-  background: var(--cor-clara); 
-  border-radius: 0.8rem;
-  z-index: -1;
-}
-
-button:hover {
-  opacity: 0.95;
-}
-/* Botão - Fim */
-
 
 /* Responsividade - Inicio */
 
