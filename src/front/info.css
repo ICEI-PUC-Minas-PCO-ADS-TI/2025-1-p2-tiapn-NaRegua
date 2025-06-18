@@ -127,6 +127,8 @@ hr.my-4 {
 
 /* === Estilos para Favorito, Quantidade e Carrinho === */
 
+/* TEM O HTML DO DEFAULT */
+
 .favorite-icon-detail {
     position: absolute;
     top: 15px;
@@ -143,7 +145,7 @@ hr.my-4 {
     border: 1px solid #dc3545;
     transition: background-color 0.3s ease, color 0.3s ease;
     padding: 0; /* Remover padding padrão do botão */
-}
+} 
 
 .favorite-icon-detail:hover,
 .favorite-icon-detail.favorited {
@@ -168,3 +170,58 @@ hr.my-4 {
 .add-to-cart-icon-detail i {
     font-size: 1rem; /* Tamanho do ícone de carrinho */
 }
+
+
+
+
+
+
+/* --- itens a serem implementados amanha --- */ 
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("./fonts/Pacifico.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Variáveis globais */
+:root {
+  /* Cores base */
+
+  /*
+  --cor-fundo: #21272a; /* CoolGray/90 */
+  --cor-clara: #f2f4f8; /* CoolGray/10 */
+  --cor-branca: #ffffff; /* Default/White */
+
+  /* Tons de cinza (CoolGray) */
+  --cinza-100: #121619; /* CoolGray/100 */
+  --cinza-80: #343a3f; /* CoolGray/80 */
+  --cinza-70: #4d5358; /* CoolGray/70 */
+  --cinza-50: #878d96; /* CoolGray/50 */
+  --cinza-30: #c1c7cd; /* CoolGray/30 */
+
+  /* Gradiente */
+  --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
+}
+ /*
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--cor-fundo);
+}
+
+
+
