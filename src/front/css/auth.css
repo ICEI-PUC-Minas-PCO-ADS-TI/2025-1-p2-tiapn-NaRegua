@@ -1,70 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url('./fonts/Poppins-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url('./fonts/Poppins-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url('./fonts/Poppins-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Pacifico";
-  src: url("./fonts/Pacifico.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Variáveis globais */
-:root {
-  /* Cores base */
-  --cor-fundo: #21272a;
-  /* CoolGray/90 */
-  --cor-clara: #f2f4f8;
-  /* CoolGray/10 */
-  --cor-branca: #ffffff;
-  /* Default/White */
-
-  /* Tons de cinza (CoolGray) */
-  --cinza-100: #121619;
-  /* CoolGray/100 */
-  --cinza-80: #343a3f;
-  /* CoolGray/80 */
-  --cinza-70: #4d5358;
-  /* CoolGray/70 */
-  --cinza-50: #878d96;
-  /* CoolGray/50 */
-  --cinza-30: #c1c7cd;
-  /* CoolGray/30 */
-
-  /* Gradiente */
-  --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
-
-
-  /* Transição */
-  --tran-05: all 0.5s ease;
-  --tran-03: all 0.3s ease;
-  --tran-02: all 0.2s ease;
-
-}
-
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -83,7 +16,7 @@ body {
   margin-bottom: 4rem;
 }
 
-.logo-image {
+.logo-img {
   width: 183px; 
   height: auto;
 }
@@ -339,6 +272,7 @@ form  {
   padding: 40px;
 }
 /* Recuperar Senha - Fim */
+
 
 /* Responsividade - Inicio */
 /* Auntenticação - Inicio */

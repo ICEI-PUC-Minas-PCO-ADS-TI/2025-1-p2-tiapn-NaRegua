@@ -1,0 +1,26 @@
+/* Painel Admin - Inicio */
+body {
+    min-height: 100vh;
+    background-color: var(--primary-color);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: var(--panel-color);
+}
+
+nav .logo-image {
+  min-width: 45px;
+  background: red;
+}
+
+nav .logo-image img{
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* Painel Admin - Fim */
