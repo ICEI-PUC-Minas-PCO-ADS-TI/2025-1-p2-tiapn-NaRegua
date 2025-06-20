@@ -258,7 +258,7 @@ nav.close ~ .dashboard .top {
   background-color: var(--box2-color);
 }
 
-.boxes .box.box2{
+.boxes .box.box3{
   background-color: var(--box3-color);
 }
 
@@ -291,7 +291,7 @@ nav.close ~ .dashboard .top {
   white-space: nowrap;
 }
 
-@media (max-width: 1000){
+@media (max-width: 1000px){
   nav{
     width: 73px;
   }
@@ -326,7 +326,7 @@ nav.close ~ .dashboard .top {
     left: 73px;
     width: calc(100% - 73px);
   }
-  nav.cloese ~ .dashboard .top{
+  nav.close ~ .dashboard .top{
     left: 250px;
     width: calc(100% - 250px);
   }
@@ -391,3 +391,4 @@ nav.close ~ .dashboard .top {
     display: none;
   }
 }
+
