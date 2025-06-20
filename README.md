@@ -23,13 +23,88 @@ O objetivo de projeto é implementar um sistema de gestão de agendamentos para 
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Guia para Abrir e Executar a Aplicação "Na Régua" 
+Este guia irá orientá-lo sobre como configurar e executar a aplicação de agendamento 
+"Na Régua", que consiste em um backend Node.js/Express, um frontend 
+HTML/CSS/JavaScript e um banco de dados MySQL. 
 
-Não deixe de informar o link onde a aplicação estará disponível para acesso (por exemplo: https://adota-pet.herokuapp.com/src/index.html).
+1. Pré-requisitos 
+Antes de começar, certifique-se de ter os seguintes softwares instalados em seu 
+computador: 
+• Node.js e npm: 
+o Node.js é o ambiente de execução para o backend. npm (Node Package 
+Manager) vem com o Node.js e é usado para gerenciar as dependências 
+do projeto. 
+o Você pode baixar em nodejs.org. 
+• Um cliente MySQL (Recomendado): 
+o Ferramenta para administrar o banco de dados, como MySQL 
+Workbench, DBeaver, phpMyAdmin (se usar XAMPP/WAMP), ou a 
+linha de comando mysql.
 
-Se houver usuário de teste, o login e a senha também deverão ser informados aqui (por exemplo: usuário - admin / senha - admin).
+3. Configuração do Banco de Dados MySQL
+   
+1. Inicie o Servidor MySQL: Certifique-se de que seu servidor MySQL esteja em 
+execução.
 
-O link e o usuário/senha descritos acima são apenas exemplos de como tais informações deverão ser apresentadas.
+3. Acesse o MySQL: Use seu cliente MySQL para se conectar ao servidor. 
+Normalmente, você se conectará como usuário root ou outro usuário com 
+permissões para criar bancos de dados e tabelas.
+
+5. Execute o Script SQL: Você precisará executar o script SQL que foi fornecido 
+anteriormente para criar: 
+o O banco de dados nareguabanco. 
+o As tabelas: usuarios, barbeiros, servicos, agendamentos. 
+o Inserir dados iniciais (como o barbeiro "Lucas" e os serviços). 
+Copie o script SQL completo localizado em src/db/Script.sql (que inclui CREATE 
+DATABASE, USE nareguabanco, CREATE TABLE para todas as tabelas, e os 
+INSERT INTO para dados iniciais) e execute-o no seu cliente MySQL.
+
+3. Configuração do Backend (Node.js)
+   
+1. Navegue até a Pasta do Backend: Abra seu terminal ou prompt de comando e 
+navegue até a pasta onde o arquivo server.js está localizado. O caminho final 
+será esse, o começo dependerá de onde você baixou o projeto. 
+cd NaRegua\2025-1-p2-tiapn-NaRegua\src\backend 
+Ajuste o caminho conforme necessário.
+
+3. Instale as Dependências: Se você ainda não o fez, instale os pacotes Node.js 
+necessários executando: 
+Bash 
+npm install 
+Isso lerá o arquivo package.json (se existir, caso contrário, você precisaria 
+instalar express mysql2 cors bcryptjs jsonwebtoken individualmente) e 
+baixará as bibliotecas. 
+Configure o server.js: Abra o arquivo server.js em um editor de 
+texto/código e verifique/ajuste o seguinte: 
+o dbConfig: 
+JavaScript 
+const dbConfig = { 
+host: 'localhost', 
+user: 'Seu Usuário',  
+password: 'Sua Senha', 
+database: 'nareguabanco' 
+}; 
+// SEU USUÁRIO MYSQL 
+// SUA SENHA MYSQL 
+Certifique-se de que user e password correspondem às suas credenciais 
+do MySQL. O database deve ser nareguabanco.
+
+4. Inicie o Servidor Backend: No terminal, dentro da pasta src/backend, 
+execute: 
+node server.js 
+Se tudo estiver correto, você verá uma mensagem como: 
+Servidor backend rodando em http://localhost:3000 
+Conexão com o MySQL bem-sucedida ao iniciar o servidor!
+
+5. Acessando o Frontend: 
+• Use um Servidor Live (Recomendado para Desenvolvimento): Se você 
+estiver usando um editor como o VS Code, extensões como "Live Server" 
+podem servir seus arquivos HTML. Isso cria um pequeno servidor web local e 
+oferece recarregamento automático. Clique com o botão direito no arquivo 
+login.html no VS Code e escolha "Open with Live Server". 
+• Eu desenvolvi a página de Recuperar Senha, para acessar abra o vs 
+code com a pasta, abre src em seguida front, auth e por fim 
+recuperar senha.
 
 # Documentação
 
