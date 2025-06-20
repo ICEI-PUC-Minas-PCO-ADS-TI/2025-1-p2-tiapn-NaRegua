@@ -1,7 +1,6 @@
 /* Painel Admin - Inicio */
 body {
   min-height: 100vh;
-  background-color: var(--primary-color);
   font-family: "Poppins", sans-serif;
 }
 
