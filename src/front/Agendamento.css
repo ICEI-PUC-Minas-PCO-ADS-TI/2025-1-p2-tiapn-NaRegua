@@ -72,15 +72,25 @@ body {
     font-weight: 600;
 }
 
-.main-header .header-logo {
+.main-header {
     height: auto;
     max-height: 60px;
     width: auto;
 }
 
-.main-header .nav-item {
+.headerlogo{
+  height: auto;
+    max-height: 60px;
+    width: auto;
+}
+
+.main-header  {
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.nav-item{
+  margin-right: 300px;
 }
 
 .main-header .nav-link {
