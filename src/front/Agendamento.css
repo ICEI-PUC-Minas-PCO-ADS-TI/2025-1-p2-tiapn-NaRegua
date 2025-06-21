@@ -57,6 +57,8 @@ body {
   padding: 1rem;
 }
 
+
+
 .container {
   padding: 2rem;
   max-width: 400px;
@@ -139,3 +141,189 @@ button:hover {
     font-size: 1rem;
   }
 }
+
+.InfBarbearia{
+  color: white;
+}
+
+.calendar {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  width: 300px; /* Ajuste a largura conforme necessário */
+}
+
+.calendar header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar header button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #333; /* Adicionando uma cor para melhor visualização */
+}
+
+.calendar h2 { /* Alterado de .calendar header h2 para .calendar h2 para corresponder ao seu HTML de mês/ano */
+  margin: 0;
+  font-size: 1.2em;
+  color: #333; /* Adicionando uma cor */
+}
+
+.day-names,
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.day-names div {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+  padding: 5px 0; /* Adicionado padding para melhor espaçamento */
+}
+
+.days div {
+  padding: 10px 5px; /* Ajustado padding para caber melhor em larguras menores */
+  margin: 2px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s; /* Adicionada transição para cor */
+  box-sizing: border-box; /* Para que o padding não aumente o tamanho total */
+  line-height: normal; /* Para garantir que o texto do dia fique bem alinhado */
+  display: flex; /* Para centralizar o número do dia */
+  align-items: center; /* Para centralizar o número do dia */
+  justify-content: center; /* Para centralizar o número do dia */
+}
+
+/* Estilo para os divs vazios (para dias de outros meses no início/fim) */
+.days div:empty {
+  background-color: transparent !important; /* Garante que não haja fundo */
+  border: none !important; /* Garante que não haja borda */
+  pointer-events: none; /* Não clicável */
+  cursor: default;
+}
+
+.days div:not(.past-day):not(:empty):hover { /* Hover para dias normais e futuros, não vazios */
+  background: #ddd;
+  cursor: pointer;
+  color: #333;
+}
+
+.today {
+  background: #3b82f6 !important; /* !important para garantir prioridade sobre .days div:hover */
+  color: white !important; /* !important para garantir prioridade */
+  font-weight: bold;
+}
+
+.past-day {
+  color: #999999;          /* Cor cinza para o texto do dia passado */
+  background-color: #f0f0f0; /* Um fundo levemente diferente para dias passados */
+  pointer-events: none;   /* Impede cliques e outros eventos do mouse (incluindo hover) */
+  cursor: default;        /* Mostra o cursor padrão, não o de "mãozinha" */
+}
+
+/* ===== Estilo para o Modal de Agendamento ===== */
+
+.modal-content {
+  background-color: var(--cinza-70);
+  color: var(--cor-clara);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+.modal-title {
+  font-family: "Pacifico", cursive;
+  font-size: 1.5rem;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+/* ===== Estilo para as etapas do formulário ===== */
+
+.step {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-select {
+  background-color: var(--cinza-30);
+  color: var(--cinza-50);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.form-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--cinza-50);
+}
+
+/* ===== Botões de Navegação ===== */
+
+.modal-footer .btn-primary {
+  background: var(--gradiente-azul-vermelho);
+  border: none;
+  font-weight: bold;
+  color: var(--cor-clara);
+}
+
+.modal-footer .btn-secondary {
+  background-color: var(--cinza-50);
+  border: none;
+  color: var(--cor-clara);
+}
+
+.modal-footer .btn:hover {
+  opacity: 0.85;
+}
+
+/* ===== Estilo para seleção de dia no calendário ===== */
+
+.days div.selected-day {
+  background: var(--gradiente-azul-vermelho) !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* ===== Responsividade para modal ===== */
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+}
+
+/* ===== Ajuste para o botão "Agendar Horário" principal ===== */
+
+.btn-primary[data-bs-toggle="modal"] {
+  background: var(--gradiente-azul-vermelho);
+  border: none;
+  font-weight: bold;
+  color: var(--cor-clara);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+
+.btn-primary[data-bs-toggle="modal"]:hover {
+  opacity: 0.9;
+}
+
+
