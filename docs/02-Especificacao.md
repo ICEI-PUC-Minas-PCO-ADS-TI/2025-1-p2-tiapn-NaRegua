@@ -79,7 +79,7 @@ As tabelas a seguir apresentam os requisitos funcionais e não funcionais que de
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |001| O projeto deverá ser entregue dentro do prazo até o final do semestre |
-|002| O progeto deverá ser feito e apresentado por todos os integrantes em tempo habil       |
+|002| O projeto deverá ser feito e apresentado por todos os integrantes em tempo habil       |
 |003| O cliente devera participar nas decisões de alteracões visuais do projeto       |
 |004| Para a organização da produção do projeto devera ser utilizado obrigatoriamente o quadro Kanba      |
 |005| Os papeis e funções de cada integrante deverão ser seguidos, ordenadamente para facilitar a integração e producao dos artefatos     |
