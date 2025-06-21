@@ -1,17 +1,32 @@
-
-
-
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Variáveis globais de cor */
+:root {
+    --cor-fundo: #21272a; /* CoolGray/90 */
+    --cor-clara: #f2f4f8; /* CoolGray/10 */
+    --cor-branca: #ffffff; /* Default/White */
+
+    /* Tons de cinza (CoolGray) */
+    --cinza-100: #121619; /* CoolGray/100 */
+    --cinza-80: #343a3f; /* CoolGray/80 */
+    --cinza-70: #4d5358; /* CoolGray/70 */
+    --cinza-50: #878d96; /* CoolGray/50 */
+    --cinza-30: #c1c7cd; /* CoolGray/30 */
+
+    /* Gradiente */
+    --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-color: var(--cor-fundo); /* Aplicando cor de fundo */
+    font-family: "Poppins", sans-serif; /* Adicionando a fonte Poppins */
 }
 
 main.container {
@@ -19,7 +34,7 @@ main.container {
 }
 
 .header-site {
-    background-color: darkblue;
+    background-color: var(--cinza-100); /* Exemplo: Usando cinza mais escuro para o header */
     padding: 0.5rem 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -34,7 +49,7 @@ main.container {
 }
 
 .navbar-brand {
-    color: white !important;
+    color: var(--cor-branca) !important; /* Cor branca para a marca */
     font-weight: bold;
 }
 
@@ -44,7 +59,7 @@ main.container {
 }
 
 .nav-item .nav-link {
-    color: white;
+    color: var(--cor-branca); /* Cor branca para links da navbar */
     font-weight: 500;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     border-bottom: 2px solid transparent;
@@ -53,18 +68,17 @@ main.container {
 }
 
 .nav-item .nav-link.active {
-    color: #ffffff;
+    color: var(--cor-branca);
 }
 
 .nav-item .nav-link:hover {
-    color: #ff0f07;
-    border-bottom-color: #ff0f07;
+    color: #ff0f07; /* Mantido o vermelho original para hover */
+    border-bottom-color: #ff0f07; /* Mantido o vermelho original para hover */
 }
 
 .nav-item .nav-link.active:hover {
-    color: #ffffff;
+    color: var(--cor-branca);
 }
-
 
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.1);
@@ -84,9 +98,9 @@ main.container {
 }
 
 .product-detail-card {
-    background-color: #ffffff;
+    background-color: var(--cor-branca); /* Cor branca para o card de produto */
     border-radius: 0.5rem;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--cinza-30); /* Borda cinza clara para o card */
 }
 
 /* Container da imagem para posicionar o botão de favorito */
@@ -100,34 +114,36 @@ main.container {
 }
 
 .product-name-detail {
-    color: #343a40;
+    color: var(--cinza-80); /* Cor cinza mais escura para o nome do produto */
     font-weight: 600;
 }
 
 .product-description-detail {
     font-size: 0.95rem;
     line-height: 1.6;
+    color: var(--cinza-70); /* Cor cinza para a descrição */
 }
 
 .product-price-detail {
-    
+    color: var(--cinza-100); /* Cor cinza mais escura para o preço */
+    font-weight: bold;
 }
 
 .product-stock-detail {
-    
+    color: var(--cinza-50); /* Cor cinza para o estoque */
 }
 
 .product-info-section .fw-bold.fs-5 {
-    color: #495057;
+    color: var(--cinza-80); /* Cor cinza mais escura para títulos de seção */
 }
 
 hr.my-4 {
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid var(--cinza-30); /* Cor cinza clara para a linha horizontal */
 }
 
 /* === Estilos para Favorito, Quantidade e Carrinho === */
 
-/* TEM O HTML DO DEFAULT */
+
 
 .favorite-icon-detail {
     position: absolute;
@@ -141,16 +157,16 @@ hr.my-4 {
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
-    color: #dc3545; /* Cor do coração (vermelho) */
-    border: 1px solid #dc3545;
+    color: #dc3545; /* Cor do coração (vermelho) - NÃO MUDADO */
+    border: 1px solid #dc3545; /* NÃO MUDADO */
     transition: background-color 0.3s ease, color 0.3s ease;
     padding: 0; /* Remover padding padrão do botão */
 } 
 
 .favorite-icon-detail:hover,
 .favorite-icon-detail.favorited {
-    background-color: #dc3545;
-    color: white;
+    background-color: #dc3545; /* NÃO MUDADO */
+    color: white; /* NÃO MUDADO */
 }
 
 .favorite-icon-detail.favorited .fa-heart {
@@ -160,68 +176,31 @@ hr.my-4 {
 .quantity-input-detail {
     width: 70px; /* Largura menor para o campo de quantidade */
     text-align: center;
+    border-color: var(--cinza-50); /* Cor da borda para o input de quantidade */
+    color: var(--cinza-80); /* Cor do texto do input de quantidade */
 }
 
 .add-to-cart-icon-detail {
     font-size: 0.9rem; /* Tamanho do texto do botão */
     padding: 0.5rem 1rem; /* Padding do botão */
+    /* Cores dos botões de ação (carrinho, like) foram mantidas como você solicitou */
 }
 
 .add-to-cart-icon-detail i {
     font-size: 1rem; /* Tamanho do ícone de carrinho */
 }
 
-
-
-
-
-
-/* --- itens a serem implementados amanha --- */ 
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Fontes */
+@font-face {
+    font-family: "Poppins";
+    src: url("./fonts/Poppins.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("./fonts/Poppins.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Pacifico";
+    src: url("./fonts/Pacifico.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
-
-@font-face {
-  font-family: "Pacifico";
-  src: url("./fonts/Pacifico.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Variáveis globais */
-:root {
-  /* Cores base */
-
-  /*
-  --cor-fundo: #21272a; /* CoolGray/90 */
-  --cor-clara: #f2f4f8; /* CoolGray/10 */
-  --cor-branca: #ffffff; /* Default/White */
-
-  /* Tons de cinza (CoolGray) */
-  --cinza-100: #121619; /* CoolGray/100 */
-  --cinza-80: #343a3f; /* CoolGray/80 */
-  --cinza-70: #4d5358; /* CoolGray/70 */
-  --cinza-50: #878d96; /* CoolGray/50 */
-  --cinza-30: #c1c7cd; /* CoolGray/30 */
-
-  /* Gradiente */
-  --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
-}
- /*
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--cor-fundo);
-}
-
-
-
