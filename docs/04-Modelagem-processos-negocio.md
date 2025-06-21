@@ -4,7 +4,14 @@
 
 ## Modelagem da situação atual (Modelagem AS IS)
 
-Atualmente o agendamente para o serviço prestado pela empresa no qual será implementado o projeto, seja de corte de cabelo, barba, sobrancelha, etc. O cliente agenda indo a barbearia ou entrando em contato por mensagem. O projeto proposto ao cliente(barbeiro) é a implementação de um sistema que ira gerencia todo esse processo de agendamento seja ele qual for, visando simplificar/agilizar os serviços que vira a ser prestado ao cliente e principalmente ganhar uma pequena parcela de tempo que a longo prazo poderar a vir beneficar o barbeiro podendo adquirir mais clientes conforme a gestão do tempo.
+Contextualização do Problema
+Atualmente, o processo de agendamento dos serviços oferecidos pela barbearia — como corte de cabelo, barba e sobrancelha — é realizado de forma manual, seja presencialmente ou por meio de mensagens diretas ao barbeiro. Essa abordagem, embora funcional, demanda tempo e atenção constantes, além de estar suscetível a falhas de comunicação, sobreposições de horários e dificuldade de controle da agenda.
+
+Proposta de Solução
+Com base nesse cenário, propõe-se o desenvolvimento e implementação de um sistema digital de agendamento, com o objetivo de automatizar e otimizar o gerenciamento dos serviços prestados. A solução permitirá que os clientes realizem agendamentos de maneira prática e autônoma, por meio de uma interface amigável, acessível a qualquer momento.
+
+Benefícios Esperados
+A adoção do sistema visa, sobretudo, a agilização e organização dos atendimentos, proporcionando ao barbeiro um ganho significativo na gestão do tempo. A longo prazo, espera-se que essa melhoria operacional contribua para o aumento da produtividade e, consequentemente, para a ampliação da carteira de clientes, possibilitando um atendimento mais eficiente e profissional.
 
  ![AS IS](https://github.com/user-attachments/assets/d3836199-07c1-4cc5-a50e-a7e98b13b470)
 
