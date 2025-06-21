@@ -31,7 +31,14 @@ Com a aplicação do projeto definida visamos ganhos com a automatização do se
 
 ## Descrição geral da proposta (Modelagem TO BE)
 
-Indentificado que a empresa possui uma segunda demanda de serviço que poderia está causando um pequeno gargalo no processo de todo atendimento. Podendo gerar uma pequena demanda de tempo a mais nos demais serviços prestados. Foi elaborado uma ideia para que seja condesado o processo para a solução do gargalo. 
+Identificação de Gargalo no Processo
+Durante a análise do funcionamento atual da barbearia, foi identificada uma segunda demanda de serviço que pode estar contribuindo para um gargalo no fluxo de atendimento. Essa demanda adicional, embora relevante, tem potencial para gerar atrasos e impactar negativamente o tempo de execução dos demais serviços oferecidos.
+
+Proposta de Otimização
+Diante desse cenário, foi elaborada uma proposta de melhoria visando condensar e otimizar esse processo secundário, com o intuito de eliminar o gargalo identificado. A solução proposta busca integrar essa etapa ao fluxo do sistema de agendamento principal, de modo a minimizar o impacto no tempo total de atendimento e garantir maior fluidez na operação do estabelecimento.
+
+Benefícios Esperados
+Com a aplicação dessa solução, espera-se uma redução do tempo ocioso e das sobreposições de horários, permitindo uma gestão mais eficiente dos serviços e melhor aproveitamento da agenda do barbeiro. Além disso, essa melhoria pode contribuir para uma experiência mais satisfatória por parte do cliente, ao reduzir o tempo de espera e aumentar a previsibilidade dos atendimentos. 
 
 ![TO BE](https://github.com/user-attachments/assets/f9e58658-4773-481b-84e8-003039748046)
 
