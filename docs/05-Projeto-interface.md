@@ -34,15 +34,17 @@ Tela Home, utilizada para agendar os serviços da barbearia, e mostrar os produt
 
 Tela de cadastro, utilizada para o usuário se cadastrar para utilizar a aplicação.
 
-![Cadastro](images/TelaCadastro.png)
+![cadastro](https://github.com/user-attachments/assets/9f80cb3c-4159-4025-9570-a6937c18fa67)
 
 Tela de login, utlizada para o usário possa entrar em sua conta para utilizar a aplicação.
 
-![Login](images/TelaLogin.png)
+![Login](https://github.com/user-attachments/assets/72ff802b-5b3f-4e5b-8c1f-483ebab85144)
+
 
 Tela de recuperação de senha, utlizada para o usário consiga redefinir a sua senha caso ele não se lembre dela.
 
-![Senha](images/TelaSenha.png)
+![recuperar senha](https://github.com/user-attachments/assets/30402a8d-7cb8-435b-a3f8-5ebfc6fb869d)
+
 
 
 ### Telas do processo 2
