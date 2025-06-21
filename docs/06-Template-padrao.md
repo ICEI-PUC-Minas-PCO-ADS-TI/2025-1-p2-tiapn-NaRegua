@@ -2,10 +2,6 @@
 
 <span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>, <a href="03-Metodologia.md"> Metodologia</a>, <a href="05-Projeto-interface.md"> Projeto de interface</a>
 
-## 🧩 Template padrão da aplicação
-
-A aplicação segue um layout padrão reutilizado em todas as páginas, garantindo consistência visual e responsividade.
-
 ### 🎨 Identidade Visual
 
 - **Fonte da interface:** Poppins  
