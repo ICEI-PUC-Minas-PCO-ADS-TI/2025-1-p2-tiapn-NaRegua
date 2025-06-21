@@ -59,6 +59,10 @@ As tabelas a seguir apresentam os requisitos funcionais e não funcionais que de
 |RF-007| Notificação de aberto ou fechado | ALTA |
 |RF-008| Avaliação do serviço | ALTA |
 |RF-009| Perfil de usuário | ALTA |
+|RF-0010| Gerenciar horários disponíveis (bloquear horários) |ALTA|
+|RF-0011| Área administrativa para gerenciar agendamentos |MEDIA|
+|RF-0012| Visualizar histórico de agendamentos do usuário |MEDIA|
+|RF-0013| Integração com redes sociais para compartilhamento |BAIXA|
 
 ### Requisitos não funcionais
 
@@ -72,6 +76,7 @@ As tabelas a seguir apresentam os requisitos funcionais e não funcionais que de
 |RNF-006| A legibilidade do código, modularidade e documentação. |  ALTA | 
 |RNF-007| Os padrões estabelecidos pela empresa (Cliente). | ALTA | 
 |RNF-008| Integração o sistema deve se comunicar com outras aplicações. |  MÉDIA | 
+
 
 
 ## Restrições
