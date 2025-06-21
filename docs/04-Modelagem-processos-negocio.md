@@ -51,17 +51,65 @@ Com a aplicação dessa solução, espera-se uma redução do tempo ocioso e das
 
 **Novo fluxo**:
 
-- Cliente entra no site e escolhe os produtos.
+1. Agendamento de Horário
+      Fluxo principal:
+      O cliente acessa a plataforma, seleciona o serviço desejado, escolhe o profissional (se aplicável) e define data e horário disponíveis. O sistema confirma o agendamento e envia uma notificação.
+    
+       Exceções/Falhas possíveis:
+       
+       ✅ Conflito de horário: dois usuários tentam agendar no mesmo horário simultaneamente.
+       → Solução: uso de bloqueio de transação no banco de dados ou verificação em tempo real antes da confirmação.
+       
+       ⚠️ Horário indisponível após seleção: o horário ficou indisponível no tempo entre a seleção e a confirmação.
+       → Solução: revalidação do horário antes de confirmar e notificação ao usuário.
+       
+       ❌ Falha de conexão com servidor ou banco de dados: impossibilita a finalização do agendamento.
+       → Solução: exibir mensagem amigável, logar o erro e permitir tentativa posterior.
 
-- Selecionar o produto.
+2. Cancelamento ou Reagendamento
+       Fluxo principal:
+       O cliente pode cancelar ou reagendar um serviço até um limite de tempo antes do horário marcado.
+       
+       Exceções/Falhas possíveis:
+       
+       ⚠️ Tentativa de cancelamento fora do prazo permitido
+       → Solução: exibir mensagem informando que a ação não pode ser realizada.
+       
+       ❌ Reagendamento para horário já ocupado
+       → Solução: bloquear horários ocupados e sugerir horários alternativos.
 
-- Confirma o produto.
+3. Cadastro e Autenticação de Usuário
+       Fluxo principal:
+       O cliente realiza cadastro com dados básicos (nome, telefone, e-mail) e autentica-se para agendar.
+       
+       Exceções/Falhas possíveis:
+       
+       ❌ Dados inválidos ou já cadastrados
+       → Solução: validações no frontend/backend com mensagens claras (e-mail em uso, número inválido, etc).
+       
+       🔐 Erro na autenticação
+       → Solução: bloquear tentativa após várias falhas, oferecer recuperação de senha e notificar acesso suspeito.
 
-- O barbeiro receber o pedido, e prepara o pedido.
+4. Disponibilidade de Profissionais
+       Fluxo principal:
+       O sistema exibe horários disponíveis com base na agenda do barbeiro.
+       
+       Exceções/Falhas possíveis:
+       
+       ⚠️ Barbeiro marca folga ou falta repentina
+       → Solução: painel de controle para bloqueio manual de horários e envio de notificação aos clientes afetados.
+       
+       ❌ Erro ao carregar disponibilidade (ex.: falha no back-end)
+       → Solução: fallback para carregamento padrão e registro do erro para correção posterior.
 
-- Cliente vai a barbearia e realiza o pagamento.
-
-- Faz a retirada do produto.
+5. Notificações e Lembretes
+       Fluxo principal:
+       O sistema envia confirmações, lembretes e atualizações via e-mail ou mensagem.
+       
+       Exceções/Falhas possíveis:
+       
+       ❌ Falha no envio de notificações (API de terceiros fora do ar, erro de integração)
+       → Solução: reenvio automático, fallback para e-mail se SMS falhar e monitoramento da fila de envio.
 
 **Atendimento encerrado.**
 
