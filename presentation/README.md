@@ -5,9 +5,12 @@
 
 ## Slides
 
-Coloque aqui o conjunto de slides.
+[Slide Sprint 1.pdf](https://github.com/user-attachments/files/20848539/Slide.Sprint.1.pdf)
 
-> O arquivo deve estar no formato PDF e conter a apresentação completa do projeto, abordando todos os itens trabalhados nos demais artefatos. 
+[Slide Sprint 2.pdf](https://github.com/user-attachments/files/20848540/Slide.Sprint.2.pdf)
+
+[Slide Sprint 4.pdf](https://github.com/user-attachments/files/20848541/Slide.Sprint.4.pdf)
+
 
 > **Links úteis**:
 > - [10 dicas de design para slides](https://rockcontent.com/blog/design-para-slides/)
