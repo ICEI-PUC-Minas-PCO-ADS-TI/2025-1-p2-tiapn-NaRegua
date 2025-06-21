@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: Please cite this software using these metadata.
-title: Coloque aqui o título do seu trabalho
+title: NaRegua
 authors:
   - family-names: Cristian de Alcântara Costa
     given-names: Erik
@@ -14,8 +14,6 @@ authors:
     given-names: Ivan 
   - family-names: Luciano Cunha Silva
     given-names: Juan 
-  - name-suffix: Professor
-    affiliation: PUC Minas
     family-names: Soares Vieira de Vasconcelos
     given-names: Amália
   - name-suffix: Professora
