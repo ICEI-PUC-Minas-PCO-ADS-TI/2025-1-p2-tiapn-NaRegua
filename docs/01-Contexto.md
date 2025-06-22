@@ -1,6 +1,8 @@
 # Introdução
 
-No cenário atual, a presença digital se tornou essencial para qualquer negócio, incluindo barbearias. Clientes modernos buscam praticidade, rapidez e personalização no atendimento, preferindo agendar serviços online e conhecer melhor os profissionais antes mesmo de visitar o estabelecimento. No entanto, muitos barbeiros ainda dependem exclusivamente do boca a boca ou de redes sociais para atrair clientes, o que limita seu alcance e profissionalismo.
+No cenário atual, a presença digital se tornou essencial para qualquer negócio, incluindo barbearias. Clientes modernos buscam praticidade, rapidez e personalização no atendimento, preferindo agendar serviços online e conhecer melhor os profissionais antes mesmo de visitar o estabelecimento. De acordo com uma pesquisa realizada pelo Think with Google, 63% dos consumidores brasileiros utilizam a internet para buscar informações sobre serviços locais antes de tomar uma decisão de compra, o que inclui salões de beleza e barbearias. Ainda, um levantamento do SEBRAE de 2023 apontou que apenas 34% dos pequenos negócios do setor de beleza possuem um site próprio, demonstrando uma lacuna significativa de digitalização nesse ramo.
+
+No entanto, muitos barbeiros ainda dependem exclusivamente do boca a boca ou de redes sociais para atrair clientes, o que limita seu alcance e profissionalismo. A ausência de um sistema de gestão digital também dificulta o controle de agendamentos, o histórico dos atendimentos e o relacionamento com os clientes — fatores que são cada vez mais valorizados em experiências de consumo.
 
 ## Cliente 
 
