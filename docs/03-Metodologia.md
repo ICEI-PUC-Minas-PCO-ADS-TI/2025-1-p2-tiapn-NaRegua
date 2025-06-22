@@ -146,7 +146,7 @@ Atualizado em: 08/05/2024
 | Juan          |  | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 | Ivan          |    | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 | Erik          |                                                |                |            |        |                 |
-| Gustavo       | Desenvolvimento da pagina de adminstrador      | 30/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Gustavo       | Desenvolvimento da pagina de adminstrador      | 10/06/2025     | 10/06/2025 | ✔️    | 22/06/2025      |
 
 
 Legenda:
