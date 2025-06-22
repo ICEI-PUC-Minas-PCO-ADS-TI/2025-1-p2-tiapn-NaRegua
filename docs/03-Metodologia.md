@@ -123,6 +123,30 @@ Atualizado em: 08/05/2024
 | Gustavo       | Preenchimento do Template - Projeto Processo de Negócios ( seção 4 )   | 30/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 
 
+#### Sprint 4
+
+| Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
+| :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
+| Franklin      | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Guilherme     | Realização do User Flow                        | 27/04/2025     | 08/05/2025 | ✔️    | 27/04/2025      |
+| Guilherme     | Realização do Diagrama de Fluxo do Usuário     | 01/05/2025     | 08/05/2025 | ✔️    | 01/05/2025      |
+| Juan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Ivan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Erik          |                                                |                |            |        |                 |
+| Gustavo       | Desenvolvimento da pagina de recuperar senha   | 23/05/2025     | 05/06/2025 | ✔️    | 05/06/2025      |
+
+
+#### Sprint 5
+
+| Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
+| :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
+| Franklin      | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Guilherme     | Realização do User Flow                        | 27/04/2025     | 08/05/2025 | ✔️    | 27/04/2025      |
+| Guilherme     | Realização do Diagrama de Fluxo do Usuário     | 01/05/2025     | 08/05/2025 | ✔️    | 01/05/2025      |
+| Juan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Ivan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
+| Erik          |                                                |                |            |        |                 |
+| Gustavo       | Desenvolvimento da pagina de adminstrador      | 30/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 
 
 Legenda:
@@ -131,30 +155,17 @@ Legenda:
 - ⌛: atrasado
 - ❌: não iniciado
 
-
-
-### Processo
-
-Coloque informações sobre detalhes da implementação do Scrum seguido pelo grupo. O grupo deverá fazer uso do recurso de gerenciamento de projeto oferecido pelo GitHub, que permite acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
- 
-
-
 ## Relação de ambientes de trabalho
 
 Os artefatos do projeto são desenvolvidos a partir de diversas plataformas. Todos os ambientes e frameworks utilizados no desenvolvimento da aplicação estão listados na seção abaixo.
 
 ### Ferramentas
 
-Liste todas as ferramentas que foram empregadas no projeto, justificando a escolha delas, sempre que possível.
-
-
-Exemplo: os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito é apresentada na tabela que se segue.
-
 | Ambiente                            | Plataforma                         | Link de acesso                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
-| Repositório de código fonte         | GitHub                             | http://....                            |
-| Documentos do projeto               | GitHub                             | http://....                            |
-| Projeto de interface                | Figma                              | http://....                            |
-| Gerenciamento do projeto            | GitHub Projects                    | http://....                            |
+| Repositório de código fonte         | GitHub                             | [http://....](https://github.com/ICEI-PUC-Minas-PCO-ADS-TI/2025-1-p2-tiapn-NaRegua.git) |
+| Documentos do projeto               | GitHub                             | [http://....](https://github.com/ICEI-PUC-Minas-PCO-ADS-TI/2025-1-p2-tiapn-NaRegua/tree/79873f8382367f0415cbd3bc8d136cb9556559c8/docs) |
+| Projeto de interface                | Figma                              | [http://.... ](https://www.figma.com/design/6HH3mm79LVrUvsE6PxsAQN/Wireframes-Kit---Free-wireframing-Websites-and-SaaS-UI-UX--Community-?node-id=3102-1990&p=f&t=UNemLPzNZTzvM9LU-0) |
+| Gerenciamento do projeto            | GitHub Projects                    | [https://](github.com/ICEI-PUC-Minas-PCO-ADS-TI/2025-1-p2-tiapn-NaRegua/projects?query=is%3Aopen) |
 | Hospedagem                          | Vercel                             | http://....                            |
 | Modelagem                      | Bizagi                            | https://www.bizagi.com/pt                            |
