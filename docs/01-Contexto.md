@@ -24,11 +24,13 @@ O sistema poderá ser acessado por meio de computadores, tablets e smartphones, 
 
 O objetivo geral deste projeto é desenvolver um site para barbearia e barbeiro autônomo, proporcionando uma solução digital eficiente para gerenciar agendamentos, divulgar serviços e melhorar a comunicação com os clientes.
 
-Implementar um sistema de agendamento online para que os clientes possam escolher horários disponíveis sem a necessidade de contato direto, otimizando o fluxo de atendimento da barbearia.
+Já os objetivos específicos são:
 
-Desenvolver uma interface intuitiva e responsiva, garantindo que o site seja acessível em diferentes dispositivos, como computadores, tablets e smartphones, proporcionando uma melhor experiência ao usuário.
+Item 1 : Implementar um sistema de agendamento online para que os clientes possam escolher horários disponíveis sem a necessidade de contato direto, otimizando o fluxo de atendimento da barbearia;
 
-Criar um portfólio digital dinâmico, onde o barbeiro possa exibir imagens dos cortes realizados, permitindo a fácil atualização do conteúdo para atrair novos clientes.
+Item 2 : Desenvolver uma interface intuitiva e responsiva, garantindo que o site seja acessível em diferentes dispositivos, como computadores, tablets e smartphones, proporcionando uma melhor experiência ao usuário;
+
+Item 3 : Criar um portfólio digital dinâmico, onde o barbeiro possa exibir imagens dos cortes realizados, permitindo a fácil atualização do conteúdo para atrair novos clientes.
  
 
 
