@@ -13,6 +13,7 @@
     --cor-destaque-hover: #DAA520;
     --cor-fundo-site-fallback: #ffffff;
     --cor-card-fundo-transparente: rgba(45, 45, 45, 0.7);
+    --cor-main-fundo-transparente: rgba(33, 33, 33, 0.7);
     --cor-borda-card: #495057;
     --cor-botao-primario: var(--cor-destaque);
     --cor-botao-primario-hover: var(--cor-destaque-hover);
@@ -75,8 +76,7 @@ main {
 .main-header .nav-link {
     color: var(--cor-texto-claro);
     font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease,
-        background-image 0.3s ease, border-image 0.3s ease;
+    transition: border-bottom 0.3s ease, background-image 0.3s ease, border-image 0.3s ease;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
     text-decoration: none;
@@ -122,26 +122,25 @@ main {
 }
 
 .card {
+    height: 480px !important;
     display: flex;
     flex-direction: column;
     background-color: var(--cor-card-fundo-transparente);
     border: 1px solid var(--cor-borda-card);
     color: var(--cor-texto-claro);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    min-height: 300px;
 }
 
 .card-img-top {
-    height: 180px;
-    object-fit: contain;
+    height: 200px;
+    object-fit: cover;
     object-position: center top;
-    background-color: white;
 }
 
 .card-img-top.camisa {
     object-fit: contain;
-    background-color: white;
-    height: 180px;
+    background-color: var(--cor-card-fundo-transparente);
+    height: 200px;
 }
 
 .card-body {
@@ -149,13 +148,17 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
 }
 
 .card-title {
-    color: var(cor-fundo-site-fallback);
+    color: var(--cor-destaque);
     margin-bottom: 0.5rem;
     font-weight: 600;
+}
+
+.card-text {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 1rem;
 }
 
 .card-body .btn-primary {
@@ -292,27 +295,4 @@ main {
     .main-footer .list-unstyled li {
         margin-bottom: 0.05rem;
     }
-}
-
-.product-rating {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-    padding-left: 5px;
-    position: relative;
-    align-items: center;
-}
-
-.product-rating .star {
-    color: white;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.product-rating .star.selected {
-    color: yellow;
-}
-
-.product-rating .star+.star {
-    margin-left: 2px;
 }
