@@ -59,6 +59,89 @@ body {
   gap: 10px;
 }
 
+/* Header - Home */
+.main-header {
+    background-color: var(--cor-fundo-header-footer);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.main-header .navbar-brand {
+    color: var(--cor-texto-claro) !important;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.main-header {
+    height: auto;
+    max-height: 60px;
+    width: auto;
+}
+
+.headerlogo{
+  height: auto;
+    max-height: 60px;
+    width: auto;
+}
+
+.main-header  {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-item{
+  margin-right: 300px;
+}
+
+.main-header .nav-link {
+    color: var(--cor-texto-claro);
+    font-weight: 500;
+    transition: border-bottom 0.3s ease, background-image 0.3s ease, border-image 0.3s ease;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 2px;
+    background-image: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+.main-header .nav-link.active {
+    color: var(--cor-destaque);
+    border-bottom: 2px solid var(--cor-destaque);
+    background-image: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+.main-header .nav-link.active:hover {
+    color: var(--cor-destaque-hover);
+    border-bottom: 2px solid var(--cor-destaque-hover);
+    background-image: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+
+.main-header .nav-link:hover {
+    background-image: linear-gradient(to right, #FF4500, #8A2BE2, #FF1493);
+    background-size: 200% auto;
+    background-position: left center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-image: linear-gradient(to right, #FF4500, #8A2BE2, #FF1493) 1;
+    border-image-slice: 1;
+}
+
+.main-header .navbar-toggler {
+    filter: invert(1);
+}
+
+
 #userInfo {
   font-size: 1rem;
   color: var(--cor-clara);
@@ -223,7 +306,7 @@ body {
   padding: 10px 5px;
   margin: 2px;
   border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+  transition: 0.2s, color 0.2s;
   box-sizing: border-box;
   line-height: normal;
   display: flex;
@@ -360,6 +443,80 @@ body {
   text-decoration: line-through;
 }
 
+/* Footer - Home */
+.main-footer {
+    background-color: var(--cor-fundo-header-footer);
+    color: var(--cor-texto-claro);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.main-footer .footer-brand {
+    color: var(--cor-texto-claro) !important;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem !important;
+}
+
+.main-footer .footer-logo {
+    height: auto;
+    max-height: 60px;
+    width: auto;
+}
+
+.main-footer h5 {
+    color: var(--cor-texto-claro);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-footer .list-unstyled li {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 0.1rem;
+}
+
+.main-footer .list-unstyled li i {
+    color: var(--cor-texto-secundario);
+}
+
+.main-footer .footer-link {
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-link:hover {
+    color: var(--cor-destaque-hover) !important;
+}
+
+.main-footer .footer-social-icon {
+    color: var(--cor-texto-claro);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-footer .footer-social-icon:hover {
+    color: var(--cor-destaque-hover) !important;
+    transform: translateY(-3px);
+}
+
+.main-footer .text-white-50 {
+    color: var(--cor-texto-secundario) !important;
+}
+
+.main-footer hr {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.main-footer p.mb-0 {
+    font-size: 0.8rem;
+    color: var(--cor-texto-secundario);
+}
+
+
 
 @media (max-width: 767px) {
   .modal-dialog {
@@ -406,3 +563,4 @@ body {
     width: 100%;
   }
 }
+
