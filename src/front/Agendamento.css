@@ -564,3 +564,154 @@ body {
   }
 }
 
+/* Banner */
+
+/* General Body Styles (for demonstration purposes, adjust as needed) */
+
+
+.establishment-details-container {
+    background-color: #1a1a1a; /* Slightly lighter dark background for the container */
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px; /* Adjust max-width as needed */
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    margin-top: 50px;
+}
+
+.section-title {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #fff;
+    border-bottom: 1px solid #333; /* Subtle separator */
+    padding-bottom: 15px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.subsection-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Location Section */
+.location-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333; /* Separator for location */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.location-content p {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #ccc;
+}
+
+/* Alterado de .map-button para .map-link-button */
+.map-link-button {
+    background-color: transparent;
+    border: 1px solid #555;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline from link */
+}
+
+.map-link-button svg {
+    color: #fff; /* Icon color */
+}
+
+.map-link-button:hover {
+    background-color: #333;
+}
+
+/* Opening Hours Section */
+.opening-hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.opening-hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #ccc;
+}
+
+/* Payment Methods Section */
+.payment-methods-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid #333; /* Separator for payment methods */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.payment-tag {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    border: 1px solid #555;
+}
+
+/* Social Media Section */
+.social-media-icons {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #333; /* Separator */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.social-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #555;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-icon-wrapper:hover {
+    background-color: #333;
+    border-color: #ccc;
+}
+
+/* Contact Section */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.contact-item .contact-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #fff;
+}
