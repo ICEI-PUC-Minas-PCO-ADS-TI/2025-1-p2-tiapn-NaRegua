@@ -13,6 +13,14 @@ O diagrama de fluxo foi criado para ajudar a organizar as ideias antes de montar
 
 ![Diagrama de Fluxo](images/DiagramaFluxo.png)
 
+
+### Protótipo Interativo
+
+ Veja o protótipo no Figma:  
+[ Acessar no Figma](https://www.figma.com/file/6HH3mm79LVrUvsE6PxsAQN/Wireframes-Kit---Free-wireframing-Websites-and-SaaS-UI-UX--Community-?type=design&node-id=3102-2420)
+
+
+
 ## Wireframes
 
 O wireframe foi criado para dar uma visão clara de como a interface vai funcionar antes de investir tempo no design final. Ele ajuda a organizar os elementos da tela, definir a hierarquia das informações e garantir que a navegação faça sentido. É como um esboço que evita refação e facilita ajustes rápidos antes de partir para algo mais visual e detalhado
