@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!authToken) {
     console.log("Nenhum token de autenticação encontrado. Redirecionando para login...");
     alert("Você precisa estar logado para acessar esta página. Redirecionando para login...");
-    window.location.href = 'auth/login.html'; // Ajuste o caminho conforme sua estrutura
+    window.location.href = '../html/login.html'; // Ajuste o caminho conforme sua estrutura
     return;
   }
   console.log("Token de autenticação encontrado:", authToken);
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userName');
       alert('Você foi desconectado.');
-      window.location.href = 'auth/login.html'; // Ajuste o caminho
+      window.location.href = '../html/login.html'; // Ajuste o caminho
     });
   }
 
@@ -94,7 +94,7 @@ async function fetchAPISecured(endpoint, options = {}) {
     console.warn("Tentando fazer requisição segura sem token.");
     // Redirecionar para login se não houver token e a requisição for sensível
     alert("Sua sessão pode ter expirado. Por favor, faça login novamente.");
-    window.location.href = 'auth/login.html';
+    window.location.href = '../html/login.html';
     throw new Error("Token não encontrado para requisição segura");
   }
 
@@ -104,7 +104,7 @@ async function fetchAPISecured(endpoint, options = {}) {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userName');
       alert("Sua sessão expirou ou é inválida. Por favor, faça login novamente.");
-      window.location.href = 'auth/login.html';
+      window.location.href = '../html/login.html';
       throw new Error("Não autorizado");
     }
 
@@ -184,7 +184,7 @@ async function handleDeleteAccount() {
 
       localStorage.removeItem('authToken');
       localStorage.removeItem('userName');
-      window.location.href = 'auth/login.html'; // Ajuste o caminho
+      window.location.href = '../html/login.html'; // Ajuste o caminho
     } catch (error) {
       console.error("Erro ao excluir conta:", error.message);
       // A mensagem de erro específica já deve ter sido mostrada por fetchAPISecured,

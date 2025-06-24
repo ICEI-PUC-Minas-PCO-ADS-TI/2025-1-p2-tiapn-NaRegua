@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 alert(data.message || 'Cadastro realizado com sucesso!');
-                window.location.href = 'login.html'; // Redireciona para login após cadastro
+                window.location.href = '../html/login.html'; // Redireciona para login após cadastro
             } catch (error) {
                 alert(`Falha no cadastro: ${error.message}`);
                 console.error('Erro no cadastro:', error);
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 alert(data.message || 'Senha alterada com sucesso!');
-                window.location.href = 'login.html';
+                window.location.href = '../html/login.html';
             } catch (error) {
                 alert(`Falha ao recuperar senha: ${error.message}`);
                 console.error('Erro ao recuperar senha:', error);

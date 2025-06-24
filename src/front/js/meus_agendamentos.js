@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!authToken) {
         alert("Você precisa estar logado. Redirecionando para login...");
-        window.location.href = 'auth/login.html'; 
+        window.location.href = '../html/login.html'; 
         return;
     }
 
@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (voltarAgendarButton) {
         voltarAgendarButton.addEventListener('click', () => {
-            window.location.href = 'Agendamento.html'; // Página principal de agendamento
+            window.location.href = '../html/Agendamento.html'; // Página principal de agendamento
         });
     }
 
     if (verHistoricoButton) { // Evento para o novo botão
         verHistoricoButton.addEventListener('click', () => {
-            window.location.href = 'historico.html';
+            window.location.href = '../html/historico.html';
         });
     }
 
@@ -56,7 +56,7 @@ async function fetchAPISecuredGlobal(endpoint, options = {}) {
     if (token) { headers['Authorization'] = `Bearer ${token}`; }
     else {
         alert("Sessão inválida ou expirada. Faça login novamente.");
-        window.location.href = 'auth/login.html';
+        window.location.href = '../html/login.html';
         throw new Error("Token não encontrado");
     }
     try {
@@ -64,7 +64,7 @@ async function fetchAPISecuredGlobal(endpoint, options = {}) {
         if (response.status === 401 || response.status === 403) {
             localStorage.removeItem('authToken'); localStorage.removeItem('userName');
             alert("Sessão expirada ou inválida. Faça login novamente.");
-            window.location.href = 'auth/login.html';
+            window.location.href = '../html/login.html';
             throw new Error("Não autorizado");
         }
         let responseData = null;
@@ -93,7 +93,7 @@ async function handleDeleteAccountGlobal() {
             const result = await fetchAPISecuredGlobal('/usuarios/minha-conta', { method: 'DELETE' });
             alert(result?.message || 'Sua conta foi excluída com sucesso.');
             localStorage.removeItem('authToken'); localStorage.removeItem('userName');
-            window.location.href = 'auth/login.html';
+            window.location.href = '../html/login.html';
         } catch (error) {
             alert(`Erro ao excluir conta: ${error.message}`);
             if(delBtn) delBtn.disabled = false; if(logBtn) logBtn.disabled = false;

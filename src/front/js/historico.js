@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!authToken) {
         alert("Você precisa estar logado para ver seu histórico. Redirecionando para login...");
-        window.location.href = 'auth/login.html'; 
+        window.location.href = '../html/login.html'; 
         return;
     }
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('authToken');
             localStorage.removeItem('userName');
             alert('Você foi desconectado.');
-            window.location.href = 'auth/login.html'; 
+            window.location.href = '../html/login.html'; 
         });
     }
     
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (voltarMeusAgendamentosButton) {
         voltarMeusAgendamentosButton.addEventListener('click', () => {
-            window.location.href = 'meus_agendamentos.html'; // Link para a página de agendamentos ativos
+            window.location.href = '../html/meus_agendamentos.html'; // Link para a página de agendamentos ativos
         });
     }
 
@@ -50,7 +50,7 @@ async function fetchAPISecuredGlobalHistorico(endpoint, options = {}) {
     if (token) { headers['Authorization'] = `Bearer ${token}`; }
     else {
         alert("Sessão inválida ou expirada. Faça login novamente.");
-        window.location.href = 'auth/login.html';
+        window.location.href = '../html/login.html';
         throw new Error("Token não encontrado");
     }
     try {
@@ -58,7 +58,7 @@ async function fetchAPISecuredGlobalHistorico(endpoint, options = {}) {
         if (response.status === 401 || response.status === 403) {
             localStorage.removeItem('authToken'); localStorage.removeItem('userName');
             alert("Sessão expirada ou inválida. Faça login novamente.");
-            window.location.href = 'auth/login.html';
+            window.location.href = '../html/login.html';
             throw new Error("Não autorizado");
         }
         let responseData = null;
@@ -87,7 +87,7 @@ async function handleDeleteAccountGlobalHistorico() {
             const result = await fetchAPISecuredGlobalHistorico('/usuarios/minha-conta', { method: 'DELETE' });
             alert(result?.message || 'Sua conta foi excluída com sucesso.');
             localStorage.removeItem('authToken'); localStorage.removeItem('userName');
-            window.location.href = 'auth/login.html';
+            window.location.href = '../html/login.html';
         } catch (error) {
             alert(`Erro ao excluir conta: ${error.message}`);
             if(delBtn) delBtn.disabled = false; if(logBtn) logBtn.disabled = false;
