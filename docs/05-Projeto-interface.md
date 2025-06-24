@@ -52,3 +52,11 @@ Tela de recuperação de senha, utlizada para o usário consiga redefinir a sua 
 Tela do perfil, utilizada para que o usuário consiga ver os seus dados, agendamentos próximos e o histórico de agendamentos que já foram realizados
 
 ![Perfil](images/TelaPerfil.png)
+
+
+
+Tela do Administrador, Esta é uma página de administrador desenvolvida para gerenciar usuários, visualizar informações do sistema e realizar ações administrativas como edição, exclusão e controle de acesso. O painel possui uma interface intuitiva, com navegação simplificada e recursos essenciais para administração eficiente da plataforma.
+
+
+![Administrador](https://github.com/user-attachments/assets/69f65dcd-9bee-437c-9d0b-b851d3bab7f2)
+
