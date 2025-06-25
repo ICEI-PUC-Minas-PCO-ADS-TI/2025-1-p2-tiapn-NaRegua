@@ -1,0 +1,206 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis globais de cor */
+:root {
+    --cor-fundo: #21272a; /* CoolGray/90 */
+    --cor-clara: #f2f4f8; /* CoolGray/10 */
+    --cor-branca: #ffffff; /* Default/White */
+
+    /* Tons de cinza (CoolGray) */
+    --cinza-100: #121619; /* CoolGray/100 */
+    --cinza-80: #343a3f; /* CoolGray/80 */
+    --cinza-70: #4d5358; /* CoolGray/70 */
+    --cinza-50: #878d96; /* CoolGray/50 */
+    --cinza-30: #c1c7cd; /* CoolGray/30 */
+
+    /* Gradiente */
+    --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--cor-fundo); /* Aplicando cor de fundo */
+    font-family: "Poppins", sans-serif; /* Adicionando a fonte Poppins */
+}
+
+main.container {
+    flex-grow: 1;
+}
+
+.header-site {
+    background-color: var(--cinza-100); /* Exemplo: Usando cinza mais escuro para o header */
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.logo-navbar {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.navbar-brand {
+    color: var(--cor-branca) !important; /* Cor branca para a marca */
+    font-weight: bold;
+}
+
+.nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-item .nav-link {
+    color: var(--cor-branca); /* Cor branca para links da navbar */
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.nav-item .nav-link.active {
+    color: var(--cor-branca);
+}
+
+.nav-item .nav-link:hover {
+    color: #ff0f07; /* Mantido o vermelho original para hover */
+    border-bottom-color: #ff0f07; /* Mantido o vermelho original para hover */
+}
+
+.nav-item .nav-link.active:hover {
+    color: var(--cor-branca);
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 768px) {
+    .header-site {
+        padding: 0.5rem 0;
+    }
+    .nav-item { /* Unificado */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.product-detail-card {
+    background-color: var(--cor-branca); /* Cor branca para o card de produto */
+    border-radius: 0.5rem;
+    border: 1px solid var(--cinza-30); /* Borda cinza clara para o card */
+}
+
+/* Container da imagem para posicionar o botão de favorito */
+.product-image-container {
+    position: relative; /* Necessário para posicionar o botão de favorito absolutamente dentro dele */
+}
+
+.product-image-detail {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.product-name-detail {
+    color: var(--cinza-80); /* Cor cinza mais escura para o nome do produto */
+    font-weight: 600;
+}
+
+.product-description-detail {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--cinza-70); /* Cor cinza para a descrição */
+}
+
+.product-price-detail {
+    color: var(--cinza-100); /* Cor cinza mais escura para o preço */
+    font-weight: bold;
+}
+
+.product-stock-detail {
+    color: var(--cinza-50); /* Cor cinza para o estoque */
+}
+
+.product-info-section .fw-bold.fs-5 {
+    color: var(--cinza-80); /* Cor cinza mais escura para títulos de seção */
+}
+
+hr.my-4 {
+    border-top: 1px solid var(--cinza-30); /* Cor cinza clara para a linha horizontal */
+}
+
+/* === Estilos para Favorito, Quantidade e Carrinho === */
+
+
+
+.favorite-icon-detail {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #dc3545; /* Cor do coração (vermelho) - NÃO MUDADO */
+    border: 1px solid #dc3545; /* NÃO MUDADO */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0; /* Remover padding padrão do botão */
+} 
+
+.favorite-icon-detail:hover,
+.favorite-icon-detail.favorited {
+    background-color: #dc3545; /* NÃO MUDADO */
+    color: white; /* NÃO MUDADO */
+}
+
+.favorite-icon-detail.favorited .fa-heart {
+    font-weight: 900; /* Estilo de coração preenchido (fas) */
+}
+
+.quantity-input-detail {
+    width: 70px; /* Largura menor para o campo de quantidade */
+    text-align: center;
+    border-color: var(--cinza-50); /* Cor da borda para o input de quantidade */
+    color: var(--cinza-80); /* Cor do texto do input de quantidade */
+}
+
+.add-to-cart-icon-detail {
+    font-size: 0.9rem; /* Tamanho do texto do botão */
+    padding: 0.5rem 1rem; /* Padding do botão */
+    /* Cores dos botões de ação (carrinho, like) */
+}
+
+.add-to-cart-icon-detail i {
+    font-size: 1rem; /* Tamanho do ícone de carrinho */
+}
+
+/* Fontes */
+@font-face {
+    font-family: "Poppins";
+    src: url("./fonts/Poppins.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pacifico";
+    src: url("./fonts/Pacifico.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

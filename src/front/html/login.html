@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="icon" type="image/png" href="/src/front/icons/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NaRégua - Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box login">
+            <form action="">
+                <div class="logo-container">
+                    <img src="../icons/logo.png" alt="Logo da Empresa" class="logo-img">
+                    <span class="logo-text" data-text="NaRégua">NaRégua</span>
+                </div>
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Usuário" required>
+                    <img class="icon" src="../icons/user-circle.png" alt="user-circle">
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Senha" required>
+                    <img class="icon" src="../icons/lock.png" alt="lock">
+                </div>
+                <div class="redirect-link">
+                    <a href="../html/recuperar-senha.html">Esqueceu sua senha?</a>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div class="form-box cadastro">
+            <form action="">
+                <div class="logo-container">
+                    <img src="../icons/logo.png" alt="Logo da Empresa" class="logo-img">
+                    <span class="logo-text" data-text="NaRégua">NaRégua</span>
+                </div>
+                <h1>Cadastro</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Usuário" required>
+                    <img class="icon" src="../icons/user-circle.png" alt="user-circle">
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <img class="icon" src="../icons/mail.png" alt="mail">
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Senha" required>
+                    <img class="icon" src="../icons/lock.png" alt="lock">
+                </div>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>Seja bem-vindo!</h1>
+                <p>Novo por aqui? Cadastre-se.</p>
+                <button class="btn register-btn">Cadastrar</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>Bom te ver de volta!</h1>
+                <p>Conta criada? Acesse aqui.</p>
+                <button class="btn login-btn">Login</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/auth.js" defer></script>
+</body>
+
+</html>
