@@ -16,7 +16,7 @@ function Header() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">Home</a>
+              <a className="nav-link" href="../../front/html/Agendamento.html">Home</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Contato</a>
@@ -25,7 +25,7 @@ function Header() {
               <a className="nav-link" href="#">Informações</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Agende Seu Horário</a>
+              <a className="nav-link" href="../../front/html/Agendamento.html">Agende Seu Horário</a>
             </li>
           </ul>
         </div>
