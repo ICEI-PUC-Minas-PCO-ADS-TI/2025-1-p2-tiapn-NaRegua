@@ -119,7 +119,7 @@ Atualizado em: 08/05/2024
 | Guilherme     | Realização do Diagrama de Fluxo do Usuário     | 01/05/2025     | 08/05/2025 | ✔️    | 01/05/2025      |
 | Juan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 | Ivan          | Criação do banco de dados no MySQL Workbench   | 28/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
-| Erik          |                                                |                |            |        |                 |
+| Erik          | Criação dos wireframes  | 27/04/2025     | 08/05/2025 | ✔️    | 27/04/2025      |
 | Gustavo       | Preenchimento do Template - Projeto Processo de Negócios ( seção 4 )   | 30/04/2025     | 08/05/2025 | ✔️    | 08/05/2025      |
 
 
