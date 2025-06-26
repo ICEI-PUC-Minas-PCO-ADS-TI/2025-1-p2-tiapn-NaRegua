@@ -1,6 +1,6 @@
-// src/front/Agendamento.js
+// src/front/js/Agendamento.js
 
-const API_URL = 'http://localhost:3000/api'; // URL base COMPLETA da API
+const API_URL = 'http://localhost:3000/api';
 let currentStep = 1;
 let agendamentoData = {
   barbeiroId: null, servicoId: null, data: null, horario: null,
@@ -12,44 +12,41 @@ let barbeiroSelect, corteSelect, horarioSelect, dataSelecionadaInput;
 let daysContainer, monthYearHeader, prevMonthButton, nextMonthButton;
 let modalElement, modalInstanceBootstrap;
 let btnVoltar, btnProximo;
-let userInfoDiv, logoutBtn, deleteAccountBtn; // Adicionado deleteAccountBtn
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("DOM completamente carregado e parseado.");
-
   const authToken = localStorage.getItem('authToken');
   const userName = localStorage.getItem('userName');
+  const userMenuContainer = document.getElementById('userMenuContainer');
 
-  userInfoDiv = document.getElementById('userInfo');
-  logoutBtn = document.getElementById('logoutButton');
-  deleteAccountBtn = document.getElementById('deleteAccountButton'); // Seleciona o novo botão
-
-  if (!authToken) {
-    console.log("Nenhum token de autenticação encontrado. Redirecionando para login...");
+  // --- LÓGICA DO MENU DE USUÁRIO (NOVO) ---
+  if (!authToken || !userMenuContainer) {
     alert("Você precisa estar logado para acessar esta página. Redirecionando para login...");
-    window.location.href = '../html/login.html'; // Ajuste o caminho conforme sua estrutura
+    window.location.href = '../html/login.html';
     return;
   }
-  console.log("Token de autenticação encontrado:", authToken);
 
-  if (userInfoDiv && userName) {
-    userInfoDiv.textContent = `Bem-vindo(a), ${userName}!`;
+  const userDropdownToggle = userMenuContainer.querySelector('#navbarUserDropdown');
+  const logoutBtn = userMenuContainer.querySelector('#logoutButton');
+  const deleteAccountBtn = userMenuContainer.querySelector('#deleteAccountButton');
+
+  if (userDropdownToggle && userName) {
+    userDropdownToggle.textContent = `Olá, ${userName}`;
   }
+
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userName');
       alert('Você foi desconectado.');
-      window.location.href = '../html/login.html'; // Ajuste o caminho
+      window.location.href = '../html/login.html';
     });
   }
 
-  // Event listener para o botão de excluir conta
   if (deleteAccountBtn) {
     deleteAccountBtn.addEventListener('click', handleDeleteAccount);
   }
 
-  // Seletores do Modal de Agendamento
+  // --- LÓGICA DE AGENDAMENTO (EXISTENTE) ---
   barbeiroSelect = document.getElementById('barbeiroSelect');
   corteSelect = document.getElementById('corteSelect');
   horarioSelect = document.getElementById('horarioSelect');
@@ -64,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (modalElement) {
     modalInstanceBootstrap = bootstrap.Modal.getOrCreateInstance(modalElement);
+    modalElement.addEventListener('hidden.bs.modal', resetModal);
   }
 
   if (barbeiroSelect) carregarBarbeiros();
@@ -73,29 +71,39 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalElement) {
     showStep(currentStep);
     updateButtonVisibility();
-    modalElement.addEventListener('hidden.bs.modal', resetModal);
-  } else {
-    console.warn("Elemento do modal principal (staticBackdrop) não encontrado.");
   }
 
   if (barbeiroSelect) barbeiroSelect.addEventListener('change', handleSelecaoPrincipal);
   if (corteSelect) corteSelect.addEventListener('change', handleSelecaoPrincipal);
 });
 
+// A função handleDeleteAccount e as outras funções (fetch, etc.) permanecem as mesmas
+async function handleDeleteAccount() {
+  const userNameForPrompt = localStorage.getItem('userName') || 'usuário';
+  if (window.confirm(`ATENÇÃO, ${userNameForPrompt}!\n\nVocê tem CERTEZA que deseja excluir sua conta permanentemente?\n\nTODOS os seus dados, incluindo agendamentos, serão perdidos.`)) {
+    const deleteBtnInsideDropdown = document.getElementById('deleteAccountButton');
+    if (deleteBtnInsideDropdown) deleteBtnInsideDropdown.disabled = true;
+    try {
+      await fetchAPISecured('/usuarios/minha-conta', { method: 'DELETE' });
+      alert('Sua conta foi excluída com sucesso.');
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('userName');
+      window.location.href = '../html/login.html';
+    } catch (error) {
+      if (deleteBtnInsideDropdown) deleteBtnInsideDropdown.disabled = false;
+    }
+  }
+}
+
 async function fetchAPISecured(endpoint, options = {}) {
   const token = localStorage.getItem('authToken');
-  const headers = {
-    'Content-Type': 'application/json',
-    ...options.headers,
-  };
+  const headers = { 'Content-Type': 'application/json', ...options.headers };
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   } else {
-    console.warn("Tentando fazer requisição segura sem token.");
-    // Redirecionar para login se não houver token e a requisição for sensível
     alert("Sua sessão pode ter expirado. Por favor, faça login novamente.");
     window.location.href = '../html/login.html';
-    throw new Error("Token não encontrado para requisição segura");
+    throw new Error("Token não encontrado");
   }
 
   try {
@@ -103,7 +111,7 @@ async function fetchAPISecured(endpoint, options = {}) {
     if (response.status === 401 || response.status === 403) {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userName');
-      alert("Sua sessão expirou ou é inválida. Por favor, faça login novamente.");
+      alert("Sua sessão expirou ou é inválida. Faça login novamente.");
       window.location.href = '../html/login.html';
       throw new Error("Não autorizado");
     }
@@ -111,25 +119,16 @@ async function fetchAPISecured(endpoint, options = {}) {
     let responseData = null;
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("application/json")) {
-      responseData = await response.json().catch(e => {
-        console.error("Erro ao parsear JSON da resposta:", e);
-        throw new Error("Resposta do servidor não é JSON válido, mesmo com content-type JSON.");
-      });
+      responseData = await response.json().catch(e => { throw new Error("JSON inválido."); });
     } else {
       const textResponse = await response.text();
       if (!response.ok) throw new Error(textResponse || `Erro HTTP ${response.status}`);
-      // Se não for JSON e OK, pode não haver dados a retornar ou pode ser um 204 No Content
-      // Se for 204, responseData permanecerá null, o que é esperado.
     }
-
-    if (!response.ok) {
-      // Prioriza a mensagem do JSON, se houver
-      throw new Error(responseData && responseData.message ? responseData.message : `Erro HTTP ${response.status}`);
-    }
+    if (!response.ok) { throw new Error(responseData?.message || `Erro HTTP ${response.status}`); }
     return responseData;
   } catch (error) {
     console.error(`Erro em fetchAPISecured para ${endpoint}:`, error.message);
-    if (error.message !== "Não autorizado" && error.message !== "Token não encontrado para requisição segura") {
+    if (error.message !== "Não autorizado" && error.message !== "Token não encontrado") {
       alert(`Erro na comunicação (segura): ${error.message}`);
     }
     throw error;
@@ -141,20 +140,13 @@ async function fetchAPIPublic(endpoint, options = {}) {
     const response = await fetch(`${API_URL}${endpoint}`, options);
     let responseData = null;
     const contentType = response.headers.get("content-type");
-
     if (contentType && contentType.includes("application/json")) {
-      responseData = await response.json().catch(e => {
-        console.error("Erro ao parsear JSON da resposta pública:", e);
-        throw new Error("Resposta do servidor (pública) não é JSON válido.");
-      });
+      responseData = await response.json().catch(e => { throw new Error("JSON inválido."); });
     } else {
       const textResponse = await response.text();
       if (!response.ok) throw new Error(textResponse || `Erro HTTP ${response.status}`);
     }
-
-    if (!response.ok) {
-      throw new Error(responseData && responseData.message ? responseData.message : `Erro HTTP ${response.status}`);
-    }
+    if (!response.ok) { throw new Error(responseData?.message || `Erro HTTP ${response.status}`); }
     return responseData;
   } catch (error) {
     console.error(`Erro em fetchAPIPublic para ${endpoint}:`, error.message);
@@ -163,62 +155,23 @@ async function fetchAPIPublic(endpoint, options = {}) {
   }
 }
 
-// Nova função para lidar com a exclusão da conta
-async function handleDeleteAccount() {
-  const userNameForPrompt = localStorage.getItem('userName') || 'usuário';
-  const confirmDelete = window.confirm(
-    `ATENÇÃO, ${userNameForPrompt}!\n\n` +
-    `Você tem CERTEZA que deseja excluir sua conta permanentemente?\n\n` +
-    `TODOS os seus dados, incluindo agendamentos, serão perdidos e esta ação NÃO PODE SER DESFEITA.`
-  );
-
-  if (confirmDelete) {
-    if (deleteAccountBtn) deleteAccountBtn.disabled = true;
-    if (logoutBtn) logoutBtn.disabled = true;
-    try {
-      console.log("Usuário confirmou a exclusão da conta.");
-      const result = await fetchAPISecured('/usuarios/minha-conta', { method: 'DELETE' });
-      // Se a resposta for 204 No Content, result será null, o que é ok.
-      // Se houver uma mensagem JSON, ela estará em result.message
-      alert(result?.message || 'Sua conta foi excluída com sucesso.');
-
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('userName');
-      window.location.href = '../html/login.html'; // Ajuste o caminho
-    } catch (error) {
-      console.error("Erro ao excluir conta:", error.message);
-      // A mensagem de erro específica já deve ter sido mostrada por fetchAPISecured,
-      // exceto se o erro ocorreu antes da chamada fetch (ex: token não encontrado).
-      // Se o erro foi "Não autorizado", o usuário já foi redirecionado.
-      // Reabilitar botões se a exclusão falhou por um motivo que não deslogou o usuário.
-      if (error.message !== "Não autorizado" && error.message !== "Token não encontrado para requisição segura") {
-        if (deleteAccountBtn) deleteAccountBtn.disabled = false;
-        if (logoutBtn) logoutBtn.disabled = false;
-      }
-    }
-  } else {
-    console.log("Usuário cancelou a exclusão da conta.");
-  }
-}
-
-
 async function carregarBarbeiros() {
   try {
     const barbeiros = await fetchAPIPublic('/barbeiros');
-    if (!barbeiroSelect) { console.error("barbeiroSelect não definido em carregarBarbeiros"); return; }
+    if (!barbeiroSelect) { return; }
     barbeiroSelect.innerHTML = '<option value="">Selecione um barbeiro</option>';
     barbeiros.forEach(barbeiro => {
       const option = document.createElement('option');
       option.value = barbeiro.id; option.textContent = barbeiro.nome;
       barbeiroSelect.appendChild(option);
     });
-  } catch (error) { /* erro já tratado em fetchAPIPublic */ }
+  } catch (error) { /* erro já alertado em fetchAPIPublic */ }
 }
 
 async function carregarServicos() {
   try {
     const servicos = await fetchAPIPublic('/servicos');
-    if (!corteSelect) { console.error("corteSelect não definido em carregarServicos"); return; }
+    if (!corteSelect) { return; }
     corteSelect.innerHTML = '<option value="">Selecione um serviço</option>';
     servicos.forEach(servico => {
       const option = document.createElement('option');
@@ -230,9 +183,9 @@ async function carregarServicos() {
 }
 
 async function carregarHorariosDisponiveis(barbeiroId, data, servicoId) {
-  if (!horarioSelect) { console.error("horarioSelect não definido"); return; }
+  if (!horarioSelect) { return; }
   if (!barbeiroId || !data || !servicoId) {
-    horarioSelect.innerHTML = '<option value="">Complete as seleções anteriores</option>'; return;
+    horarioSelect.innerHTML = '<option value="">Complete as seleções</option>'; return;
   }
   horarioSelect.innerHTML = '<option value="">Carregando...</option>';
   try {
@@ -260,8 +213,6 @@ function showStep(stepNumber) {
   const currentStepDiv = document.getElementById(`step${stepNumber}`);
   if (currentStepDiv) {
     currentStepDiv.classList.remove('d-none');
-  } else {
-    console.error("Div da etapa", stepNumber, "não encontrada!");
   }
   updateButtonVisibility();
 }
@@ -282,14 +233,12 @@ async function nextStep() {
   if (currentStep === 3 && (!dataSelecionadaInput || !dataSelecionadaInput.value)) {
     alert("Selecione uma data."); return;
   }
-
   if (currentStep === 3) {
     agendamentoData.barbeiroId = barbeiroSelect.value;
     agendamentoData.servicoId = corteSelect.value;
     agendamentoData.data = dataSelecionadaInput.value;
     await carregarHorariosDisponiveis(agendamentoData.barbeiroId, agendamentoData.data, agendamentoData.servicoId);
   }
-
   if (currentStep < 4) {
     currentStep++;
     showStep(currentStep);
@@ -298,10 +247,8 @@ async function nextStep() {
     if (!agendamentoData.horario) {
       alert("Selecione um horário."); return;
     }
-
     agendamentoData.barbeiroNome = barbeiroSelect.options[barbeiroSelect.selectedIndex].text;
     agendamentoData.servicoNome = corteSelect.options[corteSelect.selectedIndex].text;
-
     try {
       if (btnProximo) { btnProximo.disabled = true; btnProximo.textContent = 'Enviando...'; }
       const payload = {
@@ -310,11 +257,11 @@ async function nextStep() {
         data: agendamentoData.data,
         horario: agendamentoData.horario,
       };
-      const resultado = await fetchAPISecured('/agendamentos', { method: 'POST', body: JSON.stringify(payload) });
+      await fetchAPISecured('/agendamentos', { method: 'POST', body: JSON.stringify(payload) });
       alert(`Agendamento confirmado!\nBarbeiro: ${agendamentoData.barbeiroNome}\nServiço: ${agendamentoData.servicoNome}\nData: ${agendamentoData.data}\nHorário: ${agendamentoData.horario}`);
       resetModal();
       if (modalInstanceBootstrap) modalInstanceBootstrap.hide();
-    } catch (error) { /* erro já alertado em fetchAPISecured */ }
+    } catch (error) { /* erro já alertado */ }
     finally {
       if (btnProximo) { btnProximo.disabled = false; updateButtonVisibility(); }
     }
@@ -338,13 +285,12 @@ function resetModal() {
   agendamentoData = { barbeiroId: null, servicoId: null, data: null, horario: null, barbeiroNome: null, servicoNome: null };
   currentStep = 1;
   if (modalElement) {
-    showStep(currentStep); // Mostra a primeira etapa
-    updateButtonVisibility(); // Garante que os botões estejam corretos
+    showStep(currentStep);
+    updateButtonVisibility();
   }
 }
 
 let calendarioDate = new Date();
-
 function initializeCalendar() {
   renderCalendar();
   if (prevMonthButton && nextMonthButton) {
@@ -361,14 +307,11 @@ function renderCalendar() {
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
   const today = new Date(); today.setHours(0, 0, 0, 0);
-
   for (let i = 0; i < firstDayOfMonth; i++) daysContainer.innerHTML += "<div></div>";
-
   for (let d = 1; d <= lastDateOfMonth; d++) {
     const currentDateBeingRendered = new Date(year, month, d);
     const div = document.createElement("div"); div.textContent = d;
     const dataFormatadaParaComparacao = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-
     if (currentDateBeingRendered < today) {
       div.classList.add('past-day');
     } else {
@@ -396,10 +339,9 @@ function handleSelecaoPrincipal() {
   const barbeiroId = barbeiroSelect.value;
   const servicoId = corteSelect.value;
   const data = dataSelecionadaInput.value;
-
   if (barbeiroId && servicoId && data && (currentStep === 3 || currentStep === 4)) {
     carregarHorariosDisponiveis(barbeiroId, data, servicoId);
   } else if (currentStep === 3 || currentStep === 4) {
-    if (horarioSelect) horarioSelect.innerHTML = '<option value="">Complete as seleções anteriores</option>';
+    if (horarioSelect) horarioSelect.innerHTML = '<option value="">Complete as seleções</option>';
   }
 }

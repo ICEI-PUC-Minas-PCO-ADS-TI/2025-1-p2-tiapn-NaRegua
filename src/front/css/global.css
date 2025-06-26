@@ -1,3 +1,5 @@
+/* src/front/css/global.css */
+
 * {
   margin: 0;
   padding: 0;
@@ -33,31 +35,43 @@
 }
 
 :root {
-  /* Cores base */
-  --cor-fundo: #21272a; /* CoolGray/90 */
-  --cor-clara: #f2f4f8; /* CoolGray/10 */
-  --cor-branca: #ffffff; /* Default/White */
-  --cinza-100: #121619; /* CoolGray/100 */
-  --cinza-80: #343a3f; /* CoolGray/80 */
-  --cinza-70: #4d5358; /* CoolGray/70 */
-  --cinza-50: #878d96; /* CoolGray/50 */
-  --cinza-30: #c1c7cd;  /* CoolGray/30 */
-  --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff); /* Gradiente */
+  /* Cores base (Tema Escuro Principal) */
+  --cor-fundo: #21272a;
+  --cor-clara: #f2f4f8;
+  --cor-branca: #ffffff;
+  --cinza-100: #121619;
+  --cinza-80: #343a3f;
+  --cinza-70: #4d5358;
+  --cinza-50: #878d96;
+  --cinza-30: #c1c7cd;
+  --gradiente-azul-vermelho: linear-gradient(to right, #ff0000, #0000ff);
+  --cor-vermelha-perigo: #dc3545;
+  --cor-vermelha-perigo-hover: #c82333;
+  --cor-sucesso: #198754;
+  --cor-aviso: #ffc107;
 
   /* Transição */
   --tran-05: all 0.5s ease;
   --tran-03: all 0.3s ease;
   --tran-02: all 0.2s ease;
 
-  /* Cores momentâneas */
-  --primary-color: #0E4BF1;
-  --panel-color: #FFF;
-  --text-color: #000;
-  --black-light-color: #707070;
-  --border-color: #e6e5e5;
-  --toggle-color: #DDD;
-  --box1-color: #4DA3FF;
-  --box2-color: #FFE6AC;
-  --box3-color: #E7D1FC;
-  --title-icon-color: #fff;
+  /* === Cores do Painel de Admin (AGORA COM TEMA ESCURO) === */
+  --primary-color: #4DA3FF;
+  /* Azul para destaque no tema escuro */
+  --panel-color: var(--cor-fundo);
+  /* Fundo do painel agora é o fundo principal */
+  --text-color: var(--cor-clara);
+  /* Cor do texto principal agora é clara */
+  --black-light-color: var(--cinza-30);
+  /* Cor para textos secundários */
+  --border-color: var(--cinza-80);
+  /* Cor para bordas sutis */
+  --toggle-color: var(--cinza-70);
+  /* Cor do switch de modo (se houver) */
+  --box1-color: var(--cinza-80);
+  /* Cor das caixas de resumo */
+  --box2-color: var(--cinza-80);
+  --box3-color: var(--cinza-80);
+  --title-icon-color: var(--cor-branca);
+  /* Cor do ícone nos títulos */
 }
