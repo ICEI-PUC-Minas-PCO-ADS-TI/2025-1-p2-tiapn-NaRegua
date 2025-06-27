@@ -77,6 +77,16 @@ As tabelas a seguir apresentam os requisitos funcionais e não funcionais que de
 |RNF-007| Os padrões estabelecidos pela empresa (Cliente). | ALTA | 
 |RNF-008| Integração o sistema deve se comunicar com outras aplicações. |  MÉDIA | 
 
+## Teste Software
+
+|ID     | Descrição do Requisito  |Prioridade |
+|-------|-------------------------|----|
+|RF-001| A aplicação deve apresentar, na página principal, a funcionalidade de cadastro de usuários para que estes consigam criar e gerenciar seu perfil. | ALTA | 
+|RF-002| A aplicação deve possuir opção de fazer login, sendo o login o endereço de e-mail ou CPF e a senha. | ALTA |
+|RF-003| A aplicação deve possuir opção de Recuperar senha. | ALTA | 
+|RF-004| A aplicação deve possuir opção de tela Home, Agendamento, contendo os horários e dias disponíveis. | ALTA | 
+|RF-005| A aplicação deve possuir opção dos produtos disponíveis. | ALTA | 
+|RF-006| A aplicação deve possuir opção dos agendamentos já realizados ou Ativos. | ALTA | 
 
 
 ## Restrições
