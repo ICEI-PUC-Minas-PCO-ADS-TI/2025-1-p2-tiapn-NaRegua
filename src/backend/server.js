@@ -52,9 +52,7 @@ const autenticarAdmin = (req, res, next) => {
     }
 };
 
-// --- ROTAS DA API ---
-
-// ROTAS DE USUÁRIO
+// --- ROTAS DE USUÁRIO ---
 app.post('/api/usuarios/registrar', async (req, res) => {
     const { nome, cpf, email, senha } = req.body;
     if (!nome || !cpf || !email || !senha) {
@@ -109,8 +107,34 @@ app.post('/api/usuarios/login', async (req, res) => {
     }
 });
 
+app.post('/api/usuarios/recuperar-senha', async (req, res) => {
+    const { CPF, novaSenha } = req.body;
+    if (!CPF || !novaSenha) {
+        return res.status(400).json({ message: 'CPF e Nova Senha são obrigatórios.' });
+    }
+    const cpfLimpo = String(CPF).replace(/\D/g, '');
+    let connection;
+    try {
+        connection = await mysql.createConnection(dbConfig);
+        const [usuarios] = await connection.execute('SELECT id FROM usuarios WHERE cpf = ?', [cpfLimpo]);
+        if (usuarios.length === 0) {
+            return res.status(404).json({ message: 'CPF não encontrado.' });
+        }
+        const salt = await bcrypt.genSalt(10);
+        const senhaHash = await bcrypt.hash(novaSenha, salt);
+        await connection.execute('UPDATE usuarios SET senha_hash = ? WHERE cpf = ?', [senhaHash, cpfLimpo]);
+        res.json({ message: 'Senha alterada com sucesso!' });
+    } catch (error) {
+        console.error("Erro em /api/usuarios/recuperar-senha:", error);
+        res.status(500).json({ message: 'Erro interno ao recuperar senha.', error: error.message });
+    } finally {
+        if (connection) await connection.end();
+    }
+});
+
 app.delete('/api/usuarios/minha-conta', autenticarToken, async (req, res) => {
     const usuarioId = req.user.userId;
+    console.log(`--- REQUISIÇÃO RECEBIDA: Excluir conta do usuário ID: ${usuarioId} ---`);
     if (!usuarioId) {
         return res.status(400).json({ message: 'ID do usuário não encontrado no token.' });
     }
@@ -118,23 +142,27 @@ app.delete('/api/usuarios/minha-conta', autenticarToken, async (req, res) => {
     try {
         connection = await mysql.createConnection(dbConfig);
         await connection.beginTransaction();
+        console.log(`Executando DELETE na tabela 'usuarios' para o ID: ${usuarioId}`);
         const [result] = await connection.execute('DELETE FROM usuarios WHERE id = ?', [usuarioId]);
         if (result.affectedRows === 0) {
             await connection.rollback();
+            console.log(`!!-> ERRO: Usuário com ID ${usuarioId} não foi encontrado para exclusão.`);
             return res.status(404).json({ message: 'Usuário não encontrado para exclusão.' });
         }
         await connection.commit();
+        console.log(`SUCESSO: Usuário com ID ${usuarioId} excluído.`);
         res.status(200).json({ message: 'Sua conta e todos os dados associados foram excluídos com sucesso.' });
     } catch (error) {
         if (connection) await connection.rollback();
-        console.error("Erro em /api/usuarios/minha-conta:", error);
+        console.error("!!-> ERRO CRÍTICO AO EXCLUIR CONTA:", error);
         res.status(500).json({ message: 'Erro interno ao excluir sua conta.', error: error.message });
     } finally {
         if (connection) await connection.end();
+        console.log(`--- FIM DA REQUISIÇÃO DE EXCLUSÃO ---`);
     }
 });
 
-// ROTAS PÚBLICAS
+// --- ROTAS PÚBLICAS ---
 app.get('/api/barbeiros', async (req, res) => {
     let connection;
     try {
@@ -337,44 +365,24 @@ app.post('/api/reservas', autenticarToken, async (req, res) => {
 });
 
 app.get('/api/meus-agendamentos/ativos', autenticarToken, async (req, res) => {
-    console.log("\n--- REQUISIÇÃO RECEBIDA: /api/meus-agendamentos/ativos ---");
     const usuarioId = req.user.userId;
-    console.log(`1. Buscando agendamentos para o usuário ID: ${usuarioId}`);
-
     let connection;
     try {
-        console.log("2. Tentando conectar ao banco de dados...");
         connection = await mysql.createConnection(dbConfig);
-        console.log("3. Conexão com o banco de dados bem-sucedida.");
-
         const query = `
-            SELECT 
-                ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento,
-                s.nome as nome_servico, s.duracao_minutos, s.preco as preco_servico,
-                b.nome as nome_barbeiro, ag.observacoes
+            SELECT ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento, s.nome as nome_servico, s.duracao_minutos, s.preco as preco_servico, b.nome as nome_barbeiro, ag.observacoes
             FROM agendamentos ag
             JOIN servicos s ON ag.servico_id = s.id
             JOIN barbeiros b ON ag.barbeiro_id = b.id
-            WHERE ag.usuario_id = ? 
-            AND STR_TO_DATE(CONCAT(ag.data_agendamento, ' ', ag.hora_agendamento), '%Y-%m-%d %H:%i:%s') >= NOW()
+            WHERE ag.usuario_id = ? AND STR_TO_DATE(CONCAT(ag.data_agendamento, ' ', ag.hora_agendamento), '%Y-%m-%d %H:%i:%s') >= NOW()
             ORDER BY ag.data_agendamento ASC, ag.hora_agendamento ASC;
         `;
-        console.log("4. Executando a query SQL no banco...");
         const [agendamentos] = await connection.execute(query, [usuarioId]);
-        console.log(`5. Query executada com sucesso. Encontrados ${agendamentos.length} agendamentos.`);
-
-        console.log("6. Enviando resposta JSON para o frontend.");
         res.json(agendamentos);
-
     } catch (error) {
-        console.error("!!-> ERRO na rota /meus-agendamentos/ativos:", error);
         res.status(500).json({ message: 'Erro interno ao buscar seus agendamentos ativos.', error: error.message });
     } finally {
-        if (connection) {
-            await connection.end();
-            console.log("7. Conexão com o banco de dados fechada.");
-        }
-        console.log("--- FIM DA REQUISIÇÃO: /api/meus-agendamentos/ativos ---\n");
+        if (connection) await connection.end();
     }
 });
 
@@ -454,7 +462,9 @@ app.get('/api/admin/agendamentos', [autenticarToken, autenticarAdmin], async (re
         const query = `
             SELECT ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento, ag.nome_cliente, u.email as email_cliente, s.nome as nome_servico, b.nome as nome_barbeiro
             FROM agendamentos ag
-            JOIN usuarios u ON ag.usuario_id = u.id JOIN servicos s ON ag.servico_id = s.id JOIN barbeiros b ON ag.barbeiro_id = b.id
+            LEFT JOIN usuarios u ON ag.usuario_id = u.id
+            LEFT JOIN servicos s ON ag.servico_id = s.id
+            LEFT JOIN barbeiros b ON ag.barbeiro_id = b.id
             ORDER BY ag.data_agendamento DESC, ag.hora_agendamento DESC LIMIT 100;
         `;
         const [agendamentos] = await connection.execute(query);
@@ -466,6 +476,7 @@ app.get('/api/admin/agendamentos', [autenticarToken, autenticarAdmin], async (re
             kpis: { totalAgendamentos: total_agendamentos, totalUsuarios: total_usuarios, totalProdutos: total_produtos }
         });
     } catch (error) {
+        console.error('Erro ao buscar dados do dashboard (admin):', error);
         res.status(500).json({ message: 'Erro interno ao buscar dados do dashboard.' });
     } finally {
         if (connection) await connection.end();
@@ -486,6 +497,7 @@ app.get('/api/admin/reservas', [autenticarToken, autenticarAdmin], async (req, r
         const [reservas] = await connection.execute(query);
         res.json(reservas);
     } catch (error) {
+        console.error('Erro ao buscar reservas de produtos (admin):', error);
         res.status(500).json({ message: 'Erro interno ao buscar reservas.' });
     } finally {
         if (connection) await connection.end();
@@ -498,8 +510,11 @@ app.get('/api/admin/produtos', [autenticarToken, autenticarAdmin], async (req, r
         connection = await mysql.createConnection(dbConfig);
         const [produtos] = await connection.execute('SELECT * FROM produtos ORDER BY nome ASC');
         res.json(produtos);
-    } catch (error) { res.status(500).json({ message: 'Erro ao buscar produtos para admin.' }); }
-    finally { if (connection) await connection.end(); }
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao buscar produtos para admin.' });
+    } finally {
+        if (connection) await connection.end();
+    }
 });
 
 app.post('/api/admin/produtos', [autenticarToken, autenticarAdmin], async (req, res) => {
