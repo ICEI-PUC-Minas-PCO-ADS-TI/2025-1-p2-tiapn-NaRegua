@@ -9,7 +9,11 @@
 
 [Slide Sprint 2.pdf](https://github.com/user-attachments/files/20848540/Slide.Sprint.2.pdf)
 
+[Slide Sprint 3.pdf](https://github.com/user-attachments/files/20953934/Slide.Sprint.3.pdf)
+
 [Slide Sprint 4.pdf](https://github.com/user-attachments/files/20848541/Slide.Sprint.4.pdf)
+
+[Slide Sprint 5.pdf](https://github.com/user-attachments/files/20953939/Slide.Sprint.5.pdf)
 
 
 > **Links úteis**:
