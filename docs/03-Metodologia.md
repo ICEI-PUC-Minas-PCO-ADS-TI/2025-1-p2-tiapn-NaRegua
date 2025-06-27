@@ -154,6 +154,7 @@ Atualizado em: 08/05/2024
 | Guilherme     |  | 27/04/2025     | 05/06/2025 | ✔️    | 27/04/2025      |
 | Guilherme     |  | 01/05/2025     | 05/06/2025 | ✔️    | 01/05/2025      |
 | Juan          | Tela Produtos | 23/05/2025     | 05/06/2025 | ✔️    | 04/06/2025      |
+| Ivan          | Criacao do calendario e suas funcionalidades | 28/04/2025     | 05/05/2025 | ✔️    | 05/06/2025      |
 | Ivan          |  | 28/04/2025     | 05/05/2025 | ✔️    | 05/06/2025      |
 | Erik          | Login e Cadastro   | 23/05/2025     | 05/06/2025 | ✔️    | 05/06/2025      |
 | Gustavo       | Desenvolvimento da pagina de recuperar senha   | 23/05/2025     | 05/06/2025 | ✔️    | 05/06/2025      |
@@ -169,7 +170,8 @@ Atualizado em: 08/05/2024
 | Juan          | Tela Produtos / React | 14/06/2025 | 27/06/2025 | ✔️    | 17/06/2025      |
 | Juan          | Organização dos códigos / pastas | 24/06/2025     | 27/06/2025 | ✔️    | 24/06/2025      |
 | Juan          | Auxilo na organização do GitHub conforme o solicitado | 26/06/2025     | 27/06/2025 | ✔️    | 26/06/2025      |
-| Ivan          |    | 28/04/2025     | 27/06/2025 | ✔️    | 08/05/2025      |
+| Ivan          |  criacap da tela info produtos e suas funcionalidades  | 28/04/2025     | 27/06/2025 | ✔️    | 08/05/2025      |
+| Ivan          |  teste da aplicacao com o cliente em situacao real | 28/04/2025     | 27/06/2025 | ✔️    | 08/05/2025      |
 | Erik          | Painel Administrador  | 10/06/2025  |  27/06/2025  |  ✔️   |  22/06/2025    |
 | Gustavo       | Desenvolvimento da pagina de adminstrador      | 10/06/2025     | 27/06/2025 | ✔️    | 22/06/2025      |
 | Gustavo       | Organização do GitHub      | 10/06/2025     | 27/06/2025 | ✔️    | 22/06/2025      |
