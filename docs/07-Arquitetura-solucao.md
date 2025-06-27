@@ -44,123 +44,89 @@ Insira aqui o script de criação das tabelas do banco de dados.
 
 
 ```sql
--- Criação do schema
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb4;
-USE `mydb`;
+-- Script final para criar o banco de dados e todas as tabelas.
 
--- Tabela Barbeiro
-CREATE TABLE `Barbeiro` (
-  `CPF` VARCHAR(11) NOT NULL,
-  `Nome` TEXT,
-  `Email` TEXT,
-  `Telefone` VARCHAR(11),
-  `Rua` TEXT,
-  `Numero` INT,
-  `Bairro` TEXT,
-  `CEP` VARCHAR(8),
-  PRIMARY KEY (`CPF`)
-) ENGINE = InnoDB;
+CREATE DATABASE IF NOT EXISTS bncjzdu8swnlmwhhwnp1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE bncjzdu8swnlmwhhwnp1;
 
--- Tabela Cliente
-CREATE TABLE `Cliente` (
-  `CPF` CHAR(11) NOT NULL,
-  `Nome` TEXT,
-  `Email` TEXT,
-  `Contato_1` VARCHAR(11),
-  `Contato_2` VARCHAR(11),
-  PRIMARY KEY (`CPF`)
-) ENGINE = InnoDB;
+-- Tabela de Usuários
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL,
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uc_cpf UNIQUE (cpf),
+    CONSTRAINT uc_email UNIQUE (email)
+);
 
--- Tabela Serviços de Cabelo
-CREATE TABLE `Servicos_de_cabelo` (
-  `ID` INT NOT NULL,
-  `Tipo_de_servicos` TEXT,
-  `Preco` DECIMAL(10,2),
-  `Duracao_media` TIME,
-  PRIMARY KEY (`ID`)
-) ENGINE = InnoDB;
+-- Tabela de Barbeiros
+CREATE TABLE IF NOT EXISTS barbeiros (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL
+);
 
--- Tabela Produtos
-CREATE TABLE `Produtos` (
-  `ID` INT NOT NULL,
-  `Nome` TEXT,
-  `Preco` DECIMAL(10,2),
-  `Descricao` TEXT,
-  `Quantidade` INT,
-  PRIMARY KEY (`ID`)
-) ENGINE = InnoDB;
+-- Tabela de Serviços
+CREATE TABLE IF NOT EXISTS servicos (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    duracao_minutos INT UNSIGNED NOT NULL,
+    preco DECIMAL(10, 2) NULL
+);
 
--- Tabela Pomadas de cabelo
-CREATE TABLE `Pomadas_de_cabelo` (
-  `ID` INT NOT NULL,
-  `Tipo_de_cabelo` TEXT,
-  `Tamanho_Gramas` INT,
-  `Fabricacao` DATE,
-  `Validade` DATE,
-  PRIMARY KEY (`ID`)
-) ENGINE = InnoDB;
+-- Tabela de Agendamentos
+CREATE TABLE IF NOT EXISTS agendamentos (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT UNSIGNED NOT NULL,
+    barbeiro_id INT UNSIGNED NOT NULL,
+    servico_id INT UNSIGNED NOT NULL,
+    data_agendamento DATE NOT NULL,
+    hora_agendamento TIME NOT NULL,
+    nome_cliente VARCHAR(255) NULL,
+    telefone_cliente VARCHAR(20) NULL,
+    status_agendamento VARCHAR(50) DEFAULT 'Confirmado',
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    observacoes TEXT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (barbeiro_id) REFERENCES barbeiros(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (servico_id) REFERENCES servicos(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT uc_agendamento_barbeiro_horario UNIQUE (barbeiro_id, data_agendamento, hora_agendamento)
+);
 
--- Tabela Roupas
-CREATE TABLE `Roupas` (
-  `ID` INT NOT NULL,
-  `Peca` TEXT,
-  `Tecido` TEXT,
-  `Tamanho` TEXT,
-  PRIMARY KEY (`ID`)
-) ENGINE = InnoDB;
+-- Tabela de Produtos
+CREATE TABLE IF NOT EXISTS produtos (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10, 2) NOT NULL,
+    estoque INT UNSIGNED DEFAULT 0,
+    imagem_url VARCHAR(1024),
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
--- Tabela Atende (Relaciona Cliente e Barbeiro)
-CREATE TABLE `Atende` (
-  `CPF_Cliente` CHAR(11) NOT NULL,
-  `CPF_Barbeiro` VARCHAR(11) NOT NULL,
-  PRIMARY KEY (`CPF_Cliente`, `CPF_Barbeiro`),
-  FOREIGN KEY (`CPF_Cliente`) REFERENCES `Cliente`(`CPF`),
-  FOREIGN KEY (`CPF_Barbeiro`) REFERENCES `Barbeiro`(`CPF`)
-) ENGINE = InnoDB;
+-- NOVA TABELA DE RESERVAS DE PRODUTOS
+CREATE TABLE IF NOT EXISTS reservas_produtos (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT UNSIGNED NOT NULL,
+    produto_id INT UNSIGNED NOT NULL,
+    quantidade INT UNSIGNED NOT NULL,
+    status VARCHAR(50) DEFAULT 'Ativa', -- Ex: Ativa, Retirada, Cancelada
+    data_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE RESTRICT
+);
 
--- Tabela Realiza (Relaciona Barbeiro e Serviços)
-CREATE TABLE `Realiza` (
-  `ID_Servicos` INT NOT NULL,
-  `CPF_Barbeiro` VARCHAR(11) NOT NULL,
-  PRIMARY KEY (`ID_Servicos`, `CPF_Barbeiro`),
-  FOREIGN KEY (`ID_Servicos`) REFERENCES `Servicos_de_cabelo`(`ID`),
-  FOREIGN KEY (`CPF_Barbeiro`) REFERENCES `Barbeiro`(`CPF`)
-) ENGINE = InnoDB;
-
--- Tabela Compra
-CREATE TABLE `Compra` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `CPF_Cliente` CHAR(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`CPF_Cliente`) REFERENCES `Cliente`(`CPF`)
-) ENGINE = InnoDB;
-
--- Compra_has_Produtos (Relaciona Compra e Produtos)
-CREATE TABLE `Compra_has_Produtos` (
-  `Compra_ID` INT NOT NULL,
-  `Produto_ID` INT NOT NULL,
-  PRIMARY KEY (`Compra_ID`, `Produto_ID`),
-  FOREIGN KEY (`Compra_ID`) REFERENCES `Compra`(`ID`),
-  FOREIGN KEY (`Produto_ID`) REFERENCES `Produtos`(`ID`)
-) ENGINE = InnoDB;
-
--- Compra_has_Roupas (Relaciona Compra e Roupas)
-CREATE TABLE `Compra_has_Roupas` (
-  `Compra_ID` INT NOT NULL,
-  `Roupa_ID` INT NOT NULL,
-  PRIMARY KEY (`Compra_ID`, `Roupa_ID`),
-  FOREIGN KEY (`Compra_ID`) REFERENCES `Compra`(`ID`),
-  FOREIGN KEY (`Roupa_ID`) REFERENCES `Roupas`(`ID`)
-) ENGINE = InnoDB;
-
--- Compra_has_Pomadas_de_cabelo
-CREATE TABLE `Compra_has_Pomadas_de_cabelo` (
-  `Compra_ID` INT NOT NULL,
-  `Pomada_ID` INT NOT NULL,
-  PRIMARY KEY (`Compra_ID`, `Pomada_ID`),
-  FOREIGN KEY (`Compra_ID`) REFERENCES `Compra`(`ID`),
-  FOREIGN KEY (`Pomada_ID`) REFERENCES `Pomadas_de_cabelo`(`ID`)
-) ENGINE = InnoDB;
+-- Inserção de Dados Iniciais
+INSERT IGNORE INTO usuarios (nome, cpf, email, senha_hash, is_admin) VALUES
+('Admin', '00000000000', 'admin@naregua.com', '$2b$10$g9pxUF0H5JzhUvYJr.f2u.e7V3jbDT2yWGXz5c05KexoNPAGWwgOG', TRUE);
+INSERT IGNORE INTO barbeiros (nome) VALUES ('Lucas');
+INSERT IGNORE INTO produtos (nome, descricao, preco, estoque, imagem_url) VALUES
+('Gel Fixador Men Essence', 'O Gel Fixador Men Essence Fixação Megaforte garante 24h de controle do penteado, sem ressecar os fios.', 19.90, 15, 'https://www.salonline.com.br/ccstore/v1/images/?source=/file/v7405439105588429855/products/32243%20GEL%20FORTE%20MEN%20300G%20(1).jpg&height=940&width=940'),
+('Pomada Modeladora Efeito Matte', 'Ideal para estilizar o cabelo com acabamento fosco e natural. Alta fixação e fácil remoção.', 25.50, 20, 'https://farmagora.vteximg.com.br/arquivos/ids/202595-800-800/726946.jpg?v=638227903321000000'),
+('Shampoo Anticaspa Clear Man', 'Tratamento eficaz contra a caspa, com sensação de frescor e limpeza profunda.', 22.00, 30, 'https://m.media-amazon.com/images/I/61LONPQTY9L._UF1000,1000_QL80_.jpg'),
+('Óleo para Barba Hidratante', 'Hidrata, amacia e dá brilho à barba, com uma fragrância amadeirada suave.', 35.00, 12, 'https://cdn.sistemawbuy.com.br/arquivos/0f2a4340b7f91641e49c7e5b8a1c598a/produtos/MUA5KEI6/a-leo-para-barba-urban-men-30ml-1-637044ecc520a.jpg');
 ```
 Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](../src/db).
 
@@ -175,9 +141,9 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 | Front-end      | HTML + CSS + JS + React |
 | Back-end       | Node.js         |
 | SGBD           | MySQL           |
-| Deploy         | Vercel          |
+| Deploy         | Vercel e Clever Cloud         |
 
-![](images/Tecnologias.png)
+
 
 ## Hospedagem
 
