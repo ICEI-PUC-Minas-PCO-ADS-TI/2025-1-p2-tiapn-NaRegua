@@ -2,41 +2,64 @@
 
 <span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>, <a href="05-Projeto-interface.md"> Projeto de interface</a>
 
-O plano de testes de software é gerado a partir da especificação do sistema e consiste em casos de teste que deverão ser executados quando a implementação estiver parcial ou totalmente pronta. Apresente os cenários de teste utilizados na realização dos testes da sua aplicação. Escolha cenários de teste que demonstrem os requisitos sendo satisfeitos.
+ <a href="02-Especificacao.md">Especificação do projeto</a>.
 
-Enumere quais cenários de testes foram selecionados para teste. Neste tópico, o grupo deve detalhar quais funcionalidades foram avaliadas, o grupo de usuários que foi escolhido para participar do teste e as ferramentas utilizadas.
 
-Não deixe de enumerar os casos de teste de forma sequencial e garantir que o(s) requisito(s) associado(s) a cada um deles esteja(m) correto(s) — de acordo com o que foi definido na <a href="02-Especificacao.md">Especificação do projeto</a>.
-
-Por exemplo:
 
 | **Caso de teste**  | **CT-001 – Cadastrar perfil**  |
 |:---: |:---: |
-| Requisito associado | RF-00X - A aplicação deve apresentar, na página principal, a funcionalidade de cadastro de usuários para que estes consigam criar e gerenciar seu perfil. |
-| Objetivo do teste | Verificar se o usuário consegue se cadastrar na aplicação. |
-| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Clicar em "Criar conta" <br> - Preencher os campos obrigatórios (e-mail, nome, sobrenome, celular, CPF, senha, confirmação de senha) <br> - Aceitar os termos de uso <br> - Clicar em "Registrar" |
-| Critério de êxito | - O cadastro foi realizado com sucesso. |
-| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+| Requisito associado | RF-001 - A aplicação deve apresentar, na página principal, a funcionalidade de cadastro de usuários para que estes consigam criar e gerenciar seu perfil. |
+| Objetivo do teste | Verificar se o usuário consegue se cadastrar na aplicação e gerenciar o seu acesso. |
+| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Clicar em "Cradastrar" <br> - Preencher os campos obrigatórios (Nome completo, e-mail, CPF, senha, confirmação de senha) <br> - Clicar em "Cadastrar" |
+| Critério de êxito | - Usuário registrado com sucesso! |
+| Responsável pela elaboração do caso de teste | Erik |
 
 <br>
 
 | **Caso de teste**  | **CT-002 – Efetuar login**  |
 |:---: |:---: |
-| Requisito associado | RF-00Y - A aplicação deve possuir opção de fazer login, sendo o login o endereço de e-mail. |
+| Requisito associado | RF-002 - A aplicação deve possuir opção de fazer login, sendo o login o endereço de e-mail ou CPF e a senha. |
 | Objetivo do teste | Verificar se o usuário consegue realizar login. |
-| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo de senha <br> - Clicar em "Login" |
-| Critério de êxito | - O login foi realizado com sucesso. |
-| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Preencher o campo do usuário com e-mail ou CPF <br> - Preencher o campo de senha <br> - Clicar em "Login" |
+| Critério de êxito | - Login bem-sucedido! Bem-vindo, ([Nome do Usuário]). |
+| Responsável pela elaboração do caso de teste | Erik |
 
+<br>
 
-## Ferramentas de testes (opcional)
+| **Caso de teste**  | **CT-003 – Recuperar senha**  |
+|:---: |:---: |
+| Requisito associado | RF-003 - A aplicação deve possuir opção de Recuperar senha. |
+| Objetivo do teste | Verificar se o usuário consegue realizar a recuperação de senha. |
+| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - "Acessar o Esqueceu sua senha?" <br> - Preencher o campo CPF <br> - Preencher o campo nova senhha <br> Clicar em "Alterar a Senha" | 
+| Critério de êxito | - Senha alterada com sucesso. |
+| Responsável pela elaboração do caso de teste | Gustavo |
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links úteis**:
-> - [IBM - criação e geração de planos de teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e técnicas de testes ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> - [Teste de software: conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e geração de planos de teste de software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de teste para JavaScript](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+<br>
+
+| **Caso de teste**  | **CT-004 – Agendamento de serviço/horário**  |
+|:---: |:---: |
+| Requisito associado | RF-004 - A aplicação deve possuir opção de tela Home, Agendamento, contendo os horários e dias disponíveis. |
+| Objetivo do teste | Verificar se o usuário consegue realizar o Agendamento da data e horáiro desejado. |
+| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Clicar no botão "Agendar Horário" <br> - Escolhe o barbeiro desejado <br> - Escolhe o serviço desejado <br> - Escolhe a data desejada e disponível <br> - Escolhe o horário disponível <br> - Clicar em "Confirmar agendamento" | 
+| Critério de êxito | - Agendamento confirmado, nome do Barbeiro, serviço, data e hora. |
+| Responsável pela elaboração do caso de teste | Franklin e Ivan |
+
+<br>
+
+| **Caso de teste**  | **CT-005 – Produtos**  |
+|:---: |:---: |
+| Requisito associado | RF-005 - A aplicação deve possuir opção dos produtos disponíveis. |
+| Objetivo do teste | Verificar se o usuário consegue reservar o produto desejado. |
+| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Na tela HOME clicar em "Nossos produtos" <br> - Escolhe o produto desejado <br> - Seleciona a quantidade de produtos com base na disponibilidade <br> - Clicar em "Reservar" | 
+| Critério de êxito | - Produto reservado com sucesso! |
+| Responsável pela elaboração do caso de teste | Juan e Ivan |
+
+<br>
+
+| **Caso de teste**  | **CT-006 – Histórico de Agendamentos**  |
+|:---: |:---: |
+| Requisito associado | RF-006 - A aplicação deve possuir opção dos agendamentos já realizados ou Ativos. |
+| Objetivo do teste | Verificar o Histórico dos Agendamentos já realizados ou que estaria Ativos. |
+| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Na tela HOME clicar em "Perfil" <br> - Clicar em "Histórico" <br> - Ira aparecer os agendamentos já realizados <br> - Clicar em "Ver Agendamentos Ativos" <br> - Próximos Agendamentos estará os agendamentos realizados <br> - Clicar em "Cancelar" | 
+| Critério de êxito | - Agendamento Cancelado com sucesso! |
+| Responsável pela elaboração do caso de teste | Guilherme |
