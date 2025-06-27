@@ -8,12 +8,76 @@ let produtoModalInstance;
 document.addEventListener('DOMContentLoaded', () => {
   const isAdmin = localStorage.getItem('isAdmin');
   const authToken = localStorage.getItem('authToken');
+  // src/front/js/adm.js
 
-  if (isAdmin !== 'true' || !authToken) {
-    alert('Acesso negado. Esta área é exclusiva para administradores.');
-    window.location.href = '../html/login.html';
-    return;
+  const API_BASE_URL_ADM = 'http://localhost:3000/api';
+  let allProducts = [];
+  let produtoModalInstance;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // ... lógica de proteção e inicialização do painel ...
+    initializeAdminPanel();
+  });
+
+  function initializeAdminPanel() {
+    // ... lógica da sidebar, logout, nome do perfil ...
+    carregarDadosDashboard(); // Função principal que carrega tudo
+
+    const produtoModalEl = document.getElementById('produtoModal');
+    if (produtoModalEl) {
+      produtoModalInstance = bootstrap.Modal.getOrCreateInstance(produtoModalEl);
+      document.getElementById('btnAdicionarProduto').addEventListener('click', () => abrirModalProduto());
+      document.getElementById('produtoForm').addEventListener('submit', handleProdutoFormSubmit);
+    }
   }
+
+  async function fetchAdminData(endpoint, options = {}) { /* ... código ... */ }
+
+  async function carregarDadosDashboard() {
+    try {
+      await carregarAgendamentosEKpis();
+      await carregarProdutosAdmin();
+      await carregarReservasAdmin(); // Adicionada a chamada para carregar reservas
+    } catch (error) {
+      console.error("Falha ao carregar um ou mais componentes do dashboard.");
+    }
+  }
+
+  async function carregarAgendamentosEKpis() { /* ... código ... */ }
+  async function carregarProdutosAdmin() { /* ... código ... */ }
+
+  // NOVA FUNÇÃO PARA CARREGAR AS RESERVAS
+  async function carregarReservasAdmin() {
+    try {
+      const reservas = await fetchAdminData('/admin/reservas');
+      const tbody = document.getElementById('reservas-tbody');
+      tbody.innerHTML = '';
+
+      if (reservas && reservas.length > 0) {
+        reservas.forEach(reserva => {
+          const dataReservaObj = new Date(reserva.data_reserva);
+          const dataFormatada = dataReservaObj.toLocaleDateString('pt-BR') + ' ' + dataReservaObj.toLocaleTimeString('pt-BR');
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+                    <td>${reserva.nome_cliente}</td>
+                    <td>${reserva.nome_produto}</td>
+                    <td>${reserva.quantidade}</td>
+                    <td>${dataFormatada}</td>
+                    <td><span class="status-badge status-confirmado">${reserva.status}</span></td>
+                `;
+          tbody.appendChild(tr);
+        });
+      } else {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Nenhuma reserva de produto encontrada.</td></tr>';
+      }
+    } catch (error) {
+      document.getElementById('reservas-tbody').innerHTML = '<tr><td colspan="5" style="text-align:center;">Erro ao carregar reservas.</td></tr>';
+    }
+  }
+
+  function abrirModalProduto(produto = null) { /* ... código ... */ }
+  async function handleProdutoFormSubmit(event) { /* ... código ... */ }
+  async function handleDeletarProduto(id) { /* ... código ... */ }
 
   initializeAdminPanel();
 });

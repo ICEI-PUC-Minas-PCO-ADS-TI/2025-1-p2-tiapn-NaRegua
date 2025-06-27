@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Configura o menu de usuário
     if (userMenuContainer && userName) {
         const userDropdownToggle = userMenuContainer.querySelector('#navbarUserDropdown');
         const logoutButton = userMenuContainer.querySelector('#logoutButton');
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (deleteAccountButton) deleteAccountButton.addEventListener('click', handleDeleteAccount);
     }
 
+    // Configura botões de navegação da página
     const verHistoricoButton = document.getElementById('verHistoricoBtn');
     const voltarAgendarButton = document.getElementById('voltarAgendarBtn');
     if (verHistoricoButton) verHistoricoButton.addEventListener('click', () => { window.location.href = '../html/historico.html'; });
@@ -37,20 +39,25 @@ async function carregarMeusAgendamentosAtivos() {
     try {
         const agendamentos = await fetchAPISecured('/meus-agendamentos/ativos');
 
-        // CORREÇÃO: Remove explicitamente a mensagem de carregamento do DOM
         if (loadingMessage) {
             loadingMessage.remove();
         }
 
         if (agendamentos && agendamentos.length > 0) {
-            // Limpa o container caso já tenha alguma mensagem de erro/vazio
             listaAgendamentosDiv.innerHTML = '';
             agendamentos.forEach(ag => {
-                const dataAgendamentoObj = new Date(`${ag.data_agendamento}T${ag.hora_agendamento}`);
+                // <<< INÍCIO DA CORREÇÃO >>>
+                // Garante que pegamos apenas a parte da data (YYYY-MM-DD)
+                const dateOnly = ag.data_agendamento.split('T')[0];
+                // Cria o objeto Date de forma segura
+                const dataAgendamentoObj = new Date(`${dateOnly}T${ag.hora_agendamento}`);
+                // <<< FIM DA CORREÇÃO >>>
+
                 let podeCancelar = new Date() < dataAgendamentoObj;
 
-                const dataFormatada = dataAgendamentoObj.toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-                const horaFormatada = dataAgendamentoObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                // Formatação segura, pois o objeto Date agora é válido
+                const dataFormatada = dataAgendamentoObj.toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' });
+                const horaFormatada = dataAgendamentoObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
                 const precoFormatado = ag.preco_servico ? parseFloat(ag.preco_servico).toFixed(2).replace('.', ',') : 'N/A';
                 const statusClasse = ag.status_agendamento?.toLowerCase().replace(/\s+/g, '') || 'desconhecido';
 
@@ -79,11 +86,9 @@ async function carregarMeusAgendamentosAtivos() {
                 button.addEventListener('click', handleCancelarAgendamento);
             });
         } else {
-            // Exibe a mensagem se não houver agendamentos
             listaAgendamentosDiv.innerHTML = '<p class="text-center col-12">Você não possui próximos agendamentos.</p>';
         }
     } catch (error) {
-        // Garante que a mensagem de carregamento seja removida também em caso de erro
         if (loadingMessage) {
             loadingMessage.remove();
         }
@@ -107,7 +112,7 @@ async function handleCancelarAgendamento(event) {
     }
 }
 
-// === FUNÇÕES GLOBAIS (Idealmente em um utils.js) ===
+// === FUNÇÕES GLOBAIS ===
 function handleLogout() {
     localStorage.clear();
     alert('Você foi desconectado.');

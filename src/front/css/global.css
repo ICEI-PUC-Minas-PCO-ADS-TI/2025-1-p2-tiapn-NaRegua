@@ -6,6 +6,32 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+/* === CORREÇÃO DO FOOTER === */
+body {
+  display: flex;
+  /* Ativa o layout flexível */
+  flex-direction: column;
+  /* Empilha os elementos (header, main, footer) verticalmente */
+  min-height: 100vh;
+  /* Garante que o body ocupe no mínimo a altura toda da tela */
+  font-family: "Poppins", sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-clara);
+}
+
+main {
+  flex-grow: 1;
+  /* Faz o conteúdo principal "crescer" para ocupar o espaço vago e empurrar o footer */
+}
+
+/* === FIM DA CORREÇÃO === */
+
+
+/* Fontes com caminhos relativos corretos a partir da pasta css */
 @font-face {
   font-family: "Poppins";
   src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
@@ -55,23 +81,15 @@
   --tran-03: all 0.3s ease;
   --tran-02: all 0.2s ease;
 
-  /* === Cores do Painel de Admin (AGORA COM TEMA ESCURO) === */
+  /* Cores do Painel de Admin (Tema Escuro) */
   --primary-color: #4DA3FF;
-  /* Azul para destaque no tema escuro */
   --panel-color: var(--cor-fundo);
-  /* Fundo do painel agora é o fundo principal */
   --text-color: var(--cor-clara);
-  /* Cor do texto principal agora é clara */
   --black-light-color: var(--cinza-30);
-  /* Cor para textos secundários */
   --border-color: var(--cinza-80);
-  /* Cor para bordas sutis */
   --toggle-color: var(--cinza-70);
-  /* Cor do switch de modo (se houver) */
   --box1-color: var(--cinza-80);
-  /* Cor das caixas de resumo */
   --box2-color: var(--cinza-80);
   --box3-color: var(--cinza-80);
   --title-icon-color: var(--cor-branca);
-  /* Cor do ícone nos títulos */
 }
