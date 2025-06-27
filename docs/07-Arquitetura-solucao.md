@@ -176,17 +176,17 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 
 - Se ainda não estiver no GitHub, o projeto será versionado e enviado para um repositório (público ou privado).
 
-2. **Criação da Conta na Vercel e Integração.**
+2. **Criação da Conta no Netlify, Render e Clever Cloud e Integração.**
 
-- Criação de uma conta na Vercel (via e-mail ou conexão direta com o GitHub).
+- Criação de uma conta no Netlify, Render e Clever Cloud (via e-mail ou conexão direta com o GitHub).
 
-- Integração do GitHub à conta da Vercel para permitir a seleção de repositórios e o deploy automático.
+- Integração do GitHub no Netlify, Render e Clever Cloud para permitir a seleção de repositórios e o deploy automático.
 
 3. **Importação do Projeto para a Vercel.**
 
-- Importação do repositório do projeto pela Vercel.
+- Importação do repositório do projeto pelo Netlify, Render e Clever Cloud.
 
-- A Vercel identificará automaticamente o tipo de projeto (HTML/CSS/JS, React, Next.js, etc.).
+- O Netlify, Render e Clever Cloud identificarão automaticamente o tipo de projeto (HTML/CSS/JS, React, Next.js, etc.).
 
 - Ajuste manual das configurações de build e de saída, se necessário.
 
@@ -194,11 +194,11 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 
 - Início do primeiro deploy após a configuração da importação.
 
-- Configuração da Vercel para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
+- Configuração do Netlify, Render e Clever Cloud para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
 
 5. **Geração do Link de Acesso.**
 
-- A Vercel fornecerá um link público após o deploy, permitindo o acesso à plataforma.
+- O Netlify, Render e Clever Cloud fornecerão um link público após o deploy, permitindo o acesso à plataforma.
 
 - Possibilidade de configurar um domínio personalizado posteriormente, se desejado.
 
@@ -206,7 +206,7 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 
 - Verificação do funcionamento da plataforma já hospedada, testando os principais fluxos e links.
 
-- Correção de erros identificados e implantação automática de novas versões pela Vercel.
+- Correção de erros identificados e implantação automática de novas versões pelo Netlify, Render e Clever Cloud.
 
 
 
