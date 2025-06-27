@@ -2,34 +2,29 @@
 
 <span style="color:red">Pré-requisitos: <a href="05-Projeto-interface.md"> Projeto de interface</a></span>
 
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
 
 ![](images/ArquiteturadeSolução.png)
 
 ## Diagrama de classes
 
-O diagrama de classes ilustra graficamente a estrutura do software e como cada uma das classes estará interligada. Essas classes servem de modelo para materializar os objetos que serão executados na memória.
+
 ![](images/NaReguaDiagramadeClasses.png)
 
 
 ##  Modelo de dados
 
-O desenvolvimento da solução proposta requer a existência de bases de dados que permitam realizar o cadastro de dados e os controles associados aos processos identificados, assim como suas recuperações.
 
-Utilizando a notação do DER (Diagrama Entidade-Relacionamento), elabore um modelo, usando alguma ferramenta, que contemple todas as entidades e atributos associados às atividades dos processos identificados. Deve ser gerado um único DER que suporte todos os processos escolhidos, visando, assim, uma base de dados integrada. O modelo deve contemplar também o controle de acesso dos usuários (partes interessadas nos processos) de acordo com os papéis definidos nos modelos do processo de negócio.
-
-Apresente o modelo de dados por meio de um modelo relacional que contemple todos os conceitos e atributos apresentados na modelagem dos processos.
 
 ### Modelo ER
 
-O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
+
 ![](images/ModeloER.png)
 
 
 
 ### Esquema relacional
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
+
  
 ![](images/EsquemaRelacionalNaRegua.jpeg)
 
@@ -39,7 +34,7 @@ O Esquema Relacional corresponde à representação dos dados em tabelas juntame
 
 ### Modelo físico
 
-Insira aqui o script de criação das tabelas do banco de dados.
+
 
 
 
