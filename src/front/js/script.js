@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cadastroForm = document.querySelector('body.body-cadastro .form-container form');
     const recuperarSenhaForm = document.querySelector('body.body-recuperar-senha .form-container form');
 
-    const API_BASE_URL = '/api/usuarios'; // URL COMPLETA do backend
+    const API_BASE_URL = 'http://localhost:3000/api/usuarios'; // URL COMPLETA do backend
 
     // LOGIN
     if (loginForm) {

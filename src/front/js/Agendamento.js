@@ -1,6 +1,6 @@
 // src/front/js/Agendamento.js
 
-const API_URL = '/api';
+const API_URL = 'http://localhost:3000/api';
 let currentStep = 1;
 let agendamentoData = {
   barbeiroId: null, servicoId: null, data: null, horario: null,

@@ -1,6 +1,6 @@
 // src/front/js/info.js
 
-const API_URL_INFO = '/api';
+const API_URL_INFO = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     // A lógica do menu de usuário (cabeçalho) pode ser adicionada aqui se necessário
@@ -72,7 +72,7 @@ function addEventListenersAcoesProduto(produto) {
                     body: JSON.stringify({ produtoId: produto.id, quantidade: quantidade })
                 });
                 alert(resultado.message || 'Produto reservado com sucesso!');
-                window.location.href = '../html/meus_agendamentos.html'; // Ou para uma futura página de "minhas reservas"
+                window.location.href = '../html/Agendamento.html'; // Ou para uma futura página de "minhas reservas"
             } catch (error) {
                 alert(`Erro ao reservar: ${error.message}`);
                 reserveButton.disabled = false;

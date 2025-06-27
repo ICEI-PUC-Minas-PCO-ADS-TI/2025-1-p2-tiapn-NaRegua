@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LÓGICA DOS FORMULÁRIOS DE AUTENTICAÇÃO ---
-    const API_BASE_URL = '/api/usuarios';
+    const API_BASE_URL = 'http://localhost:3000/api/usuarios';
 
     const loginForm = document.getElementById('loginForm');
     const cadastroForm = document.getElementById('cadastroForm');
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            // Adicionado .trim() para limpar espaços em branco
             const usuario = document.getElementById('loginUsuario').value.trim();
             const senha = document.getElementById('loginSenha').value.trim();
 
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cadastroForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            // Adicionado .trim() a todos os campos
             const nome = document.getElementById('cadastroNome').value.trim();
             const cpf = document.getElementById('cadastroCpf').value.trim();
             const email = document.getElementById('cadastroEmail').value.trim();
@@ -108,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 alert(data.message || 'Cadastro realizado com sucesso! Por favor, faça o login.');
 
-                // Força a animação a voltar para a tela de login
                 if (container) container.classList.remove('active');
-                loginForm.reset();
+                if (loginForm) loginForm.reset();
                 cadastroForm.reset();
+
             } catch (error) {
                 alert(`Falha no cadastro: ${error.message}`);
                 console.error('Erro no cadastro:', error);

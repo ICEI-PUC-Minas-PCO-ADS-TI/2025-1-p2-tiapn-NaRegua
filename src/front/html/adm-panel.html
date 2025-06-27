@@ -12,79 +12,144 @@
     <title>NaRégua - Painel Admin</title>
 </head>
 
-<body>
-    <nav> </nav>
-    <section class="dashboard">
-        <div class="top"> </div>
-        <div class="dash-content">
-            <div class="overview"> </div>
-
-            <div class="activity">
-                <div class="title"><i class="uil uil-clock-three"></i><span class="text">Todos os Agendamentos</span>
-                </div>
-                <div class="table-container">
-                    <table class="activity-table">
-                        <thead>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Email</th>
-                                <th>Serviço</th>
-                                <th>Barbeiro</th>
-                                <th>Data</th>
-                                <th>Hora</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="all-appointments-tbody"></tbody>
-                    </table>
-                </div>
+<body class="admin-page">
+    <div class="admin-container">
+        <nav>
+            <div class="logo-name">
+                <div class="logo-image"><img src="../icons/logo.png" alt="logo"></div>
+                <span class="logo_name">NaRégua</span>
             </div>
-
-            <div class="activity">
-                <div class="title">
-                    <i class="uil uil-shopping-bag"></i>
-                    <span class="text">Reservas de Produtos</span>
-                </div>
-                <div class="table-container">
-                    <table class="activity-table">
-                        <thead>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Produto</th>
-                                <th>Qtd.</th>
-                                <th>Data da Reserva</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reservas-tbody"></tbody>
-                    </table>
-                </div>
+            <div class="menu-items">
+                <ul class="nav-links">
+                    <li><a href="#" class="active"><i class="uil uil-estate"></i><span
+                                class="link-name">Dashboard</span></a></li>
+                </ul>
+                <ul class="logout-mode">
+                    <li><a href="#" id="adminLogoutBtn"><i class="uil uil-signout"></i><span
+                                class="link-name">Logout</span></a></li>
+                </ul>
             </div>
+        </nav>
 
-            <div class="activity">
-                <div class="title-with-button">
-                    <div class="title"><i class="uil uil-box"></i><span class="text">Gerenciamento de Produtos</span>
+        <section class="dashboard">
+            <div class="top">
+                <div class="search-box">
+                    <i class="uil uil-search"></i>
+                    <input type="text" id="searchInput" placeholder="Pesquisar...">
+                </div>
+                <span id="adminProfileName" class="profile-name"></span>
+            </div>
+            <div class="dash-content">
+                <div class="overview">
+                    <div class="title"><i class="uil uil-tachometer-fast-alt"></i><span class="text">Dashboard</span>
                     </div>
-                    <button class="btn btn-primary" id="btnAdicionarProduto"><i class="uil uil-plus"></i> Adicionar Novo
-                        Produto</button>
+                    <div class="boxes">
+                        <div class="box box1"><i class="uil uil-schedule"></i><span class="text">Total de
+                                Agendamentos</span><span class="number" id="kpi-total-agendamentos">0</span></div>
+                        <div class="box box2"><i class="uil uil-users-alt"></i><span class="text">Total de
+                                Clientes</span><span class="number" id="kpi-total-clientes">0</span></div>
+                        <div class="box box3"><i class="uil uil-box"></i><span class="text">Total de
+                                Produtos</span><span class="number" id="kpi-total-produtos">0</span></div>
+                    </div>
                 </div>
-                <div class="table-container">
-                    <table class="activity-table">
-                        <thead>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Preço</th>
-                                <th>Estoque</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="produtos-tbody"></tbody>
-                    </table>
+                <div class="activity">
+                    <div class="title"><i class="uil uil-clock-three"></i><span class="text">Todos os
+                            Agendamentos</span></div>
+                    <div class="table-container">
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Email</th>
+                                    <th>Serviço</th>
+                                    <th>Barbeiro</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="all-appointments-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="activity">
+                    <div class="title-with-button">
+                        <div class="title"><i class="uil uil-box"></i><span class="text">Gerenciamento de
+                                Produtos</span></div>
+                        <button class="btn btn-primary" id="btnAdicionarProduto"><i class="uil uil-plus"></i> Adicionar
+                            Novo Produto</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço</th>
+                                    <th>Estoque</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="produtos-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="activity">
+                    <div class="title"><i class="uil uil-shopping-bag"></i><span class="text">Reservas de
+                            Produtos</span></div>
+                    <div class="table-container">
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Produto</th>
+                                    <th>Qtd.</th>
+                                    <th>Data da Reserva</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reservas-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal fade" id="produtoModal" tabindex="-1" aria-labelledby="produtoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="produtoModalLabel">Adicionar Produto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="produtoForm">
+                        <input type="hidden" id="produtoId">
+                        <div class="mb-3"><label for="produtoNome" class="form-label">Nome do Produto</label><input
+                                type="text" class="form-control" id="produtoNome" required></div>
+                        <div class="mb-3"><label for="produtoDescricao" class="form-label">Descrição</label><textarea
+                                class="form-control" id="produtoDescricao" rows="3"></textarea></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label for="produtoPreco" class="form-label">Preço
+                                    (R$)</label><input type="number" class="form-control" id="produtoPreco" step="0.01"
+                                    min="0" required></div>
+                            <div class="col-md-6 mb-3"><label for="produtoEstoque"
+                                    class="form-label">Estoque</label><input type="number" class="form-control"
+                                    id="produtoEstoque" min="0" required></div>
+                        </div>
+                        <div class="mb-3"><label for="produtoImagemUrl" class="form-label">URL da Imagem</label><input
+                                type="text" class="form-control" id="produtoImagemUrl"
+                                placeholder="https://exemplo.com/imagem.png"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar Produto</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-    <div class="modal fade" id="produtoModal" tabindex="-1"> </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/adm.js" defer></script>
 </body>

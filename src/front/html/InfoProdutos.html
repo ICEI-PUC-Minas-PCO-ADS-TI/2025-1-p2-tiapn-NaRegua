@@ -14,6 +14,45 @@
 
 <body>
     <header class="main-header py-2 sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <a class="navbar-brand d-flex align-items-center" href="../html/Agendamento.html">
+                <img src="../icons/logo.png" alt="Logo NaRégua" class="headerlogo me-2">
+                NaRégua
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/Agendamento.html">Agendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../html/produtos.html">Nossos Produtos</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav ms-auto" id="userMenuContainer">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Carregando...
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                            aria-labelledby="navbarUserDropdown">
+                            <li><a class="dropdown-item" href="../html/meus_agendamentos.html">Meus Agendamentos</a>
+                            </li>
+                            <li><a class="dropdown-item" href="../html/historico.html">Histórico</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" id="logoutButton">Logout</button></li>
+                            <li><button class="dropdown-item text-danger" id="deleteAccountButton">Excluir
+                                    Conta</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main class="container mt-5 mb-5" id="product-detail-container">
@@ -21,8 +60,10 @@
     </main>
 
     <footer class="main-footer py-5 mt-auto">
+        <div class="container text-center text-white-50">
+            <p class="mb-0">&copy; 2025 NaRégua. Todos os direitos reservados.</p>
+        </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/info.js" defer></script>
 </body>
