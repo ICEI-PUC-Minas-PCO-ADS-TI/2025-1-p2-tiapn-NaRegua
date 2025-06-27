@@ -164,7 +164,7 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 | Front-end      | HTML + CSS + JS + React |
 | Back-end       | Node.js         |
 | SGBD           | MySQL           |
-| Deploy         | Vercel e Clever Cloud         |
+| Deploy         | Netlify, Render e Clever Cloud         |
 
 
 
