@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/auth.css">
-    <link rel="icon" type="image/png" href="/src/front/icons/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../icons/logo.png" />
     <title>NaRégua - Login</title>
 </head>
 
 <body>
     <div class="container">
         <div class="form-box login">
-            <form action="">
+            <form id="loginForm">
                 <div class="logo-container">
                     <img src="../icons/logo.png" alt="Logo da Empresa" class="logo-img">
                     <span class="logo-text" data-text="NaRégua">NaRégua</span>
                 </div>
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Usuário" required>
+                    <input type="text" id="loginUsuario" placeholder="Usuário (Email ou CPF)" required>
                     <img class="icon" src="../icons/user-circle.png" alt="user-circle">
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Senha" required>
+                    <input type="password" id="loginSenha" placeholder="Senha" required>
                     <img class="icon" src="../icons/lock.png" alt="lock">
                 </div>
                 <div class="redirect-link">
@@ -37,22 +35,30 @@
         </div>
 
         <div class="form-box cadastro">
-            <form action="">
+            <form id="cadastroForm">
                 <div class="logo-container">
                     <img src="../icons/logo.png" alt="Logo da Empresa" class="logo-img">
                     <span class="logo-text" data-text="NaRégua">NaRégua</span>
                 </div>
                 <h1>Cadastro</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Usuário" required>
+                    <input type="text" id="cadastroNome" placeholder="Nome Completo" required>
                     <img class="icon" src="../icons/user-circle.png" alt="user-circle">
                 </div>
                 <div class="input-box">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" id="cadastroEmail" placeholder="Email" required>
                     <img class="icon" src="../icons/mail.png" alt="mail">
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Senha" required>
+                    <input type="text" id="cadastroCpf" placeholder="CPF" required>
+                    <img class="icon" src="../icons/user-circle.png" alt="user-circle">
+                </div>
+                <div class="input-box">
+                    <input type="password" id="cadastroSenha" placeholder="Senha" required>
+                    <img class="icon" src="../icons/lock.png" alt="lock">
+                </div>
+                <div class="input-box">
+                    <input type="password" id="cadastroConfirmarSenha" placeholder="Confirmar Senha" required>
                     <img class="icon" src="../icons/lock.png" alt="lock">
                 </div>
                 <button type="submit">Cadastrar</button>
@@ -62,16 +68,15 @@
         <div class="toggle-box">
             <div class="toggle-panel toggle-left">
                 <h1>Seja bem-vindo!</h1>
-                <p>Novo por aqui? Cadastre-se.</p>
+                <p>Novo por aqui? Cadastre-se e agende seu horário.</p>
                 <button class="btn register-btn">Cadastrar</button>
             </div>
             <div class="toggle-panel toggle-right">
                 <h1>Bom te ver de volta!</h1>
-                <p>Conta criada? Acesse aqui.</p>
+                <p>Já tem uma conta? Acesse agora mesmo.</p>
                 <button class="btn login-btn">Login</button>
             </div>
         </div>
-
     </div>
 
     <script src="../js/auth.js" defer></script>
