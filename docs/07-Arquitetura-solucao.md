@@ -147,51 +147,43 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 
 ## Hospedagem
 
-Explique como a hospedagem e o lançamento da plataforma foram realizados.
+1. **Organização do Repositório no GitHub.**
 
-Etapas que serão realizadas:
+- Verificação da estrutura do projeto para garantir que todos os arquivos necessários estejam organizados.
 
-Organização do Repositório:
+- Se ainda não estiver no GitHub, o projeto será versionado e enviado para um repositório (público ou privado).
 
-Será feita a verificação da estrutura do projeto, garantindo que todos os arquivos necessários estejam organizados em um repositório no GitHub.
+2. **Criação da Conta na Vercel e Integração.**
 
-Caso ainda não tenha sido feito, o projeto será versionado e enviado para um repositório público ou privado na plataforma.
+- Criação de uma conta na Vercel (via e-mail ou conexão direta com o GitHub).
 
-Criação da Conta na Vercel:
+- Integração do GitHub à conta da Vercel para permitir a seleção de repositórios e o deploy automático.
 
-Será criada uma conta no site da Vercel, utilizando um e-mail ou conectando diretamente com a conta do GitHub.
+3. **Importação do Projeto para a Vercel.**
 
-O GitHub será integrado à conta da Vercel, permitindo a seleção de repositórios para deploy automático.
+- Importação do repositório do projeto pela Vercel.
 
-Importação do Projeto para a Vercel:
+- A Vercel identificará automaticamente o tipo de projeto (HTML/CSS/JS, React, Next.js, etc.).
 
-O repositório do projeto será importado pela Vercel.
+- Ajuste manual das configurações de build e de saída, se necessário.
 
-A plataforma deverá identificar automaticamente o tipo de projeto (HTML/CSS/JS simples, React, Next.js, etc.).
+4. **Configuração do Deploy Contínuo.**
 
-As configurações de build e de saída (caso necessárias) serão ajustadas manualmente.
+- Início do primeiro deploy após a configuração da importação.
 
-Configuração do Deploy:
+- Configuração da Vercel para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
 
-O primeiro deploy será iniciado após a configuração da importação.
+5. **Geração do Link de Acesso.**
 
-A Vercel será configurada para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
+- A Vercel fornecerá um link público após o deploy, permitindo o acesso à plataforma.
 
-Geração do Link de Acesso:
+- Possibilidade de configurar um domínio personalizado posteriormente, se desejado.
 
-Após o deploy, a Vercel irá fornecer um link público onde a plataforma poderá ser acessada.
+6. **Testes Finais e Verificação.**
 
-Existe também a possibilidade de configurar um domínio personalizado posteriormente, caso necessário.
+- Verificação do funcionamento da plataforma já hospedada, testando os principais fluxos e links.
 
-Testes Finais e Verificação:
-
-Será feita uma verificação do funcionamento da plataforma já hospedada, testando os principais fluxos e links.
-
-Qualquer erro identificado será corrigido e uma nova versão será implantada automaticamente pela Vercel.
-
-Resultado Esperado:
-
-Ao final dessas etapas, a plataforma estará hospedada com sucesso na internet, com deploy contínuo ativado e acessível por um link público fornecido pela Vercel.
+- Correção de erros identificados e implantação automática de novas versões pela Vercel.
 
 
 

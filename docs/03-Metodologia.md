@@ -55,6 +55,29 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - _Scrum master_: Ivan Barreto
 -  Documentação: Erik Alcantara, Juan Luciano, Franklin Reis, Gustavo Bernardo, Guilherme Thiebaut
 
+-  
+#### Sprint 3
+- _Scrum master_: Franklin Reis
+
+- Documentação: Ivan Barreto, Juan Luciano, Guilherme Thiebaut
+
+- Protótipos:  Erik Alcantara,  Gustavo Bernardo
+
+#### Sprint 4
+- _Scrum master_: Erik Alcantara,
+
+- Documentação: Ivan Barreto, , Guilherme Thiebaut, Franklin Reis
+
+- Protótipos: Juan Luciano, Gustavo Bernardo, Franklin Reis
+
+#### Sprint 5
+- _Scrum master_: Guilherme Thiebaut
+
+- Documentação: Ivan Barreto, Franklin Reis, Gustavo Bernardo, Juan Luciano
+
+- Protótipos: Erik Alcantara, Gustavo Bernardo, Ivan Barreto
+
+
 ###  Quadro de tarefas
 
 > Apresente a divisão de tarefas entre os membros do grupo e o acompanhamento da execução, conforme o exemplo abaixo.
@@ -149,6 +172,7 @@ Atualizado em: 08/05/2024
 | Ivan          |    | 28/04/2025     | 27/06/2025 | ✔️    | 08/05/2025      |
 | Erik          | Painel Administrador  | 10/06/2025  |  27/06/2025  |  ✔️   |  22/06/2025    |
 | Gustavo       | Desenvolvimento da pagina de adminstrador      | 10/06/2025     | 27/06/2025 | ✔️    | 22/06/2025      |
+| Gustavo       | Organização do GitHub      | 10/06/2025     | 27/06/2025 | ✔️    | 22/06/2025      |
 
 
 Legenda:
