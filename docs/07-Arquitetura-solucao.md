@@ -4,12 +4,12 @@
 
 Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
 
-![](images/Tecnologias.png)
+![](images/ArquiteturadeSolução.png)
 
 ## Diagrama de classes
 
 O diagrama de classes ilustra graficamente a estrutura do software e como cada uma das classes estará interligada. Essas classes servem de modelo para materializar os objetos que serão executados na memória.
-![](images/DiagramaClasses.jpeg)
+![](images/NaReguaDiagramaClasses.png)
 
 
 ##  Modelo de dados
@@ -23,7 +23,7 @@ Apresente o modelo de dados por meio de um modelo relacional que contemple todos
 ### Modelo ER
 
 O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
-![](images/DiagramaER.jpeg)
+![](images/ModeloER.png)
 
 
 
