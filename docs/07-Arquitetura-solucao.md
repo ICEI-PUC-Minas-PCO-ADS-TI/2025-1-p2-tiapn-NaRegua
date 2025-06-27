@@ -127,6 +127,34 @@ INSERT IGNORE INTO produtos (nome, descricao, preco, estoque, imagem_url) VALUES
 ('Pomada Modeladora Efeito Matte', 'Ideal para estilizar o cabelo com acabamento fosco e natural. Alta fixação e fácil remoção.', 25.50, 20, 'https://farmagora.vteximg.com.br/arquivos/ids/202595-800-800/726946.jpg?v=638227903321000000'),
 ('Shampoo Anticaspa Clear Man', 'Tratamento eficaz contra a caspa, com sensação de frescor e limpeza profunda.', 22.00, 30, 'https://m.media-amazon.com/images/I/61LONPQTY9L._UF1000,1000_QL80_.jpg'),
 ('Óleo para Barba Hidratante', 'Hidrata, amacia e dá brilho à barba, com uma fragrância amadeirada suave.', 35.00, 12, 'https://cdn.sistemawbuy.com.br/arquivos/0f2a4340b7f91641e49c7e5b8a1c598a/produtos/MUA5KEI6/a-leo-para-barba-urban-men-30ml-1-637044ecc520a.jpg');
+
+-- --- SERVIÇOS DE CORTE ---
+INSERT IGNORE INTO servicos (nome, duracao_minutos, preco) VALUES
+('Corte Social (Tesoura e Máquina)', 30, 40.00),
+('Corte Degradê / Fade', 45, 55.00),
+('Corte na Navalha', 50, 60.00);
+
+-- --- SERVIÇOS DE BARBA ---
+INSERT IGNORE INTO servicos (nome, duracao_minutos, preco) VALUES
+('Barba Simples (Aparar e alinhar)', 20, 30.00),
+('Toalha Quente e Navalha (Tradicional)', 40, 55.00);
+
+-- --- COMBOS ---
+INSERT IGNORE INTO servicos (nome, duracao_minutos, preco) VALUES
+('Combo: Corte Degradê + Barba Simples', 60, 80.00),
+('Combo: Corte Social + Barboterapia', 70, 90.00);
+
+-- --- TRATAMENTOS E ESTÉTICA ---
+INSERT IGNORE INTO servicos (nome, duracao_minutos, preco) VALUES
+('Luzes / Mechas Masculinas', 90, 130.00),
+('Platinado Masculino (Cabelo Curto)', 120, 180.00),
+('Relaxamento Capilar', 60, 75.00),
+('Depilação de Nariz e Orelha (Cera)', 15, 20.00);
+
+-- --- PACOTES ESPECIAIS ---
+INSERT IGNORE INTO servicos (nome, duracao_minutos, preco) VALUES
+('Dia do Noivo (Corte, Barba, Sobrancelha e Limpeza de Pele)', 180, 350.00),
+('Pacote Pai e Filho (2 Cortes)', 70, 85.00);
 ```
 Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](../src/db).
 
