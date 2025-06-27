@@ -23,27 +23,49 @@ O objetivo de projeto é implementar um sistema de gestão de agendamentos para 
 
 ## Instruções de utilização
 
-Este site foi desenvolvido com foco em otimizar a experiência de clientes e barbeiros, oferecendo uma plataforma moderna e intuitiva para gestão de serviços de barbearia.
+- Cadastro e Login de Usuário: O cliente pode criar sua conta e acessar a plataforma com segurança.
 
-- Cadastro de Usuário: O cliente pode criar sua conta com dados básicos e iniciar sua experiência na plataforma.
+- Recuperação de Senha: Caso o usuário esqueça sua senha, é possível recuperá-la de forma simples por meio do sistema.
 
-- Login: Após se cadastrar, o usuário pode fazer login para acessar todas as funcionalidades do sistema.
+🏠 Página Inicial (Home)
+      Após o login, o usuário é direcionado à página principal, onde pode:
+    
+      Visualizar os serviços oferecidos.
+    
+      Agendar um horário com o barbeiro de sua preferência.
+    
+      Abrir o modal de agendamento, escolher um serviço, data e horário disponíveis.
 
-- Página Home: Ao entrar, o usuário é direcionado para a página principal, onde tem uma visão geral da barbearia e dos serviços oferecidos.
+💼 Painel do Administrador
+      Usuários com perfil de administrador têm acesso a um painel exclusivo, com diversas funcionalidades para gerenciar a barbearia:
+      
+      Dashboard com visão geral de:
+      
+      Total de Agendamentos
+      
+      Total de Clientes
+      
+      Total de Produtos
+      
+      Listagem de Agendamentos com informações detalhadas por cliente.
+      
+      Gerenciamento de Produtos:
+      
+      Visualização dos produtos cadastrados com nome, preço e estoque.
+      
+      Ações rápidas para Editar ou Excluir um produto.
+    
+      Botão para Adicionar Novo Produto.
+    
+      Reservas de Produtos:
+    
+      Lista de reservas feitas por clientes, com nome do produto, quantidade e status.
 
-- Agendamento de Serviços:
+🛒 Tela de Produtos (Cliente)
 
-  O usuário pode clicar no botão de agendamento e abrir um modal com as opções disponíveis.
+        A partir do menu, o cliente pode acessar a seção de produtos disponíveis na barbearia, visualizar detalhes e realizar reservas.
 
-  Dentro do modal, é possível selecionar o serviço desejado, escolher a data e o horário disponíveis.
-
-  Após confirmar, o agendamento é registrado no sistema.
-
-- Visualização de Produtos: Através do menu, o cliente pode acessar a tela de produtos, onde estão listados os itens à venda (como pomadas, gels, camisetas etc.).
-
-- Interface Intuitiva e Responsiva: O site se adapta a dispositivos móveis e desktop, garantindo uma boa experiência em qualquer tela.
-
-   recuperar senha.
+   
 
 # Documentação
 
