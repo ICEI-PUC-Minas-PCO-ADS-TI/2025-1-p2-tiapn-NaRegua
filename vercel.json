@@ -6,6 +6,13 @@
             "use": "@vercel/node"
         }
     ],
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "/html/login.html",
+            "permanent": false
+        }
+    ],
     "rewrites": [
         {
             "source": "/api/(.*)",
