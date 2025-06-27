@@ -172,6 +172,7 @@ Atualizado em: 08/05/2024
 | Ivan          |    | 28/04/2025     | 27/06/2025 | ✔️    | 08/05/2025      |
 | Erik          | Painel Administrador  | 10/06/2025  |  27/06/2025  |  ✔️   |  22/06/2025    |
 | Gustavo       | Desenvolvimento da pagina de adminstrador      | 10/06/2025     | 27/06/2025 | ✔️    | 22/06/2025      |
+| Gustavo       | Organização do GitHub      | 10/06/2025     | 27/06/2025 | ✔️    | 22/06/2025      |
 
 
 Legenda:
