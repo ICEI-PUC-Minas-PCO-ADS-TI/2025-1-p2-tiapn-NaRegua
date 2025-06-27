@@ -3,7 +3,7 @@
 <span style="color:red">Pré-requisitos: <a href="05-Projeto-interface.md"> Projeto de interface</a></span>
 
 
-![](images/ArquiteturadeSolução.png)
+![](images/NaReguaArquiteturaSolucao.png)
 
 ## Diagrama de classes
 
