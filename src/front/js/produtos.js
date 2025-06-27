@@ -1,6 +1,6 @@
 // src/front/js/produtos.js
 
-const API_URL_PRODUTOS = 'http://localhost:3000/api';
+const API_URL_PRODUTOS = '/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Lógica para o menu de usuário (pode ser movida para um utils.js no futuro)

@@ -1,6 +1,6 @@
 // src/front/js/info.js
 
-const API_URL_INFO = 'http://localhost:3000/api';
+const API_URL_INFO = '/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     // A lógica do menu de usuário (cabeçalho) pode ser adicionada aqui se necessário

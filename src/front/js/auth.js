@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LÓGICA DOS FORMULÁRIOS DE AUTENTICAÇÃO ---
-    const API_BASE_URL = 'http://localhost:3000/api/usuarios';
+    const API_BASE_URL = '/api/usuarios';
 
     const loginForm = document.getElementById('loginForm');
     const cadastroForm = document.getElementById('cadastroForm');

@@ -1,83 +1,19 @@
 // src/front/js/adm.js
 
-const API_BASE_URL_ADM = 'http://localhost:3000/api';
+const API_BASE_URL_ADM = '/api';
 let allProducts = [];
-let produtoModalInstance;
+let produtoModalInstance; // Instância do Modal Bootstrap será guardada aqui
 
 // --- Lógica de Proteção e Inicialização ---
 document.addEventListener('DOMContentLoaded', () => {
   const isAdmin = localStorage.getItem('isAdmin');
   const authToken = localStorage.getItem('authToken');
-  // src/front/js/adm.js
 
-  const API_BASE_URL_ADM = 'http://localhost:3000/api';
-  let allProducts = [];
-  let produtoModalInstance;
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // ... lógica de proteção e inicialização do painel ...
-    initializeAdminPanel();
-  });
-
-  function initializeAdminPanel() {
-    // ... lógica da sidebar, logout, nome do perfil ...
-    carregarDadosDashboard(); // Função principal que carrega tudo
-
-    const produtoModalEl = document.getElementById('produtoModal');
-    if (produtoModalEl) {
-      produtoModalInstance = bootstrap.Modal.getOrCreateInstance(produtoModalEl);
-      document.getElementById('btnAdicionarProduto').addEventListener('click', () => abrirModalProduto());
-      document.getElementById('produtoForm').addEventListener('submit', handleProdutoFormSubmit);
-    }
+  if (isAdmin !== 'true' || !authToken) {
+    alert('Acesso negado. Esta área é exclusiva para administradores.');
+    window.location.href = '../html/login.html';
+    return;
   }
-
-  async function fetchAdminData(endpoint, options = {}) { /* ... código ... */ }
-
-  async function carregarDadosDashboard() {
-    try {
-      await carregarAgendamentosEKpis();
-      await carregarProdutosAdmin();
-      await carregarReservasAdmin(); // Adicionada a chamada para carregar reservas
-    } catch (error) {
-      console.error("Falha ao carregar um ou mais componentes do dashboard.");
-    }
-  }
-
-  async function carregarAgendamentosEKpis() { /* ... código ... */ }
-  async function carregarProdutosAdmin() { /* ... código ... */ }
-
-  // NOVA FUNÇÃO PARA CARREGAR AS RESERVAS
-  async function carregarReservasAdmin() {
-    try {
-      const reservas = await fetchAdminData('/admin/reservas');
-      const tbody = document.getElementById('reservas-tbody');
-      tbody.innerHTML = '';
-
-      if (reservas && reservas.length > 0) {
-        reservas.forEach(reserva => {
-          const dataReservaObj = new Date(reserva.data_reserva);
-          const dataFormatada = dataReservaObj.toLocaleDateString('pt-BR') + ' ' + dataReservaObj.toLocaleTimeString('pt-BR');
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-                    <td>${reserva.nome_cliente}</td>
-                    <td>${reserva.nome_produto}</td>
-                    <td>${reserva.quantidade}</td>
-                    <td>${dataFormatada}</td>
-                    <td><span class="status-badge status-confirmado">${reserva.status}</span></td>
-                `;
-          tbody.appendChild(tr);
-        });
-      } else {
-        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Nenhuma reserva de produto encontrada.</td></tr>';
-      }
-    } catch (error) {
-      document.getElementById('reservas-tbody').innerHTML = '<tr><td colspan="5" style="text-align:center;">Erro ao carregar reservas.</td></tr>';
-    }
-  }
-
-  function abrirModalProduto(produto = null) { /* ... código ... */ }
-  async function handleProdutoFormSubmit(event) { /* ... código ... */ }
-  async function handleDeletarProduto(id) { /* ... código ... */ }
 
   initializeAdminPanel();
 });
@@ -88,25 +24,31 @@ function initializeAdminPanel() {
   const body = document.querySelector("body");
   const sidebar = body.querySelector("nav");
   const sidebarToggle = body.querySelector(".sidebar-toggle");
-  const adminLogoutBtn = document.getElementById('adminLogoutBtn'); // Seleciona o botão de logout
+  const adminLogoutBtn = document.getElementById('adminLogoutBtn');
   const adminProfileName = document.getElementById('adminProfileName');
 
   if (sidebar && sidebarToggle) {
     let getStatus = localStorage.getItem("sidebar_status");
     if (getStatus && getStatus === "close") {
       sidebar.classList.add("close");
+      body.classList.add("sidebar-closed");
     }
     sidebarToggle.addEventListener("click", () => {
       sidebar.classList.toggle("close");
-      localStorage.setItem("sidebar_status", sidebar.classList.contains("close") ? "close" : "open");
+      body.classList.toggle("sidebar-closed");
+
+      if (sidebar.classList.contains("close")) {
+        localStorage.setItem("sidebar_status", "close");
+      } else {
+        localStorage.setItem("sidebar_status", "open");
+      }
     });
   }
 
-  // Lógica de Logout do Admin (CORRETA)
   if (adminLogoutBtn) {
     adminLogoutBtn.addEventListener('click', (e) => {
-      e.preventDefault(); // Impede que o link navegue para "#"
-      localStorage.clear(); // Limpa token, nome, status de admin, etc.
+      e.preventDefault();
+      localStorage.clear();
       alert('Você foi desconectado da área administrativa.');
       window.location.href = '../html/login.html';
     });
@@ -156,11 +98,13 @@ async function fetchAdminData(endpoint, options = {}) {
   }
 }
 
-// Função principal que carrega todos os dados do dashboard
+
+// Função principal que carrega todos os dados
 async function carregarDadosDashboard() {
   try {
     await carregarAgendamentosEKpis();
     await carregarProdutosAdmin();
+    await carregarReservasAdmin();
   } catch (error) {
     console.error("Falha ao carregar um ou mais componentes do dashboard.");
   }
@@ -169,6 +113,7 @@ async function carregarDadosDashboard() {
 // Carrega os KPIs e a tabela de agendamentos
 async function carregarAgendamentosEKpis() {
   try {
+    // Esta rota agora busca apenas agendamentos e os KPIs relacionados
     const data = await fetchAdminData('/admin/agendamentos');
 
     document.getElementById('kpi-total-agendamentos').textContent = data.kpis.totalAgendamentos || 0;
@@ -203,10 +148,11 @@ async function carregarAgendamentosEKpis() {
   }
 }
 
-// Carrega a tabela de produtos
+// Carrega a tabela de produtos para gerenciamento
 async function carregarProdutosAdmin() {
   try {
-    allProducts = await fetchAdminData('/produtos');
+    // Usamos a rota de admin para ver todos os produtos, incluindo os sem estoque
+    allProducts = await fetchAdminData('/admin/produtos');
 
     const tbody = document.getElementById('produtos-tbody');
     tbody.innerHTML = '';
@@ -241,6 +187,36 @@ async function carregarProdutosAdmin() {
 
   } catch (error) {
     document.getElementById('produtos-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;">Erro ao carregar produtos.</td></tr>';
+  }
+}
+
+// Carrega a tabela de reservas
+async function carregarReservasAdmin() {
+  try {
+    const reservas = await fetchAdminData('/admin/reservas');
+    const tbody = document.getElementById('reservas-tbody');
+    tbody.innerHTML = '';
+
+    if (reservas && reservas.length > 0) {
+      reservas.forEach(reserva => {
+        const dataReservaObj = new Date(reserva.data_reserva);
+        const dataFormatada = dataReservaObj.toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' }) + ' ' + dataReservaObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        const statusClasse = reserva.status?.toLowerCase().replace(/\s+/g, '') || 'desconhecido';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+                    <td>${reserva.nome_cliente}</td>
+                    <td>${reserva.nome_produto}</td>
+                    <td>${reserva.quantidade}</td>
+                    <td>${dataFormatada}</td>
+                    <td><span class="status-badge status-${statusClasse}">${reserva.status}</span></td>
+                `;
+        tbody.appendChild(tr);
+      });
+    } else {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Nenhuma reserva de produto encontrada.</td></tr>';
+    }
+  } catch (error) {
+    document.getElementById('reservas-tbody').innerHTML = '<tr><td colspan="5" style="text-align:center;">Erro ao carregar reservas.</td></tr>';
   }
 }
 
@@ -291,7 +267,7 @@ async function handleProdutoFormSubmit(event) {
     produtoModalInstance.hide();
     carregarDadosDashboard();
   } catch (error) {
-    // o alert de erro já é mostrado por fetchAdminData
+    // O alert de erro já é mostrado por fetchAdminData
   } finally {
     submitButton.disabled = false;
   }
