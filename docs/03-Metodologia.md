@@ -55,7 +55,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - _Scrum master_: Ivan Barreto
 -  Documentação: Erik Alcantara, Juan Luciano, Franklin Reis, Gustavo Bernardo, Guilherme Thiebaut
 
--  
+   
 #### Sprint 3
 - _Scrum master_: Franklin Reis
 
@@ -150,7 +150,7 @@ Atualizado em: 08/05/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Franklin      |  | 28/04/2025     | 05/06/2025 | ✔️    | 08/05/2025      |
+| Franklin      | Modal de Agendamentos e relatório extensionista | 09/05/2025     | 05/06/2025 | ✔️    | 05/06/2025      |
 | Guilherme     |  | 27/04/2025     | 05/06/2025 | ✔️    | 27/04/2025      |
 | Guilherme     |  | 01/05/2025     | 05/06/2025 | ✔️    | 01/05/2025      |
 | Juan          | Tela Produtos | 23/05/2025     | 05/06/2025 | ✔️    | 04/06/2025      |
@@ -163,7 +163,7 @@ Atualizado em: 08/05/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Franklin      |    | 28/04/2025     | 27/06/2025 | ✔️    | 08/05/2025      |
+| Franklin      | Relatório extensionista   | 06/06/2025     | 29/06/2025 | 📝    |       |
 | Guilherme     |                        | 27/04/2025     | 27/06/2025 | ✔️    | 27/04/2025      |
 | Guilherme     |      | 01/05/2025     | 27/06/2025 | ✔️    | 01/05/2025      |
 | Juan          | Tela Produtos / React | 14/06/2025 | 27/06/2025 | ✔️    | 17/06/2025      |
