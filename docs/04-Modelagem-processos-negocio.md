@@ -54,9 +54,13 @@ Indentificado que a empresa possui uma segunda demanda de serviço que poderia e
 
 ## Modelagem dos processos
 
-[PROCESSO 1 - CORTE DE CABELO](./processes/processo-1-nome-do-processo.md "Detalhamento do processo 1.")
+[PROCESSO 1 - CORTE DE CABELO AS-IS](./processes/Processo-1-AS-IS-CORTE-DE-CABELO.md "Detalhamento do processo 1.")
 
-[PROCESSO 2 - COMPRAR PRODUTOS](./processes/processo-2-nome-do-processo.md "Detalhamento do processo 2.")
+[PROCESSO 2 - CORTE DE CABELO TO-BE](./processes/Processo-2-TO-BE-CORTE-DE-CABELO.md "Detalhamento do processo 2.")
+
+[PROCESSO 1 - COMPRAR PRODUTOS AS-IS](./processes/Processo-1-AS-IS-COMPRAR-PRODUTOS.md "Detalhamento do processo 1.")
+
+[PROCESSO 2 - CCOMPRAR PRODUTOS TO-BE](./processes/Processo-2-TO-BE-COMPRAR-PRODUTOS.md "Detalhamento do processo 2.")
 
 
 ## Indicadores de desempenho

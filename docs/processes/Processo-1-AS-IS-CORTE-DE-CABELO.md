@@ -76,7 +76,7 @@ __REALIZA O PAGAMENTO__
 
 
 
-_* **Tabela** - campo formado por uma matriz de valores_
+_**TABELAS**_
 
 
 **MANDA MENSAGEM**

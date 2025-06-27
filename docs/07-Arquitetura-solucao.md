@@ -177,56 +177,49 @@ Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](.
 | SGBD           | MySQL           |
 | Deploy         | Vercel          |
 
-![](images/Tecnologias.png)
 
 ## Hospedagem
 
-Explique como a hospedagem e o lançamento da plataforma foram realizados.
+__**ESTAPAS DOS PROCESSOS DE HOSPEDAGEM E LANÇAMENTO**__
 
-Etapas que serão realizadas:
 
-Organização do Repositório:
+1. **Organização do Repositório no GitHub.**
 
-Será feita a verificação da estrutura do projeto, garantindo que todos os arquivos necessários estejam organizados em um repositório no GitHub.
+- Verificação da estrutura do projeto para garantir que todos os arquivos necessários estejam organizados.
 
-Caso ainda não tenha sido feito, o projeto será versionado e enviado para um repositório público ou privado na plataforma.
+- Se ainda não estiver no GitHub, o projeto será versionado e enviado para um repositório (público ou privado).
 
-Criação da Conta na Vercel:
+2. **Criação da Conta na Vercel e Integração.**
 
-Será criada uma conta no site da Vercel, utilizando um e-mail ou conectando diretamente com a conta do GitHub.
+- Criação de uma conta na Vercel (via e-mail ou conexão direta com o GitHub).
 
-O GitHub será integrado à conta da Vercel, permitindo a seleção de repositórios para deploy automático.
+- Integração do GitHub à conta da Vercel para permitir a seleção de repositórios e o deploy automático.
 
-Importação do Projeto para a Vercel:
+3. **Importação do Projeto para a Vercel.**
 
-O repositório do projeto será importado pela Vercel.
+- Importação do repositório do projeto pela Vercel.
 
-A plataforma deverá identificar automaticamente o tipo de projeto (HTML/CSS/JS simples, React, Next.js, etc.).
+- A Vercel identificará automaticamente o tipo de projeto (HTML/CSS/JS, React, Next.js, etc.).
 
-As configurações de build e de saída (caso necessárias) serão ajustadas manualmente.
+- Ajuste manual das configurações de build e de saída, se necessário.
 
-Configuração do Deploy:
+4. **Configuração do Deploy Contínuo.**
 
-O primeiro deploy será iniciado após a configuração da importação.
+- Início do primeiro deploy após a configuração da importação.
 
-A Vercel será configurada para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
+- Configuração da Vercel para realizar deploys automáticos a cada novo push ou merge na branch principal do repositório.
 
-Geração do Link de Acesso:
+5. **Geração do Link de Acesso.**
 
-Após o deploy, a Vercel irá fornecer um link público onde a plataforma poderá ser acessada.
+- A Vercel fornecerá um link público após o deploy, permitindo o acesso à plataforma.
 
-Existe também a possibilidade de configurar um domínio personalizado posteriormente, caso necessário.
+- Possibilidade de configurar um domínio personalizado posteriormente, se desejado.
 
-Testes Finais e Verificação:
+6. **Testes Finais e Verificação.**
 
-Será feita uma verificação do funcionamento da plataforma já hospedada, testando os principais fluxos e links.
+- Verificação do funcionamento da plataforma já hospedada, testando os principais fluxos e links.
 
-Qualquer erro identificado será corrigido e uma nova versão será implantada automaticamente pela Vercel.
-
-Resultado Esperado:
-
-Ao final dessas etapas, a plataforma estará hospedada com sucesso na internet, com deploy contínuo ativado e acessível por um link público fornecido pela Vercel.
-
+- Correção de erros identificados e implantação automática de novas versões pela Vercel.
 
 
 
