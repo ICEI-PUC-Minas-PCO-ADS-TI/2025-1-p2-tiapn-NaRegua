@@ -1,31 +1,31 @@
 // src/backend/server.js
-require('dotenv').config();
 
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 // Middlewares Globais
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configuração da conexão com o MySQL (Preparada para Deploy)
+// Configuração da conexão com o MySQL (Direta, para testes locais)
 const dbConfig = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    port: process.env.DB_PORT || 3306
+    host: 'localhost',
+    user: 'root',
+    password: '713368',
+    database: 'bncjzdu8swnlmwhhwnp1',
+    port: 3306
 };
 
-// Chave secreta para JWT (Preparada para Deploy)
-const JWT_SECRET = process.env.JWT_SECRET;
+// Chave secreta para JWT para testes locais
+const JWT_SECRET = 'CHAVE_SECRETA_LOCAL_PARA_TESTES_123456';
 
 // --- FUNÇÕES AUXILIARES ---
 function parseDateTime(dateStr, timeStr) {
@@ -52,7 +52,9 @@ const autenticarAdmin = (req, res, next) => {
     }
 };
 
-// --- ROTAS DE USUÁRIO ---
+// --- ROTAS DA API ---
+
+// ROTAS DE USUÁRIO
 app.post('/api/usuarios/registrar', async (req, res) => {
     const { nome, cpf, email, senha } = req.body;
     if (!nome || !cpf || !email || !senha) {
@@ -107,31 +109,6 @@ app.post('/api/usuarios/login', async (req, res) => {
     }
 });
 
-app.post('/api/usuarios/recuperar-senha', async (req, res) => {
-    const { CPF, novaSenha } = req.body;
-    if (!CPF || !novaSenha) {
-        return res.status(400).json({ message: 'CPF e Nova Senha são obrigatórios.' });
-    }
-    const cpfLimpo = String(CPF).replace(/\D/g, '');
-    let connection;
-    try {
-        connection = await mysql.createConnection(dbConfig);
-        const [usuarios] = await connection.execute('SELECT id FROM usuarios WHERE cpf = ?', [cpfLimpo]);
-        if (usuarios.length === 0) {
-            return res.status(404).json({ message: 'CPF não encontrado.' });
-        }
-        const salt = await bcrypt.genSalt(10);
-        const senhaHash = await bcrypt.hash(novaSenha, salt);
-        await connection.execute('UPDATE usuarios SET senha_hash = ? WHERE cpf = ?', [senhaHash, cpfLimpo]);
-        res.json({ message: 'Senha alterada com sucesso!' });
-    } catch (error) {
-        console.error("Erro em /api/usuarios/recuperar-senha:", error);
-        res.status(500).json({ message: 'Erro interno ao recuperar senha.', error: error.message });
-    } finally {
-        if (connection) await connection.end();
-    }
-});
-
 app.delete('/api/usuarios/minha-conta', autenticarToken, async (req, res) => {
     const usuarioId = req.user.userId;
     if (!usuarioId) {
@@ -157,7 +134,7 @@ app.delete('/api/usuarios/minha-conta', autenticarToken, async (req, res) => {
     }
 });
 
-// --- ROTAS PÚBLICAS ---
+// ROTAS PÚBLICAS
 app.get('/api/barbeiros', async (req, res) => {
     let connection;
     try {
@@ -226,8 +203,7 @@ app.get('/api/horarios-disponiveis', async (req, res) => {
         if (data === hojeString) {
             const agora = new Date();
             horariosDisponiveis = horariosDisponiveis.filter(horario => {
-                const horarioDoSlot = parseDateTime(data, horario);
-                return horarioDoSlot > agora;
+                return parseDateTime(data, horario) > agora;
             });
         }
         res.json(horariosDisponiveis);
@@ -269,8 +245,7 @@ app.get('/api/produtos/:id', async (req, res) => {
     }
 });
 
-
-// --- ROTAS PROTEGIDAS DE USUÁRIO ---
+// ROTAS PROTEGIDAS DE USUÁRIO
 app.post('/api/agendamentos', autenticarToken, async (req, res) => {
     const { barbeiroId, servicoId, data, horario } = req.body;
     const usuarioId = req.user.userId;
@@ -281,7 +256,7 @@ app.post('/api/agendamentos', autenticarToken, async (req, res) => {
     const agora = new Date();
     agora.setMinutes(agora.getMinutes() - 1);
     if (agendamentoDateTime < agora) {
-        return res.status(400).json({ message: 'Não é possível realizar agendamentos em datas ou horários que já passaram.' });
+        return res.status(400).json({ message: 'Não é possível agendar no passado.' });
     }
     let connection;
     try {
@@ -362,24 +337,44 @@ app.post('/api/reservas', autenticarToken, async (req, res) => {
 });
 
 app.get('/api/meus-agendamentos/ativos', autenticarToken, async (req, res) => {
+    console.log("\n--- REQUISIÇÃO RECEBIDA: /api/meus-agendamentos/ativos ---");
     const usuarioId = req.user.userId;
+    console.log(`1. Buscando agendamentos para o usuário ID: ${usuarioId}`);
+
     let connection;
     try {
+        console.log("2. Tentando conectar ao banco de dados...");
         connection = await mysql.createConnection(dbConfig);
+        console.log("3. Conexão com o banco de dados bem-sucedida.");
+
         const query = `
-            SELECT ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento, s.nome as nome_servico, s.duracao_minutos, s.preco as preco_servico, b.nome as nome_barbeiro, ag.observacoes
+            SELECT 
+                ag.id, ag.data_agendamento, ag.hora_agendamento, ag.status_agendamento,
+                s.nome as nome_servico, s.duracao_minutos, s.preco as preco_servico,
+                b.nome as nome_barbeiro, ag.observacoes
             FROM agendamentos ag
             JOIN servicos s ON ag.servico_id = s.id
             JOIN barbeiros b ON ag.barbeiro_id = b.id
-            WHERE ag.usuario_id = ? AND STR_TO_DATE(CONCAT(ag.data_agendamento, ' ', ag.hora_agendamento), '%Y-%m-%d %H:%i:%s') >= NOW()
+            WHERE ag.usuario_id = ? 
+            AND STR_TO_DATE(CONCAT(ag.data_agendamento, ' ', ag.hora_agendamento), '%Y-%m-%d %H:%i:%s') >= NOW()
             ORDER BY ag.data_agendamento ASC, ag.hora_agendamento ASC;
         `;
+        console.log("4. Executando a query SQL no banco...");
         const [agendamentos] = await connection.execute(query, [usuarioId]);
+        console.log(`5. Query executada com sucesso. Encontrados ${agendamentos.length} agendamentos.`);
+
+        console.log("6. Enviando resposta JSON para o frontend.");
         res.json(agendamentos);
+
     } catch (error) {
+        console.error("!!-> ERRO na rota /meus-agendamentos/ativos:", error);
         res.status(500).json({ message: 'Erro interno ao buscar seus agendamentos ativos.', error: error.message });
     } finally {
-        if (connection) await connection.end();
+        if (connection) {
+            await connection.end();
+            console.log("7. Conexão com o banco de dados fechada.");
+        }
+        console.log("--- FIM DA REQUISIÇÃO: /api/meus-agendamentos/ativos ---\n");
     }
 });
 
@@ -450,6 +445,7 @@ app.delete('/api/agendamentos/:agendamentoId', autenticarToken, async (req, res)
     }
 });
 
+
 // --- ROTAS DE ADMINISTRAÇÃO ---
 app.get('/api/admin/agendamentos', [autenticarToken, autenticarAdmin], async (req, res) => {
     let connection;
@@ -490,7 +486,6 @@ app.get('/api/admin/reservas', [autenticarToken, autenticarAdmin], async (req, r
         const [reservas] = await connection.execute(query);
         res.json(reservas);
     } catch (error) {
-        console.error('Erro ao buscar reservas de produtos (admin):', error);
         res.status(500).json({ message: 'Erro interno ao buscar reservas.' });
     } finally {
         if (connection) await connection.end();
@@ -563,6 +558,7 @@ app.delete('/api/admin/produtos/:id', [autenticarToken, autenticarAdmin], async 
         if (connection) await connection.end();
     }
 });
+
 
 // --- INICIAR SERVIDOR ---
 app.listen(port, () => {
