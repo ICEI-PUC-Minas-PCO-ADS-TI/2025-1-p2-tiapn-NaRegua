@@ -163,7 +163,7 @@ Atualizado em: 08/05/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Franklin      | Relatório extensionista   | 06/06/2025     | 29/06/2025 | 📝    |       |
+| Franklin      | Relatório extensionista   | 06/06/2025     | 29/06/2025 | ✔️    | 28/06/2025      |
 | Guilherme     | Desenvolvimento do backend e banco de dados   | 06/06/2025     | 27/06/2025 | ✔️    | 27/04/2025      |
 | Juan          | Tela Produtos / React | 14/06/2025 | 27/06/2025 | ✔️    | 17/06/2025      |
 | Juan          | Organização dos códigos / pastas | 24/06/2025     | 27/06/2025 | ✔️    | 24/06/2025      |
