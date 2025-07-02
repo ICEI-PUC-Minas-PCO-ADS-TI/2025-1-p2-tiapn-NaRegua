@@ -154,7 +154,7 @@ Atualizado em: 08/05/2024
 | Guilherme     | Desenvolvimento do backend e banco de dados  | 09/05/2025     | 05/06/2025 | ✔️    | 27/04/2025      |
 | Juan          | Tela Produtos | 23/05/2025     | 05/06/2025 | ✔️    | 04/06/2025      |
 | Ivan          | Criacao do calendario e suas funcionalidades | 28/04/2025     | 05/05/2025 | ✔️    | 05/06/2025      |
-| Ivan          |  | 28/04/2025     | 05/05/2025 | ✔️    | 05/06/2025      |
+
 | Erik          | Login e Cadastro   | 23/05/2025     | 05/06/2025 | ✔️    | 05/06/2025      |
 | Gustavo       | Desenvolvimento da pagina de recuperar senha   | 23/05/2025     | 05/06/2025 | ✔️    | 05/06/2025      |
 
